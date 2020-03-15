@@ -1,0 +1,2 @@
+**minun** *laskarit*
+Ohjelmistotekniikka
