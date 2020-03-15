@@ -1,2 +1,2 @@
 **minun** *laskarit*
-Ohjelmistotekniikka
+Ohjelmistotekniikkaa
