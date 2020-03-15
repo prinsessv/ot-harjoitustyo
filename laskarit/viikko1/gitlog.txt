@@ -1,0 +1,115 @@
+ubuntu@ubuntu:~/ot_viikko1versio2$ git log --stat | cat
+commit 8f43da48c7a8365a4ce79c95ed79777190a86ff9
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 10:18:34 2020 +0000
+
+    file22
+
+ tiedostoja/file22 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2910bc690562fbaa677e5f4efc9d0f97df2d1062
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 10:17:55 2020 +0000
+
+    file1jafile22muutokset
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit afa0f95cb9d24b7bb4120bb3fd8de6ef5391181b
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 10:13:55 2020 +0000
+
+    tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 1c25eb0b6f898bed7ffa45d0d326ab04585e3b66
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 10:05:27 2020 +0000
+
+    muutosta
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit b26226eb31e035fddadd075f9ad302caccb12cc5
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 10:03:52 2020 +0000
+
+    nimenvaihto
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b07fedcc66a7dd9c1edfc0014f6221576b7c042b
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 10:02:14 2020 +0000
+
+    poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit c35aaecc8c84063a6d29aa16323cbbba8035d88c
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 10:00:30 2020 +0000
+
+    muutos tiedostoon
+
+ tiedosto.txt | 50 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 49 insertions(+), 1 deletion(-)
+
+commit 2121ef7cd9f44554d5e266efe5301a44a12fa4b2
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 09:57:15 2020 +0000
+
+    stuff lisatty
+
+ jokintiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ee5c3aa1e0fe24fb28befa37eb86ec898737194a
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 09:55:57 2020 +0000
+
+    muutoksia toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 3252b21b26b864be28ca51cc95aaaba61b3b9978
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 09:55:05 2020 +0000
+
+    kolmas lisatty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 325a91d388cbf86f7d61c42f62954eb4967bee0e
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 09:53:50 2020 +0000
+
+    muutos ja lisays
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 7e87a8300bc82011505281656f539feac5e7c56d
+Author: Anni <annialina97@gmail.com>
+Date:   Sun Mar 15 09:52:12 2020 +0000
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
