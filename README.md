@@ -8,4 +8,4 @@
 
 [Työaikakirjanpito](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
-
+[Vaatimusmäärittely](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
