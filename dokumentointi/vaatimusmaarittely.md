@@ -10,8 +10,11 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä.
 
 Sovelluksessa on kolme eri näkymää: kirjautumiselle, uuden käyttäjän luomiselle ja itse sovellukselle.
 
-![Github Logo] (/Lataukset/Käyttöliittymäluonnos.png)
-Format: ![Alt Text] {url}
+Kirjautumisnäkymässä käyttäjä voi joko kirjautua sisään kirjoittamalla tunnuksensa ja salasanansa sopiviin kohtiin ja painamalla sen jälkeen nappia LOGIN tai luoda käyttäjätunnuksen painamalla nappia CREATE NEW USER.
+
+Kun käyttäjä päättää luoda käyttäjätunnuksen, aukeaa lomakenäkymä. Tässä näkymässä käyttäjä määrittelee nimensä sekä haluamansa käyttäjätunnuksen ja salasanan sopiviin kohtiin. Lopuksi käyttäjä painaa nappia CREATE.
+
+Jos käyttäjätunnus ja salasana ovat oikein, näkymä vaihtuu itse sovellukseen. Tässä näkymässä käyttäjä näkee asettamansa tulot ja menot. Tulot ja menot voi nollata painamalla nappia RESET. Toimintonäppäimiä ovat: kirjaa meno, kirjaa tulo ja tulosta raportti. Käyttäjä voi myös kirjautua ulos napista LOG OUT.
 
 ## Perusversion tarjoama toiminnallisuus
 
