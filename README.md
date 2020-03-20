@@ -6,4 +6,4 @@
 
 [komentorivi.txt](https://github.com/prinsessv/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
-[dokumentointi](https://github.com/prinsessv/ot-harjoitustyo/tree/master/dokumentointi)
+[dokumentointi](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
