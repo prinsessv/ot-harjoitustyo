@@ -1,6 +1,6 @@
 # Työaikakirjanpito
 
-| päivä  | tyo  | kesto (h)  |
+| päivä  | työ  | kesto (h)  |
 | :----: | :----|       :----|
 | 20.3   |      |            |
 |        |      |            |
