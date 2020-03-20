@@ -1,8 +1,9 @@
-#Työaikakirjanpito
+# Työaikakirjanpito
 
-| päivä | aika (h) | työ |
-| 20.3  |          |     |
-|       |          |     |
-|       |          |     |
-|       |          |     |
-|       |          |     |
+| päivä  | aika | työ  |
+| :----: | :----| :----|
+| 20.3   |      |      |
+|        |      |      |
+|        |      |      |
+|        |      |      |
+|        |      |      |
