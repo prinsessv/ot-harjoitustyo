@@ -1,4 +1,4 @@
-# **minun** *laskarit*
+# **minun** *laskarit* :pencil2:
 
 ## Ohjelmistotekniikkaa
 
