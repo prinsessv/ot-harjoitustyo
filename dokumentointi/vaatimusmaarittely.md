@@ -1,4 +1,4 @@
-# Vaatimusmäärittely
+# Vaatimusmäärittely  :sparkles:
 
 ## Sovelluksen tarkoitus
 Pankki tarjoaa asiakkailleen sovellusta, jossa asiakas voi pitää kirjaa tuloistaan ja menoistaan. Asiakkaan täytyy kirjata hänen tulot ja menot sovellukseen. Menot kirjataan eri kategorioihin. Sovelluksesta voi tulostaa erilaisia raportteja, kuten kertyneet menot, montako prosenttia tuloista on käytetty sekä monta prosenttia rahoista on kulunut mihinkin kategoriaan. 
