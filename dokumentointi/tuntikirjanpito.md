@@ -1,4 +1,4 @@
-# Työaikakirjanpito
+# Työaikakirjanpito    :memo:
 
 | päivä  | työ                                               | kesto (h)  |
 | :----: | :----                                             |       :----|
