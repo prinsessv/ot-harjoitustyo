@@ -1,4 +1,4 @@
-# **Minun** **laskarit*  :books:
+# **Minun** *laskarit*  :books:
 
 ## Ohjelmistotekniikka
 
