@@ -1,4 +1,4 @@
-# **minun** *laskarit*    :pencil2:
+# **Minun** **laskarit*  :books:
 
 ## Ohjelmistotekniikka
 
@@ -8,7 +8,7 @@
 
 [komentorivi.txt](https://github.com/prinsessv/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
-### Viikko 3 :banana:
+### Viikko 2 :banana:
 
 [Työaikakirjanpito](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
