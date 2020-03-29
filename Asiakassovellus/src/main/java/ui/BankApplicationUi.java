@@ -37,10 +37,8 @@ public class BankApplicationUi extends Application {
    
     @Override
     public void start(Stage primaryStage) {
-        
-       //
-      // Sign in view:
-      
+
+        // Sign in view:
         primaryStage.setTitle("Accounting");
       
         GridPane grid = new GridPane();
@@ -55,44 +53,31 @@ public class BankApplicationUi extends Application {
       
         Label username = new Label("Username:");
         grid.add(username, 0, 1);
-      
         TextField userTextfield = new TextField();
         grid.add(userTextfield, 1, 1);
-      
+        
         Label password = new Label("Password: ");
         grid.add(password, 0, 2);
-      
         PasswordField passwordField = new PasswordField();
         grid.add(passwordField, 1, 2);
-      
-        Button button = new Button("LOGIN");
-        HBox hButton = new HBox(10);
-        hButton.setAlignment(Pos.BOTTOM_RIGHT);
-        hButton.getChildren().add(button);
-        grid.add(hButton, 1, 4);
-      
-        Button button2 = new Button("CREATE NEW USER");
-        HBox hButton2 = new HBox(20);
-        hButton2.setAlignment(Pos.BOTTOM_RIGHT);
-        hButton2.getChildren().add(button2);
-        grid.add(hButton2, 1, 5);
-      
+        
+        Button loginButton = new Button("LOGIN");
+        HBox logInButton = new HBox(10);
+        logInButton.setAlignment(Pos.BOTTOM_RIGHT);
+        logInButton.getChildren().add(loginButton);
+        grid.add(logInButton, 1, 4);
+        
+        Button createNewUserButton = new Button("CREATE NEW USER");
+        HBox createNewUButton = new HBox(20);
+        createNewUButton.setAlignment(Pos.BOTTOM_RIGHT);
+        createNewUButton.getChildren().add(createNewUserButton);
+        grid.add(createNewUButton, 1, 5);
+        // Error text appearing on the front page if username/pw is wrong
         final Text errorText = new Text();
         grid.add(errorText, 1, 7);
-      
-      //
-     // View after LOGIN:
-     
-        Label welcomeText = new Label("Welcome!");
-        StackPane welcome = new StackPane();
-        welcome.setPrefSize(300, 160);
-        welcome.getChildren().add(welcomeText);
-        welcome.setAlignment(Pos.CENTER);
-        Scene welcomeScene = new Scene(welcome);
+        // Making of sign in view ends here
         
-      //
-     // View after pressing button CREATE NEW USER looks like this:
-     
+        // Form that appears after pressing button CREATE NEW USER:
         GridPane grid2 = new GridPane();
         grid2.setAlignment(Pos.CENTER);
         grid2.setHgap(10);
@@ -102,41 +87,40 @@ public class BankApplicationUi extends Application {
         Text title = new Text("You wanted to create new user");
         title.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid2.add(title, 0, 0, 2, 1);
-       
-        Label newUsername = new Label("Username:");
-        grid2.add(newUsername, 0, 1);
-        TextField name = new TextField();
-        grid2.add(name, 1, 1);
         
-        Label newPassword = new Label("Password:");
-        grid2.add(newPassword, 0, 2);
-        PasswordField newPasswordField = new PasswordField();
-        grid2.add(newPasswordField, 1, 2);
+        Label createUsername = new Label("Username:");
+        grid2.add(createUsername, 0, 1);
+        TextField createUsernameField = new TextField();
+        grid2.add(createUsernameField, 1, 1);
         
-        Label repeatPassword = new Label("Repeat password:");
-        grid2.add(repeatPassword, 0, 3);
-        PasswordField repeatPasswordField = new PasswordField();
-        grid2.add(repeatPasswordField, 1, 3);
+        Label createPassword = new Label("Password:");
+        grid2.add(createPassword, 0, 2);
+        PasswordField createPasswordField = new PasswordField();
+        grid2.add(createPasswordField, 1, 2);
         
-        Button createButton = new Button("CREATE");
-        HBox createButton2 = new HBox(10);
-        createButton2.setAlignment(Pos.BOTTOM_RIGHT);
-        createButton2.getChildren().add(createButton);
-        grid2.add(createButton, 1, 4);
+        Label repeatThatPassword = new Label("Repeat password:");
+        grid2.add(repeatThatPassword, 0, 3);
+        PasswordField repeatThatPasswordField = new PasswordField();
+        grid2.add(repeatThatPasswordField, 1, 3);
+        
+        Button finalCreateButton = new Button("CREATE");
+        HBox finalCButton = new HBox(10);
+        finalCButton.setAlignment(Pos.BOTTOM_RIGHT);
+        finalCButton.getChildren().add(finalCreateButton);
+        grid2.add(finalCButton, 1, 4);
         
         Scene createScene = new Scene(grid2);
+        //Making of "create new user" form ends here
         
-      //
-     // CREATE NEW USER button action:
-     
-        button2.setOnAction(new EventHandler<ActionEvent>() {
+         // CREATE-NEW-USER button action
+        createNewUserButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 primaryStage.setScene(createScene);
             }
         });
         
-        //View after pressing create button
+        // View after filling the form and pressing CREATE button
         GridPane grid3 = new GridPane();
         grid3.setAlignment(Pos.CENTER);
         grid3.setHgap(10);
@@ -155,33 +139,37 @@ public class BankApplicationUi extends Application {
         
         Scene newScene = new Scene(grid3);
         
-      //
-     // CREATE button action:
-     
-        createButton.setOnAction(new EventHandler<ActionEvent>() {
+        // CREATE button action:
+        finalCreateButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                String user = name.getText();
-                String passw = newPasswordField.getText();
-                Users users = new Users();
+                String username = createUsername.getText();
+                String passw = createPasswordField.getText();
                 try {
-                    users.createNewUser(user, passw);
+                    success.setText(Users.createNewUser(username, passw));
+                    primaryStage.setScene(newScene);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                primaryStage.setScene(newScene);
             }
         });
-       
-      //
-     // LOGIN button action:
-     
-        button.setOnAction(new EventHandler<ActionEvent>() {
+        
+        // View after successfull LOGIN:
+        Label welcomeText = new Label("Welcome!");
+        StackPane welcome = new StackPane();
+        welcome.setPrefSize(300, 160);
+        welcome.getChildren().add(welcomeText);
+        welcome.setAlignment(Pos.CENTER);
+        Scene welcomeScene = new Scene(welcome);
+         
+        // LOGIN button action:
+        loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 Users users = new Users();
                 try {
-                    if(!users.findUser(userTextfield.getText(), passwordField.getText())) {
+                    System.out.println(userTextfield.getText()+","+passwordField.getText());
+                    if(Users.findUser(userTextfield.getText(), passwordField.getText()) == null) {
                         errorText.setFill(Color.FIREBRICK);
                         errorText.setText("Wrong username or password");
                         return;
@@ -189,31 +177,25 @@ public class BankApplicationUi extends Application {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                welcomeText.setText("Welcome " + Users.getCUrrentUserUsername() + "!");
                 primaryStage.setScene(welcomeScene);
             }
         });
       
-      //
-     // Initialization:
-     
-      Scene scene = new Scene(grid, 400, 375);
+        // Initialization:
+        Scene scene = new Scene(grid, 400, 375);
       
-      //
-     // Back to login page button action:
-
-       back.setOnAction(new EventHandler<ActionEvent>() {
+        // Back to login page button action:
+        back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 primaryStage.setScene(scene);
             }
         });
-      
-      
+ 
       primaryStage.setScene(scene);
       primaryStage.show();
-      
     }
-
     /**
      * @param args the command line arguments
      */

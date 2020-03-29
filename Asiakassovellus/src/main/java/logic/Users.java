@@ -5,7 +5,9 @@
  */
 package logic;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -15,22 +17,50 @@ import java.util.Scanner;
  * @author anni
  */
 public class Users {
-    String filepath = "users.txt";
-  
-    public void createNewUser(String username, String pw) throws FileNotFoundException {
-        User user = new User(username, pw);
-        PrintWriter file = new PrintWriter("filepath");
-        file.println(username+";"+pw);
-        file.close();
+    public static String filepath = "users.txt";
+    public static User currentUser = null;
+    
+    public static User getCurrentUser() {
+        return currentUser;
     }
-    public boolean findUser(String username, String password) throws FileNotFoundException {
-        Scanner file = new Scanner("filepath");
-        while(file.hasNextLine()) {
-            if(file.nextLine().equals(username+";"+password)) {
-                return true;
+    public static String getCUrrentUserUsername() {
+        if(currentUser == null) return "";
+        return currentUser.username;
+    }
+    public static String createNewUser(String username, String pw) throws FileNotFoundException {
+        User user = null;
+        try {
+            user = findUser(username, pw);
+        } catch(FileNotFoundException e) {
+            return "Unable to connect to the file where users are stored.";
+        }
+        if(!(user == null)) {
+            return "The user " + username + " with the same password already exists.";
+        } try {
+            FileWriter writer = new FileWriter(filepath, true);
+            writer.append(username+";"+pw);
+            writer.append("\n");
+            writer.flush();
+            writer.close();
+        } catch(Exception e) {
+            return "Saving the new user failed";
+        }
+        return "The new account for " + username + " created successfully.";
+    }
+    
+    public static User findUser(String username, String password) throws FileNotFoundException {
+        File file = new File(filepath);
+        Scanner reader = new Scanner(file);
+        while(reader.hasNextLine()) {
+            String next = reader.nextLine();
+            if(next.equals(username+";"+password)) {
+                reader.close();
+                currentUser = new User(username, password);
+                return currentUser;
             }
         }
-        return false;
+        reader.close();
+        return null;
     }
     
 }
