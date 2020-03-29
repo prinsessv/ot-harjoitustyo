@@ -31,4 +31,8 @@ public class User {
         User other = (User) obj;
         return username.equals(other.username);
     }
+    @Override
+    public String toString() {
+        return username;
+    }
 }
