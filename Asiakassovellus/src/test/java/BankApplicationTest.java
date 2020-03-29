@@ -44,7 +44,7 @@ public class BankApplicationTest {
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-    public void loytyykoLisattyKayttaja() throws FileNotFoundException {
+    public void isAddedUserFound() throws FileNotFoundException {
         Users user = new Users();
         user.createNewUser("user", "password");
         
