@@ -45,10 +45,8 @@ public class BankApplicationTest {
     //
     @Test
     public void isAddedUserFound() throws FileNotFoundException {
-        Users user = new Users();
-        user.createNewUser("user", "password");
-        
-        assertEquals("user", user.findUser("user", "password").toString());
+        Users.createNewUser("user", "password");
+        assertEquals("user", Users.findUser("user", "password").toString());
         
     }
 }
