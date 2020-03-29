@@ -143,7 +143,7 @@ public class BankApplicationUi extends Application {
         finalCreateButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                String username = createUsername.getText();
+                String username = createUsernameField.getText();
                 String passw = createPasswordField.getText();
                 try {
                     success.setText(Users.createNewUser(username, passw));
@@ -177,7 +177,7 @@ public class BankApplicationUi extends Application {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                welcomeText.setText("Welcome " + Users.getCUrrentUserUsername() + "!");
+                welcomeText.setText("Welcome " + Users.getCurrentUserUsername() + "!");
                 primaryStage.setScene(welcomeScene);
             }
         });
