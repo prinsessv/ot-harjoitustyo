@@ -2,7 +2,6 @@
 
 ## Projekti: Asiakassovellus
 Sovellus mahdollistaa asiakkaille kirjanpidon omista tuloista ja menoista.
-
 Se tarjoaa asiakkaalle erilaisia raportteja hänen toiminnastaan.
 
 ### Dokumentointi
@@ -13,7 +12,7 @@ Se tarjoaa asiakkaalle erilaisia raportteja hänen toiminnastaan.
 
 ### Komentorivitoiminnot
 
-###Testaus
+### Testaus
 
 Testit suoritetaan komennolla
 
