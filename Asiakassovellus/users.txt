@@ -1,4 +1,0 @@
-Username:;kissa
-Username:;koira
-koira;koira
-user;password
