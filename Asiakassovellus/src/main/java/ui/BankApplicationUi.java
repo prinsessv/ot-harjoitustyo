@@ -166,7 +166,6 @@ public class BankApplicationUi extends Application {
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                Users users = new Users();
                 try {
                     System.out.println(userTextfield.getText()+","+passwordField.getText());
                     if(Users.findUser(userTextfield.getText(), passwordField.getText()) == null) {
