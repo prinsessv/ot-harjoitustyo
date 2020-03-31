@@ -12,6 +12,14 @@ Se tarjoaa asiakkaalle erilaisia raportteja hänen toiminnastaan.
 
 ### Komentorivitoiminnot
 
+### Suorittaminen
+
+Ohjelman saa käyntiin komennolla
+
+```
+mvn compile exec:java -Dexec.mainClass=main.Main
+```
+
 ### Testaus
 
 Testit suoritetaan komennolla
