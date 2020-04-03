@@ -22,11 +22,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import logic.BankApplication;
 import logic.Users;
 
 /**
@@ -75,7 +78,7 @@ public class BankApplicationUi extends Application {
         // Error text appearing on the front page if username/pw is wrong
         final Text errorText = new Text();
         grid.add(errorText, 1, 7);
-        // Making of sign in view ends here
+        //
         
         // Form that appears after pressing button CREATE NEW USER:
         GridPane grid2 = new GridPane();
@@ -110,17 +113,18 @@ public class BankApplicationUi extends Application {
         grid2.add(finalCButton, 1, 4);
         
         Scene createScene = new Scene(grid2);
-        //Making of "create new user" form ends here
+        //
         
-         // CREATE-NEW-USER button action
+        // CREATE-NEW-USER button action
         createNewUserButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 primaryStage.setScene(createScene);
             }
         });
+        //
         
-        // View after filling the form and pressing CREATE button
+        // View after filling the CREATE NEW USER form and pressing CREATE button
         GridPane grid3 = new GridPane();
         grid3.setAlignment(Pos.CENTER);
         grid3.setHgap(10);
@@ -138,6 +142,7 @@ public class BankApplicationUi extends Application {
         grid3.add(back, 1, 1);
         
         Scene newScene = new Scene(grid3);
+        //
         
         // CREATE button action:
         finalCreateButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -153,14 +158,152 @@ public class BankApplicationUi extends Application {
                 }
             }
         });
+        //
         
         // View after successfull LOGIN:
+        GridPane grid4 = new GridPane();
+        grid4.setAlignment(Pos.CENTER);
+        grid4.setHgap(10);
+        grid4.setVgap(10);
+        grid4.setPadding(new Insets(25, 25, 25, 25));
+        
         Label welcomeText = new Label("Welcome!");
-        StackPane welcome = new StackPane();
-        welcome.setPrefSize(300, 160);
-        welcome.getChildren().add(welcomeText);
-        welcome.setAlignment(Pos.CENTER);
-        Scene welcomeScene = new Scene(welcome);
+        welcomeText.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        grid4.add(welcomeText, 0, 0, 2, 1);
+        
+        Button incomeButton = new Button("Book income");
+        grid4.add(incomeButton, 0, 4);
+        Button expenseButton = new Button("Book expense");
+        grid4.add(expenseButton, 0, 5);
+        Button reportButton = new Button("Print report");
+        grid4.add(reportButton, 0, 10);
+        Button resetButton = new Button("Reset all");
+        grid4.add(resetButton, 0, 11);
+        Button logoutButton = new Button("LOGOUT");
+        logoutButton.setStyle("-fx-background-color: white; ");
+        grid4.add(logoutButton, 0, 1, 1, 1); 
+        
+        Scene welcomeScene = new Scene(grid4);
+        //
+        
+        //Book income button opens a form
+        GridPane bookIncome = new GridPane();
+        bookIncome.setAlignment(Pos.CENTER);
+        bookIncome.setHgap(10);
+        bookIncome.setVgap(10);
+        bookIncome.setPadding(new Insets(25, 25, 25, 25));
+        
+        Label howMuch = new Label("Income to book: ");
+        TextField bookingIncome = new TextField();
+        
+        bookIncome.add(howMuch, 0, 0);
+        bookIncome.add(bookingIncome, 1, 0);
+        
+        Button bookIt = new Button("Book this income");
+        bookIncome.add(bookIt, 1, 1);
+        
+        Scene bookingIncomeScene = new Scene(bookIncome);
+        //
+        
+        //After book income form
+        GridPane incomeBooked = new GridPane();
+        incomeBooked.setAlignment(Pos.CENTER);
+        incomeBooked.setHgap(10);
+        incomeBooked.setVgap(10);
+        incomeBooked.setPadding(new Insets(25, 25, 25, 25));
+        
+        Label incomeBookedSuccessfully = new Label("Income has been booked succesfully.");
+        Button backToFrontPage = new Button("Back to front page");
+        
+        incomeBooked.add(incomeBookedSuccessfully, 0, 0);
+        incomeBooked.add(backToFrontPage, 0, 1);
+        
+        Scene incomeIsBooked = new Scene(incomeBooked);
+        //
+        
+        //Back to front page button action
+        backToFrontPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(welcomeScene);
+            }
+        });
+        //
+        
+        // bookIncome button action
+        incomeButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(bookingIncomeScene);
+            }
+        });
+        //
+        
+        // Book it button action
+        bookIt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                BankApplication.bookIncome(Integer.parseInt(bookingIncome.getText()));
+                primaryStage.setScene(incomeIsBooked);
+            }
+           
+        });
+        //
+        
+        // Book expense button action
+        
+        //
+        
+        // View after pressing print report button
+        GridPane report = new GridPane();
+        report.setAlignment(Pos.CENTER);
+        report.setHgap(10);
+        report.setVgap(10);
+        report.setPadding(new Insets(25, 25, 25, 25));
+        
+        Button income = new Button("Income");
+        Button expenses = new Button("Expenses");
+        Button percent = new Button("Percents used of income");
+        Button category = new Button("Percents used of income for each category");
+        
+        report.add(income, 0, 0);
+        report.add(expenses, 0, 1);
+        report.add(percent, 0, 2);
+        report.add(category, 0, 3);
+        
+        Scene reportScene = new Scene(report);
+        //
+        
+        // Print report button action
+        reportButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(reportScene);
+            }
+        });
+        //
+        
+        // Income popup
+        Label incomeLabel = new Label("");
+        StackPane secondaryLayout = new StackPane();
+        secondaryLayout.getChildren().add(incomeLabel);
+        Scene secondScene = new Scene(secondaryLayout, 230, 100);
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Income");
+        newWindow.setScene(secondScene);
+        newWindow.setX(primaryStage.getX() + 200);
+        newWindow.setY(primaryStage.getY() + 100);
+        
+        
+        // Income button action
+        income.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                incomeLabel.setText(BankApplication.getIncome());
+                newWindow.show();
+            }
+        });
+        // Logout button action
          
         // LOGIN button action:
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -176,14 +319,15 @@ public class BankApplicationUi extends Application {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                welcomeText.setText("Welcome " + Users.getCurrentUserUsername() + "!");
+                welcomeText.setText("Logged in as: " + Users.getCurrentUserUsername());
                 primaryStage.setScene(welcomeScene);
             }
         });
+        //
       
         // Initialization:
         Scene scene = new Scene(grid, 400, 375);
-      
+        
         // Back to login page button action:
         back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -191,9 +335,11 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(scene);
             }
         });
- 
-      primaryStage.setScene(scene);
-      primaryStage.show();
+        //
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        //
     }
     /**
      * @param args the command line arguments
