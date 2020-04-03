@@ -299,7 +299,11 @@ public class BankApplicationUi extends Application {
         income.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                incomeLabel.setText(BankApplication.getIncome());
+                try {
+                    incomeLabel.setText(BankApplication.getIncome());
+                } catch(FileNotFoundException ex) {
+                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 newWindow.show();
             }
         });

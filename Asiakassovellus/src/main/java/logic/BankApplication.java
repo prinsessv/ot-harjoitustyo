@@ -5,6 +5,8 @@
  */
 package logic;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -52,14 +54,20 @@ public class BankApplication {
         }
         return "Expense is booked succesfully";
     }
-    public static String getIncome() {
-        Scanner reader = new Scanner(user.getIncomeFilePath());
+    
+    public static String getIncome() throws FileNotFoundException {
         String income = "";
-        while(reader.hasNextLine()); {
-        income = reader.nextLine();
+    
+        try (Scanner reader = new Scanner(new File(user.getIncomeFilePath()))) {
+            while(reader.hasNextLine()) {
+                income = reader.nextLine();
+            }
+        } catch(Exception e) {
+            System.out.println("Error");
         }
         return income;
     }
+    
     public static int getExpenses() {
         return 0;
     }
