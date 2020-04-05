@@ -6,7 +6,6 @@
 
 import java.io.FileNotFoundException;
 import logic.BankApplication;
-import logic.User;
 import logic.Users;
 import org.junit.After;
 import org.junit.AfterClass;

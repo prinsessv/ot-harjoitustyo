@@ -220,7 +220,7 @@ public class BankApplicationUi extends Application {
         
         Scene incomeIsBooked = new Scene(incomeBooked);
         //
-        
+       
         //Back to front page button action
         backToFrontPage.setOnAction(new EventHandler<ActionEvent>() {
             @Override
