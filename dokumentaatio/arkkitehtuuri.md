@@ -1,1 +1,1 @@
-/home/anni/ot-harjoitustyo/dokumentaatio/kuvat/Luokkakaavio.png
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Luokkakaavio.png" width="160">
