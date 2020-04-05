@@ -18,7 +18,7 @@ Komentorivitoiminnot täytyy suorittaa Asiakassovellus hakemiston sisällä.
 
 ### Suorittaminen
 
-Ennen ohjelman suorittamista on annettava komento
+Jos et halua luoda uutta käyttäjää erikseen, voit antaa tämän komennon ennen ohjelman käynnistämistä:
 
 ```
 rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
@@ -60,7 +60,7 @@ Testikattavuusraportin saa näkyviin myös selaimessa: avaa tiedosto _target/sit
 
 ### Suoritettavan jarin generointi
 
-Samoin kun ennen ohjelman suoritusta ja testaamista, on aluksi annettava komento
+Samoin kun ennen testaamista, on aluksi annettava komento
 
 ```
 rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
