@@ -34,7 +34,7 @@ Erilaisia raportteja ovat esimerkiksi:
 
 :heavy_check_mark: 1. Kerro tulot
 
-                   2. Kerro menot
+ 2. Kerro menot
 
 ## Perusversion tarjoama toiminnallisuus
 
