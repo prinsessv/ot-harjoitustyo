@@ -6,6 +6,8 @@
 package logic;
 
 import java.io.File;
+import java.io.IOException;
+import static logic.BankApplication.user;
 
 /**
  *
@@ -14,14 +16,29 @@ import java.io.File;
 public class User {
     static String username;
     static String password;
-    public static String filepathIncome = username+"_"+"income.txt";
-    public static String filepathExpense = username+"_"+"expense.txt";
+    public static String filepathIncome;
+    public static String filepathExpense;
+    File incomeFile;
+    File expenseFile;
     
     public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-        File incomeFile = new File(filepathIncome);
-        File expenseFile = new File(filepathExpense);
+        User.username = username;
+        User.password = password;
+        User.filepathIncome = username + "_" + "income.txt";
+        User.filepathExpense = username + "_" + "expense.txt";
+        this.incomeFile = new File(filepathIncome);
+        this.expenseFile = new File(filepathExpense);
+        
+        try {
+            incomeFile.createNewFile();
+            expenseFile.createNewFile();
+        } catch (IOException e) {
+            System.out.println("Something went wrong while creating new files");
+        }
+    }
+    public static User setUser(String username, String password) {
+        BankApplication.user = new User(username, password);
+        return user;
     }
     public String getPassword() {
         return password;
@@ -37,7 +54,7 @@ public class User {
     }
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof User)) {
+        if (!(obj instanceof User)) {
         return false;
         }
         User other = (User) obj;

@@ -24,25 +24,28 @@ public class Users {
         return currentUser;
     }
     public static String getCurrentUserUsername() {
-        if(currentUser == null) return "";
+        if (currentUser == null) {
+            return "";
+        }
         return currentUser.username;
     }
     public static String createNewUser(String username, String pw) throws FileNotFoundException {
         User user = null;
         try {
             user = findUser(username, pw);
-        } catch(IOException e) {
+        } catch (IOException e) {
             return "Unable to connect to the file where users are stored.";
         }
-        if(!(user == null)) {
+        if (!(user == null)) {
             return "The user " + username + " with the same password already exists.";
-        } try {
+        } 
+        try {
             FileWriter writer = new FileWriter(filepath, true);
-            writer.append(username+";"+pw);
+            writer.append(username + ";" + pw);
             writer.append("\n");
             writer.flush();
             writer.close();
-        } catch(Exception e) {
+        } catch (Exception e) {
             return "Saving the new user failed";
         }
         return "The new account for " + username + " created successfully.";
@@ -52,13 +55,13 @@ public class Users {
         File file = new File(filepath);
         try {
             file.createNewFile();
-        } catch(IOException e) {
+        } catch (IOException e) {
             return null;
         }
         Scanner reader = new Scanner(file);
-        while(reader.hasNextLine()) {
+        while (reader.hasNextLine()) {
             String next = reader.nextLine();
-            if(next.equals(username+";"+password)) {
+            if (next.equals(username + ";" + password)) {
                 reader.close();
                 currentUser = new User(username, password);
                 return currentUser;
