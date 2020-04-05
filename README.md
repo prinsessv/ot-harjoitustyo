@@ -60,7 +60,7 @@ Testikattavuusraportin saa näkyviin myös selaimessa: avaa tiedosto _target/sit
 
 ### Suoritettavan jarin generointi
 
-Samoin kuin ennen ohjelman suoritusta ja testaamista, on aluksi annettava komento
+Samoin kun ennen ohjelman suoritusta ja testaamista, on aluksi annettava komento
 
 ```
 rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
