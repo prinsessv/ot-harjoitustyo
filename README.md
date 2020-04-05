@@ -38,7 +38,7 @@ Password = _password_
 
 ### Testaus
 
-Ohjelmaa testatessa tiedostojen luonti ja niihin kirjoitus ei välttämättä ehdi tapahtua. Ohjelmaa normaalisti ajaessa luonnollisia taukoja vaikuttaa tulevan riittävästi, että tieto ehtii tallettua. Projektiin liittyviä tietokantatiedostoja ei saa pitää repositoriossa, joten ennen testin ajamista terminaalissa täytyy kirjoittaa komento:
+Ohjelmaa testatessa tiedostojen luonti ja niihin kirjoitus ei välttämättä ehdi tapahtua. Ohjelmaa normaalisti ajaessa luonnollisia taukoja vaikuttaa tulevan riittävästi siten, että tieto ehtii tallettua. Projektiin liittyviä tietokantatiedostoja ei saa pitää repositoriossa, joten ennen testin ajamista terminaalissa täytyy kirjoittaa komento:
 
 ```
 rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
@@ -60,7 +60,7 @@ Testikattavuusraportin saa näkyviin myös selaimessa: avaa tiedosto _target/sit
 
 ### Suoritettavan jarin generointi
 
-Samoin kuin testauskohdassa, aluksi täytyy antaa komento
+Samoin kuin ennen ohjelman suoritusta ja testaamista, on aluksi annettava komento
 
 ```
 rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
