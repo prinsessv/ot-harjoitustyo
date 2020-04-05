@@ -32,8 +32,9 @@ mvn compile exec:java -Dexec.mainClass=main.Main
 
 Tämän jälkeen kirjautuminen sisään onnistuu tunnuksilla:
 
-_Username = user_
-_Password = password_
+Username = _user_
+
+Password = _password_
 
 ### Testaus
 
