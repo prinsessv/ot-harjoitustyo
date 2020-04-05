@@ -5,6 +5,7 @@
  */
 
 import java.io.FileNotFoundException;
+import logic.BankApplication;
 import logic.User;
 import logic.Users;
 import org.junit.After;
@@ -24,7 +25,9 @@ public class BankApplicationTest {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws FileNotFoundException {
+        Users.createNewUser("user", "password");
+        BankApplication app = new BankApplication(Users.getCurrentUser());
     }
     
     //@AfterClass
@@ -45,8 +48,12 @@ public class BankApplicationTest {
     //
     @Test
     public void isAddedUserFound() throws FileNotFoundException {
-        Users.createNewUser("user", "password");
         assertEquals("user", Users.findUser("user", "password").toString());
         
+    }
+    @Test
+    public void incomeIsBooked() throws FileNotFoundException {
+        BankApplication.bookIncome(66);
+        assertEquals("66", BankApplication.getIncome());
     }
 }
