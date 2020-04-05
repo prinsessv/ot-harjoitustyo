@@ -10,8 +10,7 @@ Se tarjoaa asiakkaalle erilaisia raportteja hänen toiminnastaan.
 
 [Vaatimusmäärittely](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-[Arkkitehtuurikuvaus](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/
-arkkitehtuuri.md)
+[Arkkitehtuurikuvaus](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 ### Komentorivitoiminnot
 
