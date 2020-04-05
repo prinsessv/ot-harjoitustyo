@@ -8,27 +8,47 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä.
 
 ## Käyttöliittymäluonnos
 
-Sovelluksessa on kolme eri näkymää: kirjautumiselle, uuden käyttäjän luomiselle ja itse sovellukselle.
+:heavy_check_mark: Sovelluksessa on kolme eri näkymää: kirjautumiselle, uuden käyttäjän luomiselle ja itse sovellukselle.
 
-Kirjautumisnäkymässä käyttäjä voi joko kirjautua sisään kirjoittamalla tunnuksensa ja salasanansa sopiviin kohtiin ja painamalla sen jälkeen nappia LOGIN tai luoda käyttäjätunnuksen painamalla nappia CREATE NEW USER.
+:heavy_check_mark: Kirjautumisnäkymässä käyttäjä voi joko kirjautua sisään kirjoittamalla tunnuksensa ja salasanansa sopiviin kohtiin ja painamalla sen jälkeen nappia LOGIN tai luoda käyttäjätunnuksen painamalla nappia CREATE NEW USER.
 
-Kun käyttäjä päättää luoda käyttäjätunnuksen, aukeaa lomakenäkymä. Tässä näkymässä käyttäjä määrittelee nimensä sekä haluamansa käyttäjätunnuksen ja salasanan sopiviin kohtiin. Lopuksi käyttäjä painaa nappia CREATE.
+:heavy_check_mark: Kun käyttäjä päättää luoda käyttäjätunnuksen, aukeaa lomakenäkymä. Tässä näkymässä käyttäjä määrittelee nimensä sekä haluamansa käyttäjätunnuksen ja salasanan sopiviin kohtiin. Lopuksi käyttäjä painaa nappia CREATE.
 
-Jos käyttäjätunnus ja salasana ovat oikein, näkymä vaihtuu itse sovellukseen. Tässä näkymässä käyttäjä näkee asettamansa tulot ja menot. Tulot ja menot voi nollata painamalla nappia RESET. Toimintonäppäimiä ovat: kirjaa meno, kirjaa tulo ja tulosta raportti. Käyttäjä voi myös kirjautua ulos napista LOG OUT.
+:heavy_check_mark: Jos käyttäjätunnus ja salasana ovat oikein, näkymä vaihtuu itse sovellukseen. 
+
+Tässä näkymässä käyttäjä näkee asettamansa tulot ja menot. 
+
+Tulot ja menot voi nollata painamalla nappia RESET. 
+
+:heavy_check_mark: Toimintonäppäimiä ovat: 
+
+1. kirjaa meno
+
+2. kirjaa tulo ja 
+	           
+3. tulosta raportti. 
+
+Käyttäjä voi myös kirjautua ulos napista LOG OUT.
+
+Erilaisia raportteja ovat esimerkiksi:
+
+:heavy_check_mark: 1. Kerro tulot
+
+                   2. Kerro menot
 
 ## Perusversion tarjoama toiminnallisuus
 
 ### Ennen kirjautumista
 
-- käyttäjä voi luoda tunnuksen, jos hänellä ei vielä ole
+:heavy_check_mark: käyttäjä voi luoda tunnuksen, jos hänellä ei vielä ole
   - käyttäjätunnuksen on oltava uniikki
 
-- käyttäjä voi kirjautua järjestelmään, jos tunnukset ovat oikeat
+:heavy_check_mark: käyttäjä voi kirjautua järjestelmään, jos tunnukset ovat oikeat
 
 ### Kirjautumisen jälkeen
 
-- Käyttäjä voi kirjata menoja, tuloja tai tulostaa raportteja
-  - Käyttäjä myös näkee ne
+:heavy_check_mark: Käyttäjä voi kirjata menoja ja tulostaa siitä raportin
+- Käyttäjä voi kirjata tuloja ja tulostaa siitä raportin
 
 - Käyttäjä voi kuukauden lopussa tai alussa nollata edellisen kuukauden tiedot
 
