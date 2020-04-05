@@ -84,13 +84,4 @@ mvn jxr:jxr checkstyle:checkstyle
 
 Jos virheilmoituksia ilmenee, ne saadaan selvitettyä avaamalla selaimeen tiedosto _target/site/checkstyle.html_
 
-### JavaDoc
-
-JavaDoc voidaan generoida antamalla komento
-
-```
-mvn javadoc:javadoc
-```
-
-JavaDocia voidaan tutkia avaamalla selaimeen tiedosto _target/site/apidocs/index.html_
 
