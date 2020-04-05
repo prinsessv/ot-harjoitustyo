@@ -18,13 +18,30 @@ Komentorivitoiminnot täytyy suorittaa Asiakassovellus hakemiston sisällä.
 
 ### Suorittaminen
 
+Ennen ohjelman suorittamista on annettava komento
+
+```
+rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
+```
+
 Ohjelman saa käyntiin komennolla
 
 ```
 mvn compile exec:java -Dexec.mainClass=main.Main
 ```
 
+Tämän jälkeen kirjautuminen sisään onnistuu tunnuksilla:
+
+_Username = user_
+_Password = password_
+
 ### Testaus
+
+Ohjelmaa testatessa tiedostojen luonti ja niihin kirjoitus ei välttämättä ehdi tapahtua. Ohjelmaa normaalisti ajaessa luonnollisia taukoja vaikuttaa tulevan riittävästi, että tieto ehtii tallettua. Projektiin liittyviä tietokantatiedostoja ei saa pitää repositoriossa, joten ennen testin ajamista terminaalissa täytyy kirjoittaa komento:
+
+```
+rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
+```
 
 Testit suoritetaan komennolla
 
@@ -42,7 +59,13 @@ Testikattavuusraportin saa näkyviin myös selaimessa: avaa tiedosto _target/sit
 
 ### Suoritettavan jarin generointi
 
-Komennolla
+Samoin kuin testauskohdassa, aluksi täytyy antaa komento
+
+```
+rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
+```
+
+Tämän jälkeen komennolla
 
 ```
 mvn package
