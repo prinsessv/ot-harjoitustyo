@@ -8,4 +8,4 @@
 
 ### Käyttäjän kirjautuminen asiakassovellukseen
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kirjautumisSekvenssikaavio.png" width="900">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kirjautumisSekvenssikaavio.png" width="500">
