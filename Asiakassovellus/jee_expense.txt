@@ -1,0 +1,4 @@
+shirt;clothes;20
+groceries;store;50
+groceries;store;20
+kissa;elaimet;250

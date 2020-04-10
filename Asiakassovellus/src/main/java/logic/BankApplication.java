@@ -38,10 +38,9 @@ public class BankApplication {
     }
     
     public static String bookExpense(String purchase, String purchaseCategory, int cost) {
-        String money = String.valueOf(cost);
         try {
             FileWriter writer = new FileWriter(Users.getCurrentUser().getExpenseFilePath(), true);
-            writer.append(purchase + ";" + purchaseCategory + ";" + money);
+            writer.append(purchase + ";" + purchaseCategory + ";" + String.valueOf(cost));
             writer.append("\n");
             writer.flush();
             writer.close();
@@ -59,15 +58,35 @@ public class BankApplication {
                 income = reader.nextLine();
             }
         } catch (Exception e) {
-            System.out.println("Error");
+            System.out.println("Error " + e.getMessage());
         }
         return income;
     }
     
-    public static int getExpenses() {
-        return 0;
+    public static String getExpenses() {
+        int expenseSum = 0;
+       
+        try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
+            while (reader.hasNextLine()) {
+                String row = reader.nextLine();
+                if(row.trim().length() == 0) {
+                    continue;
+                }
+                String[] expenses = row.split(";");
+                int cost = Integer.valueOf(expenses[2]);
+                expenseSum+=cost;
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return String.valueOf(expenseSum);
     }
-    public static double percentUsedOfIncome() {
-       return 0.0;
+    public static double percentUsedOfIncome() throws FileNotFoundException {
+       int income = Integer.parseInt(BankApplication.getIncome());
+       int expenses = Integer.parseInt(BankApplication.getExpenses());
+       
+       double percent = (double) (expenses*100)/income;
+       
+       return percent;
     }
 }

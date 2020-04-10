@@ -246,13 +246,78 @@ public class BankApplicationUi extends Application {
                 BankApplication.bookIncome(Integer.parseInt(bookingIncome.getText()));
                 primaryStage.setScene(incomeIsBooked);
             }
-           
         });
         //
         
-        // Book expense button action
+        //Book expense form
+        GridPane expenseForm = new GridPane();
+        expenseForm.setAlignment(Pos.CENTER);
+        expenseForm.setHgap(10);
+        expenseForm.setVgap(10);
+        expenseForm.setPadding(new Insets(25, 25, 25, 25));
         
-        //
+        Label purchaseToBook = new Label("Purchase:");
+        TextField bookingPurchase = new TextField();
+        
+        Label purchaseCategoryToBook = new Label("Category:");
+        TextField categoryOfExpense = new TextField();
+        
+        Label costToBook = new Label("Cost:");
+        TextField bookingExpense = new TextField();
+        
+        expenseForm.add(purchaseToBook, 0, 0);
+        expenseForm.add(bookingPurchase, 1, 0);
+        expenseForm.add(purchaseCategoryToBook, 0, 1);
+        expenseForm.add(categoryOfExpense, 1, 1);
+        expenseForm.add(costToBook, 0, 2);
+        expenseForm.add(bookingExpense, 1, 2);
+        
+        Button bookPurchaseButton = new Button("Book your purchase");
+        expenseForm.add(bookPurchaseButton, 0, 3);
+        Button backToWelcomeScene = new Button("Back");
+        expenseForm.add(backToWelcomeScene, 0, 4);
+        
+        Scene expensesToBook = new Scene(expenseForm);
+        
+        // Book expense button action
+        expenseButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(expensesToBook);
+            }
+        });
+        
+        // backToWelcomeScene button action
+        backToWelcomeScene.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(welcomeScene);
+            }
+        });
+        
+        // Scene after booking expense
+        GridPane expenseBooked = new GridPane();
+        expenseBooked.setAlignment(Pos.CENTER);
+        expenseBooked.setHgap(10);
+        expenseBooked.setVgap(10);
+        expenseBooked.setPadding(new Insets(25, 25, 25, 25));
+        
+        Label expenseBookedSuccessfully = new Label("Expense has been booked succesfully.");
+        
+        expenseBooked.add(expenseBookedSuccessfully, 0, 0);
+        expenseBooked.add(backToFrontPage, 0, 1);
+        
+        Scene expenseIsBooked = new Scene(expenseBooked);
+        
+        
+        // bookPurchaseButton action
+        bookPurchaseButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                BankApplication.bookExpense(bookingPurchase.getText(), categoryOfExpense.getText(), Integer.parseInt(bookingExpense.getText()));
+                primaryStage.setScene(expenseIsBooked);
+            }
+        }); 
         
         // View after pressing print report button
         GridPane report = new GridPane();
@@ -306,9 +371,56 @@ public class BankApplicationUi extends Application {
                 }
                 newWindow.show();
             }
+        }); 
+        
+        // Expense popup
+        Label expenseLabel = new Label("");
+        StackPane expenseLayout = new StackPane();
+        expenseLayout.getChildren().add(expenseLabel);
+        Scene expenseScene = new Scene(expenseLayout, 230, 100);
+        Stage expenseWindow = new Stage();
+        expenseWindow.setTitle("Expenses");
+        expenseWindow.setScene(expenseScene);
+        expenseWindow.setX(primaryStage.getX() + 200);
+        expenseWindow.setY(primaryStage.getY() + 100);
+        
+        // Expenses button action
+        expenses.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    expenseLabel.setText(BankApplication.getExpenses());
+                } catch(Exception ex) {
+                    Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                expenseWindow.show();
+            }
+        }); 
+        
+        // Percent used of income popup
+        Label percentLabel = new Label("0%");
+        StackPane percentLayout = new StackPane();
+        percentLayout.getChildren().add(percentLabel);
+        Scene percentScene = new Scene(percentLayout, 230, 100);
+        Stage percentWindow = new Stage();
+        percentWindow.setTitle(("Percent used of income"));
+        percentWindow.setScene(percentScene);
+        percentWindow.setX(primaryStage.getX() + 200);
+        percentWindow.setY(primaryStage.getY() + 100);
+        
+        // Percent button action
+        percent.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    percentLabel.setText(String.valueOf(BankApplication.percentUsedOfIncome()) + "%");
+                } catch(Exception ex) {
+                    Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                percentWindow.show();
+            }
         });
-        // Logout button action
-         
+        
         // LOGIN button action:
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -327,10 +439,17 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(welcomeScene);
             }
         });
-        //
       
-        // Initialization:
+        // Main scene
         Scene scene = new Scene(grid, 400, 375);
+        
+        // Logout button action
+        logoutButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(scene);
+            }
+        });
         
         // Back to login page button action:
         back.setOnAction(new EventHandler<ActionEvent>() {
