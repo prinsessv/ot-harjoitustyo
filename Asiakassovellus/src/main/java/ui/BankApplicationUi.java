@@ -413,7 +413,7 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    percentLabel.setText(String.valueOf(BankApplication.percentUsedOfIncome()) + "%");
+                    percentLabel.setText(BankApplication.percentUsedOfIncome() + "%");
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }

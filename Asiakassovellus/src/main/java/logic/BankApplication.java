@@ -81,12 +81,15 @@ public class BankApplication {
         }
         return String.valueOf(expenseSum);
     }
-    public static double percentUsedOfIncome() throws FileNotFoundException {
-       int income = Integer.parseInt(BankApplication.getIncome());
-       int expenses = Integer.parseInt(BankApplication.getExpenses());
+    public static String percentUsedOfIncome() throws FileNotFoundException {
+        int income = Integer.parseInt(BankApplication.getIncome());
+        int expenses = Integer.parseInt(BankApplication.getExpenses());
        
-       double percent = (double) (expenses*100)/income;
-       
-       return percent;
+        if(income > 0) {
+            double percent = (double) (expenses*100)/income;
+            return String.valueOf(percent);
+        } else {
+           return "0";
+        }
     }
 }
