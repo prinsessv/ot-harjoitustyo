@@ -69,12 +69,12 @@ public class BankApplication {
         try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
             while (reader.hasNextLine()) {
                 String row = reader.nextLine();
-                if(row.trim().length() == 0) {
+                if (row.trim().length() == 0) {
                     continue;
                 }
                 String[] expenses = row.split(";");
                 int cost = Integer.valueOf(expenses[2]);
-                expenseSum+=cost;
+                expenseSum += cost;
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -85,8 +85,8 @@ public class BankApplication {
         int income = Integer.parseInt(BankApplication.getIncome());
         int expenses = Integer.parseInt(BankApplication.getExpenses());
        
-        if(income > 0) {
-            double percent = (double) (expenses*100)/income;
+        if (income > 0) {
+            double percent = (double) (expenses * 100) / income;
             return String.valueOf(percent);
         } else {
            return "0";
