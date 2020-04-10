@@ -28,13 +28,17 @@ Tulot ja menot voi nollata painamalla nappia RESET.
 	           
 3. tulosta raportti. 
 
-Käyttäjä voi myös kirjautua ulos napista LOG OUT.
+:heavy_check_mark: Käyttäjä voi myös kirjautua ulos napista LOG OUT.
 
 Erilaisia raportteja ovat esimerkiksi:
 
 :heavy_check_mark: 1. Kerro tulot
 
- 2. Kerro menot
+:heavy_check_mark: 2. Kerro menot
+
+:heavy_check_mark: 3. Prosenttimäärä tuloista, joka on käytetty menoihin
+
+4. Prosenttimäärä tuloista, joka on käytetty eri kategorioihin
 
 ## Perusversion tarjoama toiminnallisuus
 
@@ -52,7 +56,7 @@ Erilaisia raportteja ovat esimerkiksi:
 
 - Käyttäjä voi kuukauden lopussa tai alussa nollata edellisen kuukauden tiedot
 
-- Käyttäjä voi kirjautua ulos
+:heavy_check_mark: Käyttäjä voi kirjautua ulos
 
 ## Jatkokehitysideoita
 
