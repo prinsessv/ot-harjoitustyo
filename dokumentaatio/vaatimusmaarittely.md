@@ -52,7 +52,8 @@ Erilaisia raportteja ovat esimerkiksi:
 ### Kirjautumisen jälkeen
 
 :heavy_check_mark: Käyttäjä voi kirjata menoja ja tulostaa siitä raportin
-- Käyttäjä voi kirjata tuloja ja tulostaa siitä raportin
+
+:heavy_check_mark: Käyttäjä voi kirjata tuloja ja tulostaa siitä raportin
 
 - Käyttäjä voi kuukauden lopussa tai alussa nollata edellisen kuukauden tiedot
 
