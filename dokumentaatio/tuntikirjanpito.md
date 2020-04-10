@@ -11,6 +11,7 @@
 | 5.4    | Checkstylen käyttöönotto, testien tekeminen, README.md päivitys    |     3      |
 | 9.4    | Kaksi uutta toimintoa: menot kertova raportti ja uloskirjautuminen |     4      |
 | 10.4   | Uusi toiminto: Prosenttiraportti, testien teko, sekvenssikaavio    |     4      |
+| yht.   |                                                                    |     31     |
 
 
 
