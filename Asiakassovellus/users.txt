@@ -1,2 +1,0 @@
-jee;jee
-user;password
