@@ -20,14 +20,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import logic.BankApplication;
 import logic.Users;
@@ -40,80 +37,106 @@ public class BankApplicationUi extends Application {
    
     @Override
     public void start(Stage primaryStage) {
+        
+        // View after successfull LOGIN:
+        GridPane bankApplicationView = new GridPane();
+        bankApplicationView.setAlignment(Pos.CENTER);
+        bankApplicationView.setHgap(10);
+        bankApplicationView.setVgap(10);
+        bankApplicationView.setPadding(new Insets(25, 25, 25, 25));
+        
+        Label welcomeText = new Label("Welcome!");
+        welcomeText.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        bankApplicationView.add(welcomeText, 0, 0, 2, 1);
+        
+        Button incomeButton = new Button("Book income");
+        bankApplicationView.add(incomeButton, 0, 4);
+        Button expenseButton = new Button("Book expense");
+        bankApplicationView.add(expenseButton, 0, 5);
+        Button reportButton = new Button("Print report");
+        bankApplicationView.add(reportButton, 0, 10);
+        Button resetButton = new Button("Reset all");
+        bankApplicationView.add(resetButton, 0, 11);
+        Button logoutButton = new Button("LOGOUT");
+        logoutButton.setStyle("-fx-background-color: white; ");
+        bankApplicationView.add(logoutButton, 0, 1, 1, 1); 
+        
+        Scene welcomeScene = new Scene(bankApplicationView);
+        
+        // Important button in almost every view
+        Button backToFrontPage = new Button("Back to front page");
+        
+        //Back to front page button action
+        backToFrontPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(welcomeScene);
+            }
+        });
 
         // Sign in view:
         primaryStage.setTitle("Accounting");
       
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        GridPane firstPage = new GridPane();
+        firstPage.setAlignment(Pos.CENTER);
+        firstPage.setHgap(10);
+        firstPage.setVgap(10);
+        firstPage.setPadding(new Insets(25, 25, 25, 25));
       
         Text scenetitle = new Text("Sign In");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        firstPage.add(scenetitle, 0, 0, 2, 1);
       
         Label username = new Label("Username:");
-        grid.add(username, 0, 1);
+        firstPage.add(username, 0, 1);
         TextField userTextfield = new TextField();
-        grid.add(userTextfield, 1, 1);
+        firstPage.add(userTextfield, 1, 1);
         
         Label password = new Label("Password: ");
-        grid.add(password, 0, 2);
+        firstPage.add(password, 0, 2);
         PasswordField passwordField = new PasswordField();
-        grid.add(passwordField, 1, 2);
+        firstPage.add(passwordField, 1, 2);
         
         Button loginButton = new Button("LOGIN");
-        HBox logInButton = new HBox(10);
-        logInButton.setAlignment(Pos.BOTTOM_RIGHT);
-        logInButton.getChildren().add(loginButton);
-        grid.add(logInButton, 1, 4);
+        firstPage.add(loginButton, 1, 4);
         
         Button createNewUserButton = new Button("CREATE NEW USER");
-        HBox createNewUButton = new HBox(20);
-        createNewUButton.setAlignment(Pos.BOTTOM_RIGHT);
-        createNewUButton.getChildren().add(createNewUserButton);
-        grid.add(createNewUButton, 1, 5);
+        firstPage.add(createNewUserButton, 1, 5);
+        
         // Error text appearing on the front page if username/pw is wrong
         final Text errorText = new Text();
-        grid.add(errorText, 1, 7);
-        //
+        firstPage.add(errorText, 1, 7);
         
         // Form that appears after pressing button CREATE NEW USER:
-        GridPane grid2 = new GridPane();
-        grid2.setAlignment(Pos.CENTER);
-        grid2.setHgap(10);
-        grid2.setVgap(10);
-        grid2.setPadding(new Insets(25, 25, 25, 25));
+        GridPane createNewUser = new GridPane();
+        createNewUser.setAlignment(Pos.CENTER);
+        createNewUser.setHgap(10);
+        createNewUser.setVgap(10);
+        createNewUser.setPadding(new Insets(25, 25, 25, 25));
       
-        Text title = new Text("You wanted to create new user");
-        title.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid2.add(title, 0, 0, 2, 1);
+        Text createNewUserTitle = new Text("You wanted to create new user");
+        createNewUserTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        createNewUser.add(createNewUserTitle, 0, 0, 2, 1);
         
         Label createUsername = new Label("Username:");
-        grid2.add(createUsername, 0, 1);
+        createNewUser.add(createUsername, 0, 1);
         TextField createUsernameField = new TextField();
-        grid2.add(createUsernameField, 1, 1);
+        createNewUser.add(createUsernameField, 1, 1);
         
         Label createPassword = new Label("Password:");
-        grid2.add(createPassword, 0, 2);
+        createNewUser.add(createPassword, 0, 2);
         PasswordField createPasswordField = new PasswordField();
-        grid2.add(createPasswordField, 1, 2);
+        createNewUser.add(createPasswordField, 1, 2);
         
         Label repeatThatPassword = new Label("Repeat password:");
-        grid2.add(repeatThatPassword, 0, 3);
+        createNewUser.add(repeatThatPassword, 0, 3);
         PasswordField repeatThatPasswordField = new PasswordField();
-        grid2.add(repeatThatPasswordField, 1, 3);
+        createNewUser.add(repeatThatPasswordField, 1, 3);
         
         Button finalCreateButton = new Button("CREATE");
-        HBox finalCButton = new HBox(10);
-        finalCButton.setAlignment(Pos.BOTTOM_RIGHT);
-        finalCButton.getChildren().add(finalCreateButton);
-        grid2.add(finalCButton, 1, 4);
+        createNewUser.add(finalCreateButton, 1, 4);
         
-        Scene createScene = new Scene(grid2);
-        //
+        Scene createScene = new Scene(createNewUser);
         
         // CREATE-NEW-USER button action
         createNewUserButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -122,27 +145,22 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(createScene);
             }
         });
-        //
         
         // View after filling the CREATE NEW USER form and pressing CREATE button
-        GridPane grid3 = new GridPane();
-        grid3.setAlignment(Pos.CENTER);
-        grid3.setHgap(10);
-        grid3.setVgap(10);
-        grid3.setPadding(new Insets(25, 25, 25, 25));
+        GridPane accountMadeSuccessfully = new GridPane();
+        accountMadeSuccessfully.setAlignment(Pos.CENTER);
+        accountMadeSuccessfully.setHgap(10);
+        accountMadeSuccessfully.setVgap(10);
+        accountMadeSuccessfully.setPadding(new Insets(25, 25, 25, 25));
         
         Text success = new Text("New account has been made successfully");
         success.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid3.add(success, 0, 0, 2, 1);
+        accountMadeSuccessfully.add(success, 0, 0, 2, 1);
         
         Button back = new Button("Back to login page");
-        HBox backButton = new HBox(10);
-        backButton.setAlignment(Pos.BOTTOM_RIGHT);
-        backButton.getChildren().add(back);
-        grid3.add(back, 1, 1);
+        accountMadeSuccessfully.add(back, 1, 1);
         
-        Scene newScene = new Scene(grid3);
-        //
+        Scene newScene = new Scene(accountMadeSuccessfully);
         
         // CREATE button action:
         finalCreateButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -158,78 +176,38 @@ public class BankApplicationUi extends Application {
                 }
             }
         });
-        //
-        
-        // View after successfull LOGIN:
-        GridPane grid4 = new GridPane();
-        grid4.setAlignment(Pos.CENTER);
-        grid4.setHgap(10);
-        grid4.setVgap(10);
-        grid4.setPadding(new Insets(25, 25, 25, 25));
-        
-        Label welcomeText = new Label("Welcome!");
-        welcomeText.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
-        grid4.add(welcomeText, 0, 0, 2, 1);
-        
-        Button incomeButton = new Button("Book income");
-        grid4.add(incomeButton, 0, 4);
-        Button expenseButton = new Button("Book expense");
-        grid4.add(expenseButton, 0, 5);
-        Button reportButton = new Button("Print report");
-        grid4.add(reportButton, 0, 10);
-        Button resetButton = new Button("Reset all");
-        grid4.add(resetButton, 0, 11);
-        Button logoutButton = new Button("LOGOUT");
-        logoutButton.setStyle("-fx-background-color: white; ");
-        grid4.add(logoutButton, 0, 1, 1, 1); 
-        
-        Scene welcomeScene = new Scene(grid4);
-        //
         
         //Book income button opens a form
-        GridPane bookIncome = new GridPane();
-        bookIncome.setAlignment(Pos.CENTER);
-        bookIncome.setHgap(10);
-        bookIncome.setVgap(10);
-        bookIncome.setPadding(new Insets(25, 25, 25, 25));
+        GridPane bookIncomeForm = new GridPane();
+        bookIncomeForm.setAlignment(Pos.CENTER);
+        bookIncomeForm.setHgap(10);
+        bookIncomeForm.setVgap(10);
+        bookIncomeForm.setPadding(new Insets(25, 25, 25, 25));
         
-        Label howMuch = new Label("Income to book: ");
+        Label incomeToBook = new Label("Income to book: ");
         TextField bookingIncome = new TextField();
         
-        bookIncome.add(howMuch, 0, 0);
-        bookIncome.add(bookingIncome, 1, 0);
+        bookIncomeForm.add(incomeToBook, 0, 0);
+        bookIncomeForm.add(bookingIncome, 1, 0);
         
         Button bookIt = new Button("Book this income");
-        bookIncome.add(bookIt, 1, 1);
+        bookIncomeForm.add(bookIt, 1, 1);
         
-        Scene bookingIncomeScene = new Scene(bookIncome);
-        //
+        Scene bookingIncomeScene = new Scene(bookIncomeForm);
         
         //After book income form
-        GridPane incomeBooked = new GridPane();
-        incomeBooked.setAlignment(Pos.CENTER);
-        incomeBooked.setHgap(10);
-        incomeBooked.setVgap(10);
-        incomeBooked.setPadding(new Insets(25, 25, 25, 25));
+        GridPane incomeBookedSuccessfully = new GridPane();
+        incomeBookedSuccessfully.setAlignment(Pos.CENTER);
+        incomeBookedSuccessfully.setHgap(10);
+        incomeBookedSuccessfully.setVgap(10);
+        incomeBookedSuccessfully.setPadding(new Insets(25, 25, 25, 25));
         
-        Label incomeBookedSuccessfully = new Label("Income has been booked succesfully.");
-        Button backToFrontPage = new Button("Back to front page");
+        Label incomeBookedLabel = new Label("Income has been booked succesfully.");
+        incomeBookedSuccessfully.add(incomeBookedLabel, 0, 0, 1, 1);
+        incomeBookedSuccessfully.add(backToFrontPage, 1, 0, 1, 1);
         
-        incomeBooked.add(incomeBookedSuccessfully, 0, 0);
-        incomeBooked.add(backToFrontPage, 0, 1);
-        
-        Scene incomeIsBooked = new Scene(incomeBooked);
-        //
+        Scene incomeIsBooked = new Scene(incomeBookedSuccessfully);
        
-        //Back to front page button action
-        backToFrontPage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                primaryStage.setScene(welcomeScene);
-            }
-        });
-        //
-        
         // bookIncome button action
         incomeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -237,7 +215,6 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(bookingIncomeScene);
             }
         });
-        //
         
         // Book it button action
         bookIt.setOnAction(new EventHandler<ActionEvent>() {
@@ -247,14 +224,13 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(incomeIsBooked);
             }
         });
-        //
         
         //Book expense form
-        GridPane expenseForm = new GridPane();
-        expenseForm.setAlignment(Pos.CENTER);
-        expenseForm.setHgap(10);
-        expenseForm.setVgap(10);
-        expenseForm.setPadding(new Insets(25, 25, 25, 25));
+        GridPane bookExpenseForm = new GridPane();
+        bookExpenseForm.setAlignment(Pos.CENTER);
+        bookExpenseForm.setHgap(10);
+        bookExpenseForm.setVgap(10);
+        bookExpenseForm.setPadding(new Insets(25, 25, 25, 25));
         
         Label purchaseToBook = new Label("Purchase:");
         TextField bookingPurchase = new TextField();
@@ -265,19 +241,19 @@ public class BankApplicationUi extends Application {
         Label costToBook = new Label("Cost:");
         TextField bookingExpense = new TextField();
         
-        expenseForm.add(purchaseToBook, 0, 0);
-        expenseForm.add(bookingPurchase, 1, 0);
-        expenseForm.add(purchaseCategoryToBook, 0, 1);
-        expenseForm.add(categoryOfExpense, 1, 1);
-        expenseForm.add(costToBook, 0, 2);
-        expenseForm.add(bookingExpense, 1, 2);
+        bookExpenseForm.add(purchaseToBook, 0, 0);
+        bookExpenseForm.add(bookingPurchase, 1, 0);
+        bookExpenseForm.add(purchaseCategoryToBook, 0, 1);
+        bookExpenseForm.add(categoryOfExpense, 1, 1);
+        bookExpenseForm.add(costToBook, 0, 2);
+        bookExpenseForm.add(bookingExpense, 1, 2);
         
         Button bookPurchaseButton = new Button("Book your purchase");
-        expenseForm.add(bookPurchaseButton, 0, 3);
+        bookExpenseForm.add(bookPurchaseButton, 0, 3);
         Button backToWelcomeScene = new Button("Back");
-        expenseForm.add(backToWelcomeScene, 0, 4);
+        bookExpenseForm.add(backToWelcomeScene, 0, 4);
         
-        Scene expensesToBook = new Scene(expenseForm);
+        Scene expensesToBook = new Scene(bookExpenseForm);
         
         // Book expense button action
         expenseButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -309,7 +285,6 @@ public class BankApplicationUi extends Application {
         
         Scene expenseIsBooked = new Scene(expenseBooked);
         
-        
         // bookPurchaseButton action
         bookPurchaseButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -337,7 +312,6 @@ public class BankApplicationUi extends Application {
         report.add(category, 0, 3);
         
         Scene reportScene = new Scene(report);
-        //
         
         // Print report button action
         reportButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -346,7 +320,6 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(reportScene);
             }
         });
-        //
         
         // Income popup
         Label incomeLabel = new Label("");
@@ -358,7 +331,6 @@ public class BankApplicationUi extends Application {
         newWindow.setScene(secondScene);
         newWindow.setX(primaryStage.getX() + 200);
         newWindow.setY(primaryStage.getY() + 100);
-        
         
         // Income button action
         income.setOnAction(new EventHandler<ActionEvent>() {
@@ -441,7 +413,7 @@ public class BankApplicationUi extends Application {
         });
       
         // Main scene
-        Scene scene = new Scene(grid, 400, 375);
+        Scene scene = new Scene(firstPage, 400, 375);
         
         // Logout button action
         logoutButton.setOnAction(new EventHandler<ActionEvent>() {
