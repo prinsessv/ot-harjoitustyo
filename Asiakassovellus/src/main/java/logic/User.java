@@ -55,7 +55,7 @@ public class User {
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof User)) {
-        return false;
+            return false;
         }
         User other = (User) obj;
         return username.equals(other.username);

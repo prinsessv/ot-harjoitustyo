@@ -89,7 +89,7 @@ public class BankApplication {
             double percent = (double) (expenses * 100) / income;
             return String.valueOf(percent);
         } else {
-           return "0";
+            return "0";
         }
     }
 }
