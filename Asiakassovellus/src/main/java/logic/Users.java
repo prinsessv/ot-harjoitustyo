@@ -19,6 +19,7 @@ import java.util.Scanner;
 public class Users {
     public static String filepath = "users.txt";
     public static User currentUser = null;
+    public static User user = null;
     
     public static User getCurrentUser() {
         return currentUser;
@@ -30,7 +31,6 @@ public class Users {
         return currentUser.username;
     }
     public static String createNewUser(String username, String pw) throws FileNotFoundException {
-        User user = null;
         try {
             user = findUser(username, pw);
         } catch (IOException e) {
