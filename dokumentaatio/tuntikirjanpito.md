@@ -12,7 +12,8 @@
 | 9.4    | Kaksi uutta toimintoa: menot kertova raportti ja uloskirjautuminen |     4      |
 | 10.4   | Uusi toiminto: Prosenttiraportti, testien teko, sekvenssikaavio    |     4      |
 | 10.4   | Käyttöliittymän nimien siistimistä ja checkstyle virheiden korjaus |     1      |
-| yht.   |                                                                    |     32     |
+| 10.4   | Kaksi etusivulle johtavaa nappia graafiseen käyttöliittymään       |     0,5    |
+| yht.   |                                                                    |     32,5   |
 
 
 
