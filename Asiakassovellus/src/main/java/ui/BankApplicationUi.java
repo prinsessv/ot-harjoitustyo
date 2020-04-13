@@ -62,17 +62,6 @@ public class BankApplicationUi extends Application {
         bankApplicationView.add(logoutButton, 0, 1, 1, 1); 
         
         Scene welcomeScene = new Scene(bankApplicationView);
-        
-        // Important button in almost every view
-        Button backToFrontPage = new Button("Back to front page");
-        
-        //Back to front page button action
-        backToFrontPage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                primaryStage.setScene(welcomeScene);
-            }
-        });
 
         // Sign in view:
         primaryStage.setTitle("Accounting");
@@ -203,8 +192,17 @@ public class BankApplicationUi extends Application {
         incomeBookedSuccessfully.setPadding(new Insets(25, 25, 25, 25));
         
         Label incomeBookedLabel = new Label("Income has been booked succesfully.");
-        incomeBookedSuccessfully.add(incomeBookedLabel, 0, 0, 1, 1);
-        incomeBookedSuccessfully.add(backToFrontPage, 1, 0, 1, 1);
+        incomeBookedSuccessfully.add(incomeBookedLabel, 0, 0);
+        
+        Button backToFront = new Button("Back to front page");
+        backToFront.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(welcomeScene);
+            }
+        });
+        
+        incomeBookedSuccessfully.add(backToFront, 0, 1);
         
         Scene incomeIsBooked = new Scene(incomeBookedSuccessfully);
        
@@ -279,8 +277,17 @@ public class BankApplicationUi extends Application {
         expenseBooked.setPadding(new Insets(25, 25, 25, 25));
         
         Label expenseBookedSuccessfully = new Label("Expense has been booked succesfully.");
-        
         expenseBooked.add(expenseBookedSuccessfully, 0, 0);
+        
+        Button backToFrontPage = new Button("Back to front page");
+        
+        backToFrontPage.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(welcomeScene);
+            }
+        });
+        
         expenseBooked.add(backToFrontPage, 0, 1);
         
         Scene expenseIsBooked = new Scene(expenseBooked);
@@ -311,6 +318,17 @@ public class BankApplicationUi extends Application {
         report.add(percent, 0, 2);
         report.add(category, 0, 3);
         
+        Button iDontWantToReadReportsAnymore = new Button("Back to front page");
+        
+        iDontWantToReadReportsAnymore.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(welcomeScene);
+            }
+        });
+        
+        report.add(iDontWantToReadReportsAnymore, 0, 5);
+        
         Scene reportScene = new Scene(report);
         
         // Print report button action
@@ -337,7 +355,7 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    incomeLabel.setText(BankApplication.getIncome());
+                    incomeLabel.setText("Your income this month is " + BankApplication.getIncome() + "$");
                 } catch(FileNotFoundException ex) {
                      Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -361,7 +379,7 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    expenseLabel.setText(BankApplication.getExpenses());
+                    expenseLabel.setText("You have used " + BankApplication.getExpenses() +  "$ this month");
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -385,7 +403,7 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    percentLabel.setText(BankApplication.percentUsedOfIncome() + "%");
+                    percentLabel.setText("You have used " + BankApplication.percentUsedOfIncome() + "% of your income this month");
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
