@@ -40,9 +40,9 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä.
 
 ### Kirjautumisen jälkeen
 
-:heavy_check_mark: Käyttäjä voi kirjata menoja ja tulostaa siitä raportin
+:heavy_check_mark: Käyttäjä voi kirjata menoja ja tulostaa siitä raportin, menot eivät voi olla negatiivisia
 
-:heavy_check_mark: Käyttäjä voi kirjata tuloja ja tulostaa siitä raportin
+:heavy_check_mark: Käyttäjä voi kirjata tuloja ja tulostaa siitä raportin, tulot eivät voi olla negatiivisia eikä 0
 
 :heavy_check_mark: Käyttäjä voi tulostaa raportin siitä, kuinka monta prosenttia hän on käyttänyt palkastaan tähän mennessä
 
