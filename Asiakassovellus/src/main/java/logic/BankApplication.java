@@ -25,29 +25,39 @@ public class BankApplication {
     }
     
     public static String bookIncome(int income) {
-        try {
-            FileWriter writer = new FileWriter(Users.getCurrentUser().getIncomeFilePath(), true);
-            writer.append(String.valueOf(income));
-            writer.append("\n");
-            writer.flush();
-            writer.close();
-        } catch (Exception e) {
-            return "Booking income failed";
+        
+        if(income > 0) {
+            try {
+                FileWriter writer = new FileWriter(Users.getCurrentUser().getIncomeFilePath(), true);
+                writer.append(String.valueOf(income));
+                writer.append("\n");
+                writer.flush();
+                writer.close();
+            } catch (Exception e) {
+                return "Booking income failed";
+            }
+            return "Income is booked succesfully";
+        } else {
+            return "Income can not be negative or zero";
         }
-        return "Income is booked succesfully";
     }
     
     public static String bookExpense(String purchase, String purchaseCategory, int cost) {
-        try {
-            FileWriter writer = new FileWriter(Users.getCurrentUser().getExpenseFilePath(), true);
-            writer.append(purchase + ";" + purchaseCategory + ";" + String.valueOf(cost));
-            writer.append("\n");
-            writer.flush();
-            writer.close();
-        } catch (Exception e) {
-            return "Booking expense failed";
+        
+        if (cost >= 0) {
+            try {
+                FileWriter writer = new FileWriter(Users.getCurrentUser().getExpenseFilePath(), true);
+                writer.append(purchase + ";" + purchaseCategory + ";" + String.valueOf(cost));
+                writer.append("\n");
+                writer.flush();
+                writer.close();
+            } catch (Exception e) {
+                return "Booking expense failed";
+            }
+            return "Expense is booked succesfully";
+        } else {
+            return "Cost can not be negative";
         }
-        return "Expense is booked succesfully";
     }
     
     public static String getIncome() throws FileNotFoundException {
@@ -91,5 +101,29 @@ public class BankApplication {
         } else {
             return "0";
         }
+    }
+    public static String percentsUsedOfIncomeForEachCategory(String category) throws FileNotFoundException {
+        int totalOfUsedMoney = 0;
+        int income = Integer.parseInt(BankApplication.getIncome());
+        double percent = 0.0;
+        
+        try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
+            while (reader.hasNextLine()) {
+                String row = reader.nextLine();
+                if (row.trim().length() == 0) {
+                    continue;
+                }
+                String[] splitRow = row.split(";");
+                if (splitRow[1].equalsIgnoreCase(category)) {
+                    totalOfUsedMoney += Integer.valueOf(splitRow[2]);
+                } 
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        if (income > 0) {
+            percent = (double) (totalOfUsedMoney * 100) / income;
+        } 
+        return "You have used " + String.valueOf(percent) + "% of your income to category " + category + " this month";        
     }
 }
