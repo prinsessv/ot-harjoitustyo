@@ -63,6 +63,25 @@ public class BankApplicationTest {
     
     @Test
     public void percentIsRight() throws FileNotFoundException {
-      assertEquals("10.0", BankApplication.percentUsedOfIncome());
+        assertEquals("10.0", BankApplication.percentUsedOfIncome());
+    }
+    
+    @Test
+    public void expenseIsNotBookedIfUnderZero() {
+        BankApplication.bookExpense("purchase", "purchaseCategory", -200);
+        assertEquals("200", BankApplication.getExpenses());
+    }
+    
+    @Test
+    public void incomeIsNotBookedIfUnderOrEqualToZero() throws FileNotFoundException {
+        BankApplication.bookIncome(-200);
+        BankApplication.bookIncome(0);
+        assertEquals("2000", BankApplication.getIncome());
+    }
+    
+    @Test 
+    public void percentIsRightForCategory() throws FileNotFoundException {
+        BankApplication.bookExpense("purchase", "purchaseCategory", 560);
+        assertEquals("You have used " + 38.0 + "% of your income to category purchaseCategory this month", BankApplication.percentsUsedOfIncomeForEachCategory("purchaseCategory"));
     }
 }
