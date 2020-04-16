@@ -33,6 +33,7 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä.
 ### Ennen kirjautumista
 
 :heavy_check_mark: käyttäjä voi luoda tunnuksen, jos hänellä ei vielä ole
+
 :heavy_check_mark: käyttäjätunnuksen on kuitenkin oltava uniikki
 
 :heavy_check_mark: käyttäjä voi kirjautua järjestelmään, jos tunnukset ovat oikeat
