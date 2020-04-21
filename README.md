@@ -12,6 +12,10 @@ Se tarjoaa asiakkaalle erilaisia raportteja hänen toiminnastaan.
 
 [Arkkitehtuurikuvaus](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+### Releaset
+
+[Viikon 5 release](https://github.com/prinsessv/ot-harjoitustyo/releases/tag/viikko5)
+
 ### Komentorivitoiminnot
 
 Komentorivitoiminnot täytyy suorittaa Asiakassovellus hakemiston sisällä.
