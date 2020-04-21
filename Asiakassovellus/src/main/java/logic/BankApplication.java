@@ -15,6 +15,7 @@ import java.util.Scanner;
  */
 public class BankApplication {
     static User user;
+    static double percent = 0.0;
     
     public BankApplication(User user) {
         this.user = user;
@@ -103,7 +104,6 @@ public class BankApplication {
         }
     }
     public static String percentsUsedOfIncomeForEachCategory(String category) throws FileNotFoundException {
-        double percent = 0.0;
         int totalOfUsedMoney = 0;
         int income = Integer.parseInt(BankApplication.getIncome());
         
