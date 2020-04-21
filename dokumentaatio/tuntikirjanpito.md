@@ -14,7 +14,8 @@
 | 10.4   | Käyttöliittymän nimien siistimistä ja checkstyle virheiden korjaus |     1      |
 | 10.4   | Kaksi etusivulle johtavaa nappia graafiseen käyttöliittymään       |     0,5    |
 | 16.4   | Uusi raporttitoiminto, kolme uutta testiä ja vaatimusm. päivitys   |     3,5    |
-| yht.   |                                                                    |     36     |
+| 16.4   | Checkstyle virheiden korjausta ja README.md päivitystä             |     1      |
+| yht.   |                                                                    |     37     |
 
 
 
