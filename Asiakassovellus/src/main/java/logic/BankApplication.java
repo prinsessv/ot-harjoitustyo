@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class BankApplication {
     static User user;
     static double percent = 0.0;
+    static int totalOfUsedMoney = 0;
     
     public BankApplication(User user) {
         this.user = user;
@@ -104,8 +105,6 @@ public class BankApplication {
         }
     }
     public static String percentsUsedOfIncomeForEachCategory(String category) throws FileNotFoundException {
-        int totalOfUsedMoney = 0;
-        int income = Integer.parseInt(BankApplication.getIncome());
         
         try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
             while (reader.hasNextLine()) {
@@ -121,8 +120,8 @@ public class BankApplication {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-        if (income > 0) {
-            percent = (double) (totalOfUsedMoney * 100) / income;
+        if (Integer.parseInt(BankApplication.getIncome()) > 0) {
+            percent = (double) (totalOfUsedMoney * 100) / Integer.parseInt(BankApplication.getIncome());
         } 
         return "You have used " + String.valueOf(percent) + "% of your income to category " + category + " this month";        
     }
