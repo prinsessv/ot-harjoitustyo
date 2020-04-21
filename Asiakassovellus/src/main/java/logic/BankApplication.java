@@ -26,7 +26,7 @@ public class BankApplication {
     
     public static String bookIncome(int income) {
         
-        if(income > 0) {
+        if (income > 0) {
             try {
                 FileWriter writer = new FileWriter(Users.getCurrentUser().getIncomeFilePath(), true);
                 writer.append(String.valueOf(income));
@@ -103,9 +103,9 @@ public class BankApplication {
         }
     }
     public static String percentsUsedOfIncomeForEachCategory(String category) throws FileNotFoundException {
+        double percent = 0.0;
         int totalOfUsedMoney = 0;
         int income = Integer.parseInt(BankApplication.getIncome());
-        double percent = 0.0;
         
         try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
             while (reader.hasNextLine()) {

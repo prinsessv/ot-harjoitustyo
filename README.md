@@ -21,7 +21,7 @@ Komentorivitoiminnot täytyy suorittaa Asiakassovellus hakemiston sisällä.
 Jos et halua luoda uutta käyttäjää erikseen, voit antaa tämän komennon ennen ohjelman käynnistämistä:
 
 ```
-rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
+rm -f users.txt && rm -f user_income.txt && rm -f user_expense.txt && echo "user;password" >> users.txt && touch user_income.txt && touch user_expense.txt
 ```
 
 Ohjelman saa käyntiin komennolla
@@ -41,7 +41,7 @@ Password = _password_
 Ohjelmaa testatessa tiedostojen luonti ja niihin kirjoitus ei välttämättä ehdi tapahtua. Ohjelmaa normaalisti ajaessa luonnollisia taukoja vaikuttaa tulevan riittävästi siten, että tieto ehtii tallettua. Projektiin liittyviä tietokantatiedostoja ei saa pitää repositoriossa, joten ennen testin ajamista terminaalissa täytyy kirjoittaa komento:
 
 ```
-rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
+rm -f users.txt && rm -f user_income.txt && rm -f user_expense.txt && echo "user;password" >> users.txt && touch user_income.txt && touch user_expense.txt
 ```
 
 Testit suoritetaan komennolla
@@ -63,7 +63,7 @@ Testikattavuusraportin saa näkyviin myös selaimessa: avaa tiedosto _target/sit
 Samoin kun ennen testaamista, on aluksi annettava komento
 
 ```
-rm -f users.txt && rm -f user_income.txt && echo "user;password" >> users.txt && touch user_income.txt
+rm -f users.txt && rm -f user_income.txt && rm -f user_expense.txt && echo "user;password" >> users.txt && touch user_income.txt && touch user_expense.txt
 ```
 
 Tämän jälkeen komennolla
