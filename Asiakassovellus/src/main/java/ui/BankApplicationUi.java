@@ -418,6 +418,26 @@ public class BankApplicationUi extends Application {
             }
         });
         
+        // ResetButton popup and action
+        Label resetLabel = new Label("");
+        StackPane resetPane = new StackPane();
+        resetPane.getChildren().add(resetLabel);
+        Scene resetScene = new Scene(resetPane, 230, 100);
+        Stage resetWindow = new Stage();
+        resetWindow.setTitle("Reset");
+        resetWindow.setScene(resetScene);
+        resetWindow.setX(primaryStage.getX() + 200);
+        resetWindow.setY(primaryStage.getY() + 100);
+        
+        resetButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                resetLabel.setText(BankApplication.resetAll());
+                resetWindow.show();
+                primaryStage.setScene(welcomeScene);
+            }
+        }); 
+        
         // Income popup
         Label incomeLabel = new Label("");
         StackPane secondaryLayout = new StackPane();
