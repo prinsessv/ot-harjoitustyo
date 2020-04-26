@@ -35,10 +35,9 @@ public class BankApplicationTest {
     //public static void tearDownClass() {
     //}
     
-    @Before
-    public void setUp() throws FileNotFoundException{
-        
-    }
+    //@Before
+    //public void setUp() throws FileNotFoundException{
+    //}
     
     //@After
     //public void tearDown() {
@@ -83,5 +82,13 @@ public class BankApplicationTest {
     public void percentIsRightForCategory() throws FileNotFoundException {
         BankApplication.bookExpense("purchase", "purchaseCategory", 560);
         assertEquals("You have used " + 38.0 + "% of your income to category purchaseCategory this month", BankApplication.percentsUsedOfIncomeForEachCategory("purchaseCategory"));
+    }
+    @Test
+    public void resetWorks() throws FileNotFoundException {
+        BankApplication.resetAll();
+        assertEquals("0", BankApplication.getIncome());
+        assertEquals("0", BankApplication.getExpenses());
+        assertEquals("0.0", BankApplication.percentUsedOfIncome());
+        assertEquals("You have used " + 0.0 + "% of your income to category purchaseCategory this month", BankApplication.percentsUsedOfIncomeForEachCategory("purchaseCategory"));
     }
 }
