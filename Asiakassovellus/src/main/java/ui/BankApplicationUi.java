@@ -179,7 +179,6 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    System.out.println(usernameTextfield.getText()+","+passwordField.getText());
                     if(Users.findUser(usernameTextfield.getText(), passwordField.getText()) == null) {
                         errorText.setFill(Color.FIREBRICK);
                         errorText.setText("Wrong username or password");
