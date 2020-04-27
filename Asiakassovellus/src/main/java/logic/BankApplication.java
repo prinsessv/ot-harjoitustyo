@@ -55,7 +55,7 @@ public class BankApplication {
                 writer.append("\n");
                 writer.flush();
                 writer.close();
-                } catch (Exception e) {
+            } catch (Exception e) {
                 return "Booking expense failed";
             }
             return "Expense is booked succesfully";
@@ -100,10 +100,10 @@ public class BankApplication {
         int income = Integer.parseInt(BankApplication.getIncome());
         int expenses = Integer.parseInt(BankApplication.getExpenses());
         
-        if(income > 0) {
+        if (income > 0) {
             double percent = (double) (expenses * 100) / income;
             return String.valueOf(percent);
-        } else {
+        } else { 
             return "0";
         }
     }

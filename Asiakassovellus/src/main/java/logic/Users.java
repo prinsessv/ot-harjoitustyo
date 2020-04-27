@@ -49,7 +49,7 @@ public class Users {
                 writer.flush();
                 writer.close();
             } catch (Exception e) {
-                return "Saving the new user failed";
+                return "Saving new user failed";
             }
             return "The new account for " + username + " created successfully.";
         } 
