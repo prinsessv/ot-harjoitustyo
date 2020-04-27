@@ -18,7 +18,7 @@ Kirjautuminen onnistuu syöttämällä luotu käyttäjätunnus ja sen salasana s
 
 ## Uuden käyttäjän luominen
 
-Kirjautumisnäkymässä on mahdollista luoda myös uusi käyttäjä painamalla create new user nappia. 
+Kirjautumisnäkymässä on mahdollista luoda myös uusi käyttäjä painamalla CREATE NEW USER nappia. 
 Tällöin aukeaa allaoleva näkymä, johon syötetään halutut käyttäjätunnus ja salasana.
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/createNewUser.png" width="400">
