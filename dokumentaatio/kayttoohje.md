@@ -12,7 +12,7 @@ Ohjelma käynnistetään komennolla
 
 Sovelluksesta aukeaa ensimmäisenä kirjautumisnäkymä:
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Kirjautuminen.png" width="500">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Kirjautuminen.png" width="400">
 
 Kirjautuminen onnistuu syöttämällä luotu käyttäjatunnus ja sen salasana syöttökenttiin ja painamalla login. 
 
