@@ -12,6 +12,9 @@ Se tarjoaa asiakkaalle erilaisia raportteja hänen toiminnastaan.
 
 [Arkkitehtuurikuvaus](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+### Java-versio
+Asiakassovelluksen luomiseen on käytetty Javan versiota 11.
+
 ### Releaset
 
 [Viikon 5 release](https://github.com/prinsessv/ot-harjoitustyo/releases/tag/viikko5)
