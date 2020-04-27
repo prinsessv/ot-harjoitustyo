@@ -14,7 +14,7 @@ Sovelluksesta aukeaa ensimmäisenä kirjautumisnäkymä:
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Kirjautuminen.png" width="400">
 
-Kirjautuminen onnistuu syöttämällä luotu käyttäjätunnus ja sen salasana syöttökenttiin ja painamalla nappia login. 
+Kirjautuminen onnistuu syöttämällä luotu käyttäjätunnus ja sen salasana syöttökenttiin ja painamalla nappia LOGIN. 
 
 ## Uuden käyttäjän luominen
 
