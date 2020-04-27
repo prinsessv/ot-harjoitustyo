@@ -1,6 +1,0 @@
-user;password
-usera;user
-use;user
-JOO;JOO
-poo;aass
-jee;jee
