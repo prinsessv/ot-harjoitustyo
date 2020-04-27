@@ -51,7 +51,7 @@ Siis esimerkiksi tässä tapauksessa raporteissa menoina käytettäisiin 2000.
 Menot tallennetaan muodossa
 
 ```
-ostos;kategoria;hinta
+purchase;category;price
 
 food;groceries;600
 ```
@@ -68,12 +68,12 @@ Kentät ovat siis sekä käyttäjätiedoissa että menoissa eroteltu puolipistei
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kirjautumisSekvenssikaavio.png" width="500">
 
-### Ohjelman rakenteeseen jääneet heikkoudet
+## Ohjelman rakenteeseen jääneet heikkoudet
 
-## Käyttöliittymä
+### Käyttöliittymä
 
 Käyttöliittymässä ei ole muita metodeja kuin start metodi, joten se sisältää paljon koodia.
 
-## Sovelluslogiikka
+### Sovelluslogiikka
 
 Tiedot tallennetaan tiedostoon, eikä tietokantaan.
