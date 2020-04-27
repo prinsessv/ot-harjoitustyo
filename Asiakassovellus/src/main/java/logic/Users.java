@@ -36,6 +36,7 @@ public class Users {
     public static String createNewUser(String username, String pw) throws FileNotFoundException {
         try {
             userFounded = findUsername(username);
+            currentUser = findUser(username, pw);
         } catch (IOException e) {
             return "Unable to connect to the file where users are stored.";
         }

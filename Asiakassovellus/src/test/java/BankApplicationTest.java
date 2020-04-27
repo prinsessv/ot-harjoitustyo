@@ -7,9 +7,6 @@
 import java.io.FileNotFoundException;
 import logic.BankApplication;
 import logic.Users;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -82,14 +79,5 @@ public class BankApplicationTest {
     public void percentIsRightForCategory() throws FileNotFoundException {
         BankApplication.bookExpense("purchase", "purchaseCategory", 560);
         assertEquals("You have used " + 38.0 + "% of your income to category purchaseCategory this month", BankApplication.percentsUsedOfIncomeForEachCategory("purchaseCategory"));
-    }
-    
-    @Test
-    public void resetWorks() throws FileNotFoundException {
-        BankApplication.resetAll();
-        assertEquals("0", BankApplication.getIncome());
-        assertEquals("0", BankApplication.getExpenses());
-        assertEquals("0.0", BankApplication.percentUsedOfIncome());
-        assertEquals("You have used " + 0.0 + "% of your income to category purchaseCategory this month", BankApplication.percentsUsedOfIncomeForEachCategory("purchaseCategory"));
     }
 }
