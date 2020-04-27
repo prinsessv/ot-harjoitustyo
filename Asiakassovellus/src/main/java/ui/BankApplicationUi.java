@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.Image;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +20,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Bloom;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -45,26 +52,43 @@ public class BankApplicationUi extends Application {
         firstPage.setAlignment(Pos.CENTER);
         firstPage.setHgap(10);
         firstPage.setVgap(10);
-        firstPage.setPadding(new Insets(25, 25, 25, 25));
+        firstPage.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        Bloom bloom = new Bloom();
+        bloom.setThreshold(0.1);
       
         Text signInText = new Text("Sign In");
-        signInText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        signInText.setFont(Font.font("Cambria", FontWeight.NORMAL, 30));
+        signInText.setFill(Color.LIGHTCYAN);
+        signInText.setEffect(bloom);
         firstPage.add(signInText, 0, 0, 2, 1);
       
         Label usernameLabel = new Label("Username:");
+        usernameLabel.setFont(Font.font("Cambria", FontWeight.NORMAL, 15));
+        usernameLabel.setTextFill(Color.LIGHTCYAN);
+        usernameLabel.setEffect(bloom);
         firstPage.add(usernameLabel, 0, 1);
         TextField usernameTextfield = new TextField();
         firstPage.add(usernameTextfield, 1, 1);
         
         Label passwordLabel = new Label("Password: ");
+        passwordLabel.setFont(Font.font("Cambria", FontWeight.NORMAL, 15));
+        passwordLabel.setTextFill(Color.LIGHTCYAN);
+        passwordLabel.setEffect(bloom);
         firstPage.add(passwordLabel, 0, 2);
         PasswordField passwordField = new PasswordField();
         firstPage.add(passwordField, 1, 2);
         
         Button loginButton = new Button("LOGIN");
+        loginButton.setTextFill(Color.LIGHTCYAN);
+        loginButton.setEffect(bloom);
+        loginButton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
         firstPage.add(loginButton, 1, 4);
         
         Button createNewUserButton = new Button("CREATE NEW USER");
+        createNewUserButton.setTextFill(Color.LIGHTCYAN);
+        createNewUserButton.setEffect(bloom);
+        createNewUserButton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
         firstPage.add(createNewUserButton, 1, 5);
         
         // Error text appearing on the front page if username/pw is wrong
@@ -76,29 +100,38 @@ public class BankApplicationUi extends Application {
         createNewUserForm.setAlignment(Pos.CENTER);
         createNewUserForm.setHgap(10);
         createNewUserForm.setVgap(10);
-        createNewUserForm.setPadding(new Insets(25, 25, 25, 25));
+        createNewUserForm.setMinSize(450, 320);
+        createNewUserForm.setMaxSize(450, 320);
+        createNewUserForm.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
       
-        Text createNewUserTitle = new Text("You wanted to create new user");
-        createNewUserTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        createNewUserForm.add(createNewUserTitle, 0, 0, 2, 1);
+        Label createNewUserTitle = new Label("You wanted to create new user");
+        createNewUserTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 18));
+        createNewUserTitle.setTextFill(Color.LIGHTCYAN);
+        createNewUserTitle.setEffect(bloom);
+        createNewUserForm.add(createNewUserTitle, 1 , 0);
         
         Label createUsernameLabel = new Label("Username:");
+        createUsernameLabel.setTextFill(Color.LIGHTCYAN);
         createNewUserForm.add(createUsernameLabel, 0, 1);
         TextField createUsernameField = new TextField();
         createNewUserForm.add(createUsernameField, 1, 1);
         
         Label createPasswordLabel = new Label("Password:");
+        createPasswordLabel.setTextFill(Color.LIGHTCYAN);
         createNewUserForm.add(createPasswordLabel, 0, 2);
         PasswordField createPasswordField = new PasswordField();
         createNewUserForm.add(createPasswordField, 1, 2);
         
         Label repeatPasswordLabel = new Label("Repeat password:");
+        repeatPasswordLabel.setTextFill(Color.LIGHTCYAN);
         createNewUserForm.add(repeatPasswordLabel, 0, 3);
         PasswordField repeatPasswordField = new PasswordField();
         createNewUserForm.add(repeatPasswordField, 1, 3);
         
         Button finalCreateButton = new Button("CREATE");
-        createNewUserForm.add(finalCreateButton, 1, 4);
+        finalCreateButton.setTextFill(Color.LIGHTCYAN);
+        finalCreateButton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+        createNewUserForm.add(finalCreateButton, 1, 5);
         
         Scene createNewUserScene = new Scene(createNewUserForm);
         
@@ -110,21 +143,15 @@ public class BankApplicationUi extends Application {
             }
         });
         
-        // View after filling the CREATE NEW USER form and pressing CREATE button
-        GridPane accountMadeSuccessfully = new GridPane();
-        accountMadeSuccessfully.setAlignment(Pos.CENTER);
-        accountMadeSuccessfully.setHgap(10);
-        accountMadeSuccessfully.setVgap(10);
-        accountMadeSuccessfully.setPadding(new Insets(25, 25, 25, 25));
+        // Label that tells if username is taken or not:
+        Label usernameOkOrNot = new Label("");
+        usernameOkOrNot.setTextFill(Color.LIGHTCYAN);
+        createNewUserForm.add(usernameOkOrNot, 1, 7);
         
-        Text successText = new Text("New account has been made successfully");
-        successText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        accountMadeSuccessfully.add(successText, 0, 0, 2, 1);
-        
-        Button backToLoginButton = new Button("Back to login page");
-        accountMadeSuccessfully.add(backToLoginButton, 1, 1);
-        
-        Scene accountMadeSuccessfullyScene = new Scene(accountMadeSuccessfully);
+        Button backToFrontP = new Button("←");
+        backToFrontP.setTextFill(Color.LIGHTCYAN);
+        backToFrontP.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        createNewUserForm.add(backToFrontP, 0, 0);
         
         // CREATE button action:
         finalCreateButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -133,8 +160,7 @@ public class BankApplicationUi extends Application {
                 String username = createUsernameField.getText();
                 String passw = createPasswordField.getText();
                 try {
-                    successText.setText(Users.createNewUser(username, passw));
-                    primaryStage.setScene(accountMadeSuccessfullyScene);
+                    usernameOkOrNot.setText(Users.createNewUser(username, passw));
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -146,31 +172,39 @@ public class BankApplicationUi extends Application {
         bankApplicationView.setAlignment(Pos.CENTER);
         bankApplicationView.setHgap(10);
         bankApplicationView.setVgap(10);
-        bankApplicationView.setPadding(new Insets(25, 25, 25, 25));
+        bankApplicationView.setMinSize(300, 300);
+        bankApplicationView.setMaxSize(300, 300);
+        bankApplicationView.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         
         Label welcomeLabel = new Label("Welcome!");
-        welcomeLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
-        bankApplicationView.add(welcomeLabel, 0, 0, 2, 1);
+        welcomeLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
+        welcomeLabel.setTextFill(Color.LIGHTCYAN);
+        bankApplicationView.add(welcomeLabel, 0, 0);
         
         Button incomeButton = new Button("Book income");
-        incomeButton.setStyle("-fx-background-color: white; ");
-        bankApplicationView.add(incomeButton, 0, 4);
+        incomeButton.setStyle("-fx-background-color: silver; ");
+        incomeButton.setTextFill(Color.LIGHTCYAN);
+        bankApplicationView.add(incomeButton, 0, 2);
         
         Button expenseButton = new Button("Book expense");
-        expenseButton.setStyle("-fx-background-color: white; ");
-        bankApplicationView.add(expenseButton, 0, 5);
+        expenseButton.setStyle("-fx-background-color: silver; ");
+        expenseButton.setTextFill(Color.LIGHTCYAN);
+        bankApplicationView.add(expenseButton, 0, 3);
         
         Button reportButton = new Button("Print report");
-        reportButton.setStyle("-fx-background-color: white; ");
-        bankApplicationView.add(reportButton, 0, 6);
+        reportButton.setStyle("-fx-background-color: silver; ");
+        reportButton.setTextFill(Color.LIGHTCYAN);
+        bankApplicationView.add(reportButton, 0, 4);
         
         Button resetButton = new Button("Reset all");
         resetButton.setStyle("-fx-background-color: silver; ");
-        bankApplicationView.add(resetButton, 0, 8);
+        resetButton.setTextFill(Color.LIGHTCYAN);
+        bankApplicationView.add(resetButton, 1, 4);
         
         Button logoutButton = new Button("LOGOUT");
-        logoutButton.setStyle("-fx-background-color: white; ");
-        bankApplicationView.add(logoutButton, 0, 1, 1, 1); 
+        logoutButton.setStyle("-fx-background-color: silver; ");
+        logoutButton.setTextFill(Color.LIGHTCYAN);
+        bankApplicationView.add(logoutButton, 1, 0); 
         
         Scene welcomeScene = new Scene(bankApplicationView);
         
@@ -197,30 +231,32 @@ public class BankApplicationUi extends Application {
         bookIncomeForm.setAlignment(Pos.CENTER);
         bookIncomeForm.setHgap(10);
         bookIncomeForm.setVgap(10);
-        bookIncomeForm.setPadding(new Insets(25, 25, 25, 25));
+        bookIncomeForm.setMinSize(450, 350);
+        bookIncomeForm.setMaxSize(450, 350);
+        bookIncomeForm.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         
         Label incomeToBookLabel = new Label("Income to book: ");
+        incomeToBookLabel.setTextFill(Color.LIGHTCYAN);
         TextField bookIncomeField = new TextField();
-        
-        bookIncomeForm.add(incomeToBookLabel, 0, 0);
-        bookIncomeForm.add(bookIncomeField, 1, 0);
+        bookIncomeForm.add(incomeToBookLabel, 0, 1);
+        bookIncomeForm.add(bookIncomeField, 1, 1);
         
         Button bookItButton = new Button("Book this income");
-        bookIncomeForm.add(bookItButton, 1, 1);
+        bookItButton.setTextFill(Color.LIGHTCYAN);
+        bookIncomeForm.add(bookItButton, 1, 2);
         
         Scene bookingIncomeScene = new Scene(bookIncomeForm);
         
         //After book income form
-        GridPane incomeBookedSuccessfully = new GridPane();
-        incomeBookedSuccessfully.setAlignment(Pos.CENTER);
-        incomeBookedSuccessfully.setHgap(10);
-        incomeBookedSuccessfully.setVgap(10);
-        incomeBookedSuccessfully.setPadding(new Insets(25, 25, 25, 25));
+        Label incomeBookedOrNot = new Label("");
+        incomeBookedOrNot.setTextFill(Color.LIGHTCYAN);
+        bookIncomeForm.add(incomeBookedOrNot, 1, 3);
         
-        Label incomeBookedLabel = new Label("Income has been booked succesfully.");
-        incomeBookedSuccessfully.add(incomeBookedLabel, 0, 0);
+        Button backToFrontButton = new Button("←");
+        backToFrontButton.setTextFill(Color.LIGHTCYAN);
+        backToFrontButton.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        bookIncomeForm.add(backToFrontButton, 0, 0);
         
-        Button backToFrontButton = new Button("Back to front page");
         backToFrontButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -228,32 +264,6 @@ public class BankApplicationUi extends Application {
             }
         });
         
-        incomeBookedSuccessfully.add(backToFrontButton, 0, 1);
-        
-        Scene incomeIsBookedScene = new Scene(incomeBookedSuccessfully);
-        
-        // If income was <= 0
-        GridPane incomeNotBookedSuccessfully = new GridPane();
-        incomeNotBookedSuccessfully.setAlignment(Pos.CENTER);
-        incomeNotBookedSuccessfully.setHgap(10);
-        incomeNotBookedSuccessfully.setVgap(10);
-        incomeNotBookedSuccessfully.setPadding(new Insets(25, 25, 25, 25));
-        
-        Label incomeNotBookedLabel = new Label("Income has not been booked succesfully. Income can not be negative or zero.");
-        incomeNotBookedSuccessfully.add(incomeNotBookedLabel, 0, 0);
-        
-        Button backToPreviousPage = new Button("Back to previous page");
-        backToPreviousPage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                primaryStage.setScene(welcomeScene);
-            }
-        });
-        
-        incomeNotBookedSuccessfully.add(backToPreviousPage, 0, 1);
-        
-        Scene incomeNotBookedScene = new Scene(incomeNotBookedSuccessfully);
-       
         // bookIncome button action
         incomeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -268,9 +278,9 @@ public class BankApplicationUi extends Application {
             public void handle(ActionEvent e) {
                 if (Integer.parseInt(bookIncomeField.getText()) > 0) {
                     BankApplication.bookIncome(Integer.parseInt(bookIncomeField.getText()));
-                    primaryStage.setScene(incomeIsBookedScene);
+                    incomeBookedOrNot.setText("Income has been booked successfully.");
                 } else {
-                    primaryStage.setScene(incomeNotBookedScene);
+                    incomeBookedOrNot.setText("Income can not be negative or zero.");
                 }
             }
         });
@@ -563,20 +573,19 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(reportScene);
             }
         });
-   
+        
         // Main scene
         Scene firstPageScene = new Scene(firstPage, 400, 375);
         
-        // Logout button action
-        logoutButton.setOnAction(new EventHandler<ActionEvent>() {
+        backToFrontP.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 primaryStage.setScene(firstPageScene);
             }
         });
         
-        // Back to login page button action:
-        backToLoginButton.setOnAction(new EventHandler<ActionEvent>() {
+        // Logout button action
+        logoutButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 primaryStage.setScene(firstPageScene);

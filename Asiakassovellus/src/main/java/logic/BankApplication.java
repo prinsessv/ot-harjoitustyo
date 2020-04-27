@@ -17,11 +17,13 @@ import java.util.Scanner;
 public class BankApplication {
     static User user;
     static double percent = 0.0;
-    static File incomeFilePath = Users.getCurrentUser().incomeFile;
-    static File expenseFilePath = Users.getCurrentUser().expenseFile;
+    static File incomeFilePath;
+    static File expenseFilePath;
     
     public BankApplication(User user) {
         this.user = user;
+        this.incomeFilePath = user.incomeFile;
+        this.expenseFilePath = user.expenseFile;
     }
     
     public static User getUser() {

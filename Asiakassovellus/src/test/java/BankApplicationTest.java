@@ -83,6 +83,7 @@ public class BankApplicationTest {
         BankApplication.bookExpense("purchase", "purchaseCategory", 560);
         assertEquals("You have used " + 38.0 + "% of your income to category purchaseCategory this month", BankApplication.percentsUsedOfIncomeForEachCategory("purchaseCategory"));
     }
+    
     @Test
     public void resetWorks() throws FileNotFoundException {
         BankApplication.resetAll();
