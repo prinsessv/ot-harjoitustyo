@@ -48,7 +48,7 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä.
 
 :heavy_check_mark: Käyttäjä voi tulostaa raportin siitä, kuinka monta prosenttia hän on käyttänyt palkastaan tähän mennessä johonkin tiettyyn kategoriaan
 
-- Käyttäjä voi kuukauden lopussa tai alussa nollata edellisen kuukauden tiedot
+:heavy_check_mark: Käyttäjä voi kuukauden lopussa tai alussa nollata edellisen kuukauden tiedot
 
 :heavy_check_mark: Käyttäjä voi kirjautua ulos
 
