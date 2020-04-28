@@ -26,13 +26,13 @@ Näkymät ovat yksi kerrallaan näkyvillä. Käyttöliittymä kutsuu joitakin so
 
 ### Sovelluslogiikka
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/createNewUser.png" width="700">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/userBankApplication.png" width="400">
 
 Seuraavat kaaviot sisältävät selvyyden vuoksi Javan oman FileWriter luokan kutsut:
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioTulot.png" width="700">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioTulot.png" width="400">
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioMenot.png" width="700">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioMenot.png" width="400">
 
 ### Tietojen tallennus
 
