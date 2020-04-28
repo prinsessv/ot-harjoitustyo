@@ -24,6 +24,10 @@ Käyttöliittymässä on useita eri näkymiä:
 
 Näkymät ovat yksi kerrallaan näkyvillä. Käyttöliittymä kutsuu joitakin sovelluslogiikan metodeja. 
 
+### Sovelluslogiikka
+
+
+
 ### Tietojen tallennus
 
 Tiedot asiakkaista ja heidän kirjanpidoista tallennetaan tiedostoon. 

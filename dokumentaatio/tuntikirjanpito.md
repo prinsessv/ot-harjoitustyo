@@ -14,9 +14,11 @@
 | 10.4   | Käyttöliittymän nimien siistimistä ja checkstyle virheiden korjaus |     1      |
 | 10.4   | Kaksi etusivulle johtavaa nappia graafiseen käyttöliittymään       |     0,5    |
 | 16.4   | Uusi raporttitoiminto, kolme uutta testiä ja vaatimusm. päivitys   |     3,5    |
-| 16.4   | Checkstyle virheiden korjausta ja README.md päivitystä             |     1      |
-| 16.4   | Reset toimii ja muutama virhe on korjattu                          |     3      |
-| yht.   |                                                                    |     40     |
+| 21.4   | Checkstyle virheiden korjausta ja README.md päivitystä             |     1      |
+| 26.4   | Reset toimii ja muutama virhe on korjattu                          |     3      |
+| 27.4   | Sovellukseen tehty hieman visuaalisuutta                           |     4      |
+| 28.4   | Javadoc toimii, uusi RELEASE, README.md + tuntikirjanpito päivitys |     4      |
+| yht.   |                                                                    |     48     |
 
 
 
