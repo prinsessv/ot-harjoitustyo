@@ -32,7 +32,7 @@ Seuraavat kaaviot sisältävät selvyyden vuoksi Javan oman FileWriter luokan ku
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioTulot.png" width="600">
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioMenot.png" width="600">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioMenoista.png" width="600">
 
 ### Tietojen tallennus
 
