@@ -4,7 +4,7 @@ Lataa sovelluksen uusin versio linkin kautta: [Sovelluksen uusin versio](https:/
 
 ## Ohjelman käynnistäminen
 
-Ohjelma käynnistetään komennolla
+Ohjelma käynnistetään samassa hakemistossa johon se ladattiin, komennolla
 
 ```
 java -jar Asiakassovellus-1.0-SNAPSHOT.jar
