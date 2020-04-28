@@ -2,8 +2,6 @@
 
 Lataa tiedosto
 
-## Konfigurointi
-
 ## Ohjelman käynnistäminen
 
 Ohjelma käynnistetään komennolla
@@ -38,7 +36,7 @@ Kun haluttu meno on kirjattu ja BOOK nappia on painettu, etusivulle pääsee tak
 
 ## Raportit
 
-Raportteja pääsee tulostamaan painamalla nappia REPORTS. Tällöin aukeaa uusi sivu, jossa on eri raportti vaihtoehtoja. Haluttua raporttinappia klikkaamalla aukeaa ponnahdusikkuna, joka kertoo halutun raportin. 
+Raportteja pääsee tulostamaan painamalla nappia REPORTS. Tällöin aukeaa uusi sivu, jossa on eri raportti vaihtoehtoja. Haluttua raporttinappia klikkaamalla aukeaa ponnahdusikkuna, joka kertoo halutun raportin. Etusivulle pääsee painamalla nuolinäppäintä.
 
 ## Logout
 
