@@ -13,7 +13,8 @@ import java.util.Scanner;
 
 
 /**
- *
+ * Users class keeps track of all application users on a file
+ * It takes care that no user has same username
  * @author anni
  */
 public class Users {
@@ -33,6 +34,11 @@ public class Users {
         return currentUser.username;
     }
     
+    /** 
+     * This method checks that the username is not taken
+     * It adds the created user to users.txt file
+     * @return Method returns a String which tells if new account was created
+     */
     public static String createNewUser(String username, String pw) throws FileNotFoundException {
         try {
             userFounded = findUsername(username);
@@ -52,10 +58,14 @@ public class Users {
             } catch (Exception e) {
                 return "Saving new user failed";
             }
-            return "The new account for " + username + " created successfully.";
+            return "New account for " + username + " created successfully.";
         } 
     }
     
+    /** 
+     * This method checks that the same username does not exist
+     * @return Method returns true if the username is taken and false if its free
+     */
     public static Boolean findUsername(String username) throws FileNotFoundException {
         File file = new File(filepath);
         try {
@@ -76,6 +86,10 @@ public class Users {
         return false;
     }
     
+    /** 
+     * This method sets the current user
+     * @return Method returns the current user
+     */
     public static User findUser(String username, String password) throws FileNotFoundException {
         File file = new File(filepath);
         try {

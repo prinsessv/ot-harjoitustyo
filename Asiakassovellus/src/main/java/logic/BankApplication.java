@@ -10,8 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-/**
- *
+
+/** 
+ * BankApplication class implements the main logic behind the application
+ * User interface calls the methods of this class to execute its features
  * @author anni
  */
 public class BankApplication {
@@ -24,10 +26,19 @@ public class BankApplication {
         this.user = user;
     }
     
+    /** 
+     * This method seeks the user running this BankApplication at the moment
+     * @return Method returns the user using BankApplication if found
+     */
     public static User getUser() {
         return user;
     }
     
+    /** 
+     * This method books the customers income to a file
+     * @param income Integer value of income that the customer wanted to book
+     * @return String which tells if the income was booked successfully
+     */
     public static String bookIncome(int income) {
         if (income > 0) {
             try {
@@ -45,6 +56,13 @@ public class BankApplication {
         }
     }
     
+    /**
+     * This method books the customers expense to a file
+     * @param purchase String which tells what the customer has bought
+     * @param purchaseCategory String which tells the category of the purchase, used for one report
+     * @param cost Integer value of cost of the purchase
+     * @return String which tells if the expense was booked successfully
+     */
     public static String bookExpense(String purchase, String purchaseCategory, int cost) {
         if (cost >= 0) {
             try {
@@ -62,6 +80,11 @@ public class BankApplication {
         }
     }
     
+    /** 
+     * This method seeks the income from the right file 
+     * Seeked income can be used in other methods and to report income if needed
+     * @return Integer value of the income found or zero if the file was empty
+     */
     public static String getIncome() throws FileNotFoundException {
         String income = "0";
     
@@ -75,6 +98,11 @@ public class BankApplication {
         return income;
     }
     
+    /** 
+     * This method seeks the total of expenses from the right file 
+     * This sum can be used in other methods and to report expenses if needed
+     * @return Integer value of the expenses in total if found or zero if the file was empty
+     */
     public static String getExpenses() {
         int expenseSum = 0;
        
@@ -94,6 +122,10 @@ public class BankApplication {
         return String.valueOf(expenseSum);
     }
     
+    /**
+     * This method calculates the percent that the customer has used from income
+     * @return String value of the percent used
+     */
     public static String percentUsedOfIncome() throws FileNotFoundException {
         int income = Integer.parseInt(BankApplication.getIncome());
         int expenses = Integer.parseInt(BankApplication.getExpenses());
@@ -106,6 +138,10 @@ public class BankApplication {
         }
     }
     
+    /**
+     * This method calculates the percent that the customer has used from income to a certain category
+     * @return String value of the percent used to a certain category or zero if used money is zero
+     */
     public static String percentsUsedOfIncomeForEachCategory(String category) throws FileNotFoundException {
         int totalOfUsedMoney = 0;
         
@@ -129,6 +165,10 @@ public class BankApplication {
         return "You have used " + String.valueOf(percent) + "% of your income to category " + category + " this month"; 
     }
     
+    /**
+     * This method resets the files that include income and expenses
+     * @return String which tells that reset is done
+     */
     public static String resetAll() {
         if (incomeFilePath.exists()) {
             incomeFilePath.delete();

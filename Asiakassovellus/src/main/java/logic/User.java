@@ -10,7 +10,8 @@ import java.io.IOException;
 import static logic.BankApplication.user;
 
 /**
- *
+ * User class creates new user objects 
+ * and proper files connected to the user object that is created
  * @author anni
  */
 public class User {
@@ -36,22 +37,48 @@ public class User {
             System.out.println("Something went wrong while creating new files");
         }
     }
+    
+    /** 
+     * This method sets the user for BankApplication user
+     * @return Method returns the user that is set
+     */
     public static User setUser(String username, String password) {
         BankApplication.user = new User(username, password);
         return user;
     }
+    
+    /** 
+     * This method seeks the users password
+     * @return Method returns the password found
+     */
     public String getPassword() {
         return password;
     }
+    
+    /** 
+     * This method seeks the users username
+     * @return Method returns the username found
+     */
     public String getUsername() {
         return username;
     }
+    
+    /** 
+     * This method seeks the filepath of income file
+     * @return Method returns the filepath found
+     */
     public String getIncomeFilePath() {
         return filepathIncome;
     }
+    
+    /** 
+     * This method seeks the filepath of expense file
+     * @return Method returns the filepath found
+     */
     public String getExpenseFilePath() {
         return filepathExpense;
     }
+    
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof User)) {
@@ -60,6 +87,7 @@ public class User {
         User other = (User) obj;
         return username.equals(other.username);
     }
+    
     @Override
     public String toString() {
         return username;
