@@ -8,6 +8,10 @@ Lataa tiedosto
 
 Ohjelma käynnistetään komennolla
 
+```
+java -jar Asiakassovellus-1.0-SNAPSHOT.jar
+```
+
 ## Kirjautuminen
 
 Sovelluksesta aukeaa ensimmäisenä kirjautumisnäkymä:
@@ -25,11 +29,18 @@ Tällöin aukeaa allaoleva näkymä, johon syötetään halutut käyttäjätunnu
 
 Ohjelma kertoo, jos käyttäjätunnus oli väärin tai jos sen luonti onnistui. Takaisin kirjautumisnäkymään pääsee nuolinäppäimellä.
 
-## Menojen ja tulojen merkkaaminen
+## Menojen ja tulojen kirjaaminen
 
+Tulojen kirjaaminen tapahtuu painamalla nappia BOOK INCOME. Tämän napin painamisen jälkeen avautuu uusi näkymä. Syötekenttään kirjataan haluttu muistiin kirjattava summa. Kun BOOK nappia on painettu, etusivulle voi siirtyä nuolinäppäimen avulla.
+
+Menojen kirjaaminen tapahtuu painamalla nappia BOOK EXPENSE. Tämän napin painamisen jälkeen avautuu uusi näkymä. Syötekenttiin kirjataan ensin ostos, sitten ostoksen kategoria ja lopuksi ostoksen hinta.
+Kun haluttu meno on kirjattu ja BOOK nappia on painettu, etusivulle pääsee takaisin nuolinäppäimen avulla.
 
 ## Raportit
 
+Raportteja pääsee tulostamaan painamalla nappia REPORTS. Tällöin aukeaa uusi sivu, jossa on eri raportti vaihtoehtoja. Haluttua raporttinappia klikkaamalla aukeaa ponnahdusikkuna, joka kertoo halutun raportin. 
+
 ## Logout
 
+Etusivulla on nappi LOGOUT, joka kirjaa käyttäjän ulos. Nappia painamalla näkymä vaihtuu kirjautumisnäkymään.
 
