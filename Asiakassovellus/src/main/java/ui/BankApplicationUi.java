@@ -445,12 +445,18 @@ public class BankApplicationUi extends Application {
         });
         
         // Income popup
-        Label incomeLabel = new Label("");
-        setLabel(incomeLabel, Color.LIGHTCYAN, 12, false);
         GridPane incomePopUp = new GridPane();
         setPane(incomePopUp, 100);
-        incomePopUp.getChildren().add(incomeLabel);
-        Scene incomeScene = new Scene(incomePopUp, 450, 400);
+        
+        Label incomeLabel = new Label("");
+        setLabel(incomeLabel, Color.LIGHTCYAN, 12, false);
+        incomePopUp.add(incomeLabel, 1, 0);
+        
+        Label compareLabel = new Label("");
+        setLabel(compareLabel, Color.LIGHTCYAN, 12, false);
+        incomePopUp.add(compareLabel, 1, 1);
+        
+        Scene incomeScene = new Scene(incomePopUp, 470, 420);
         Stage incomeStage = new Stage();
         incomeStage.setScene(incomeScene);
         incomeStage.setTitle("Income");
@@ -460,7 +466,8 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    incomeLabel.setText("Your income this month is " + BankApplication.getIncome() + "$");
+                    incomeLabel.setText("Your income this month is " + BankApplication.getIncome() + "$.");
+                    compareLabel.setText(BankApplication.compareIncomeToAverage());
                 } catch(FileNotFoundException ex) {
                      Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }

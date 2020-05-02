@@ -122,6 +122,22 @@ public class BankApplication {
         return String.valueOf(expenseSum);
     }
     
+    public static String compareIncomeToAverage() throws FileNotFoundException {
+        int income = Integer.parseInt(BankApplication.getIncome());
+        int average = 3714;
+        int marginal = 0;
+        
+        if (income < average) {
+            marginal = average - income;
+            return "It is " + String.valueOf(marginal) + " $ less than the average monthly income in US.";
+        } else if (income > average) {
+            marginal = income - average;
+            return "It is " + String.valueOf(marginal) + " $ more than the average monthly income in US.";
+        } else {
+            return "Your income is the average monthly income in US.";
+        }
+    }
+    
     /**
      * This method calculates the percent that the customer has used from income
      * @return String value of the percent used
