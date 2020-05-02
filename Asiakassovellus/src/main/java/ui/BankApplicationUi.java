@@ -6,6 +6,7 @@
 package ui;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -389,10 +390,13 @@ public class BankApplicationUi extends Application {
         setNormalButton(percent);
         report.add(percent, 1, 3);
         
+        Button allCategories = new Button("Show all categories");
+        setNormalButton(allCategories);
+        report.add(allCategories, 1, 4);
+        
         Button category = new Button("Percents used of income for each category");
         setNormalButton(category);
-        report.add(category, 1, 4);
-        
+        report.add(category, 1, 5);
         
         iDontWantToReadReportsAnymore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -456,7 +460,7 @@ public class BankApplicationUi extends Application {
         setLabel(compareLabel, Color.LIGHTCYAN, 12, false);
         incomePopUp.add(compareLabel, 1, 1);
         
-        Scene incomeScene = new Scene(incomePopUp, 470, 420);
+        Scene incomeScene = new Scene(incomePopUp, 470, 200);
         Stage incomeStage = new Stage();
         incomeStage.setScene(incomeScene);
         incomeStage.setTitle("Income");
@@ -488,7 +492,7 @@ public class BankApplicationUi extends Application {
         setLabel(howMuchLeftLabel, Color.LIGHTCYAN, 10, false);
         expensePopUp.add(howMuchLeftLabel, 1, 1);
         
-        Scene expenseScene = new Scene(expensePopUp, 450, 400);
+        Scene expenseScene = new Scene(expensePopUp, 450, 200);
         Stage expensesStage = new Stage();
         expensesStage.setScene(expenseScene);
         expensesStage.setTitle("Expenses");
@@ -514,7 +518,7 @@ public class BankApplicationUi extends Application {
         GridPane percentPopUp = new GridPane();
         setPane(percentPopUp, 200);
         percentPopUp.getChildren().add(percentLabel);
-        Scene percentScene = new Scene(percentPopUp, 450, 400);
+        Scene percentScene = new Scene(percentPopUp, 450, 200);
         Stage percentStage = new Stage();
         percentStage.setScene(percentScene);
         percentStage.setTitle("Percent of income used");
@@ -524,11 +528,47 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    percentLabel.setText("You have used " + BankApplication.percentUsedOfIncome() + "% of your income this month");
+                    percentLabel.setText(BankApplication.percentUsedOfIncome());
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 percentStage.show();
+                primaryStage.setScene(reportScene);
+            }
+        });
+        
+        // All categories PopUp
+        GridPane categoryPane = new GridPane();
+        setPane(categoryPane, 200);
+        
+        Label categoryLabel = new Label("");
+        setLabel(categoryLabel, Color.LIGHTCYAN, 12, false);
+        categoryPane.add(categoryLabel, 0, 1);
+        
+        Label categoriesList = new Label("");
+        setLabel(categoriesList, Color.LIGHTCYAN, 12, false);
+        categoryPane.add(categoriesList, 0, 2);
+        
+        Scene categoryScene = new Scene(categoryPane, 450, 300);
+        Stage categoryStage = new Stage();
+        categoryStage.setTitle("Categories");
+        categoryStage.setScene(categoryScene);
+        
+        allCategories.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    categoryLabel.setText("You have bought something from all of these categories: ");
+                    ArrayList<String> list = BankApplication.getAllCategories();
+                    String text = "";
+                    for (int i = 0; i < list.size(); i++) {
+                        text += list.get(i) + "\n";
+                    }
+                    categoriesList.setText(text);
+                } catch(Exception ex) {
+                    Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                categoryStage.show();
                 primaryStage.setScene(reportScene);
             }
         });
@@ -559,28 +599,35 @@ public class BankApplicationUi extends Application {
         });
         
         // Percent per category popup
-        Label categoryPercentLabel = new Label("");
-        setLabel(categoryPercentLabel, Color.LIGHTCYAN, 12, false);
         GridPane categoryPercentPopUp = new GridPane();
         setPane(categoryPercentPopUp, 200);
-        categoryPercentPopUp.getChildren().add(categoryPercentLabel);
-        Scene categoryPercentScene = new Scene(categoryPercentPopUp, 650, 600);
+        
+        Label moneyUsedToCategory = new Label("");
+        setLabel(moneyUsedToCategory, Color.LIGHTCYAN, 12, false);
+        categoryPercentPopUp.add(moneyUsedToCategory, 1, 1);
+        
+        Label categoryPercentLabel = new Label("");
+        setLabel(categoryPercentLabel, Color.LIGHTCYAN, 12, false);
+        categoryPercentPopUp.add(categoryPercentLabel, 1, 2);
+        
+        Scene categoryPercentScene = new Scene(categoryPercentPopUp, 500, 200);
         Stage categoryPercentStage = new Stage();
+        
         categoryPercentStage.setScene(categoryPercentScene);
-        categoryPercentStage.setTitle("Percent of income used to each category");
+        categoryPercentStage.setTitle("Percent of income used to chosen category");
         
         // getReportForThisCategory button action
         getReportForThisCategory.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    primaryStage.setScene(reportScene);
+                    moneyUsedToCategory.setText(BankApplication.moneyUsedToCertainCategory(categoryField.getText()));
                     categoryPercentLabel.setText(BankApplication.percentsUsedOfIncomeForEachCategory(categoryField.getText()));
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                categoryPercentStage.show();
                 primaryStage.setScene(reportScene);
+                categoryPercentStage.show();
             }
         });
         

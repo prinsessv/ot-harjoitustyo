@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /** 
@@ -154,6 +155,24 @@ public class BankApplication {
         }
     }
     
+    public static ArrayList<String> getAllCategories() {
+        ArrayList<String> categories = new ArrayList<>();
+        
+        try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
+            while (reader.hasNextLine()) {
+                String row = reader.nextLine();
+                if (row.trim().length() == 0) {
+                    continue;
+                }
+                String[] splitRow = row.split(";");
+                categories.add(splitRow[1]);
+            }
+        } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+        }
+        return categories;
+    }
+    
     /**
      * This method calculates the percent that the customer has used from income
      * @return String value of the percent used
@@ -164,10 +183,28 @@ public class BankApplication {
         
         if (income > 0) {
             double percent = (double) (expenses * 100) / income;
-            return String.valueOf(percent);
+            return "You have used " + String.valueOf(percent) + "% of your income this month";
         } else { 
-            return "0";
+            return "You have used 0% of your income this month";
         }
+    }
+    
+    public static String moneyUsedToCertainCategory(String category) {
+        try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
+            while (reader.hasNextLine()) {
+                String row = reader.nextLine();
+                if (row.trim().length() == 0) {
+                    continue;
+                }
+                String[] splitRow = row.split(";");
+                if(splitRow[1].equals(category)) {
+                    return "You have spent " + String.valueOf(splitRow[2]) + "$ to category " + category + " which equals ";
+                }
+            }
+        } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+        }
+        return "0";
     }
     
     /**
@@ -194,7 +231,7 @@ public class BankApplication {
             }
             percent = (double) (totalOfUsedMoney * 100) / Integer.parseInt(BankApplication.getIncome());
         } 
-        return "You have used " + String.valueOf(percent) + "% of your income to category " + category + " this month"; 
+        return String.valueOf(percent) + "% of your income."; 
     }
     
     /**
