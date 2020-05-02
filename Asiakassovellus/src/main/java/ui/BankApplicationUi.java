@@ -215,13 +215,17 @@ public class BankApplicationUi extends Application {
         setTransparentButton(expenseButton, Color.LIGHTCYAN, 15);
         bankApplicationView.add(expenseButton, 0, 3);
         
+        Button addMoneyToIncome = new Button("Add money to your income");
+        setTransparentButton(addMoneyToIncome, Color.LIGHTCYAN, 15);
+        bankApplicationView.add(addMoneyToIncome, 0, 4);
+        
         Button reportButton = new Button("Print report");
         setTransparentButton(reportButton, Color.LIGHTCYAN, 15);
-        bankApplicationView.add(reportButton, 0, 4);
+        bankApplicationView.add(reportButton, 0, 5);
         
         Button resetButton = new Button("Reset all");
         setNormalButton(resetButton);
-        bankApplicationView.add(resetButton, 1, 4);
+        bankApplicationView.add(resetButton, 1, 5);
         
         Button logoutButton = new Button("LOGOUT");
         setNormalButton(logoutButton);
@@ -293,7 +297,11 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 if (Integer.parseInt(bookIncomeField.getText()) > 0) {
-                    BankApplication.bookIncome(Integer.parseInt(bookIncomeField.getText()));
+                    try {
+                        BankApplication.bookIncome(Integer.parseInt(bookIncomeField.getText()));
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     incomeBookedOrNot.setText("Income has been booked successfully.");
                 } else {
                     incomeBookedOrNot.setText("Income can not be negative or zero.");

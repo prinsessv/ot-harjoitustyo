@@ -40,11 +40,13 @@ public class BankApplication {
      * @param income Integer value of income that the customer wanted to book
      * @return String which tells if the income was booked successfully
      */
-    public static String bookIncome(int income) {
+    public static String bookIncome(int income) throws FileNotFoundException {
+        int incomeToBook = Integer.valueOf(BankApplication.getIncome()) + income;
+        
         if (income > 0) {
             try {
                 FileWriter writer = new FileWriter(incomeFilePath, true);
-                writer.append(String.valueOf(income));
+                writer.append(String.valueOf(incomeToBook));
                 writer.append("\n");
                 writer.flush();
                 writer.close();
