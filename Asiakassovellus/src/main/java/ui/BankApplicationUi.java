@@ -17,14 +17,25 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.effect.Bloom;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -38,54 +49,83 @@ import logic.Users;
  * @author anni
  */
 public class BankApplicationUi extends Application {
+    Background greyBackground = new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY));
+    Background transparentBackground = new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY));
+    Border border = new Border(new BorderStroke(Color.DEEPSKYBLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+    Bloom bloom = new Bloom();
+    
+    
+    public void setPane(GridPane gridpane, int size) {
+        gridpane.setHgap(10);
+        gridpane.setVgap(10);
+        gridpane.setAlignment(Pos.CENTER);
+        gridpane.setMinSize(size, size);
+        gridpane.setMaxSize(size, size);
+        gridpane.setBackground(greyBackground);
+        gridpane.setBorder(border);
+    }
+    
+    public void setTransparentButton(Button button, Color color, int fontSize) {
+        button.setTextFill(color);
+        button.setFont(Font.font("Cambria", FontWeight.NORMAL, fontSize));
+        button.setEffect(bloom);
+        button.setBackground(transparentBackground);
+    }
+    public void setNormalButton(Button button) {
+        button.setBorder(border);
+    }
    
+    public void setLabel(Label label, Color color, int fontSize, boolean effect) {
+        label.setFont(Font.font("Cambria", FontWeight.NORMAL, 15));
+        label.setTextFill(color);
+        
+        if(effect) {
+            label.setEffect(bloom);
+        }
+    }
+    
+    public void setText(Text text, Color color, int fontSize) {
+        text.setFont(Font.font("Cambria", FontWeight.NORMAL, 30));
+        text.setFill(Color.LIGHTCYAN);
+        text.setEffect(bloom);
+    }
+
     @Override
     public void start(Stage primaryStage) {
         
+        // Effect used
+        bloom.setThreshold(0.1);
+        
         // Sign in view:
         primaryStage.setTitle("Accounting");
-      
-        GridPane firstPage = new GridPane();
-        firstPage.setAlignment(Pos.CENTER);
-        firstPage.setHgap(10);
-        firstPage.setVgap(10);
-        firstPage.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         
-        Bloom bloom = new Bloom();
-        bloom.setThreshold(0.1);
+        GridPane firstPage = new GridPane();
+        setPane(firstPage, 400);
       
         Text signInText = new Text("Sign In");
-        signInText.setFont(Font.font("Cambria", FontWeight.NORMAL, 30));
-        signInText.setFill(Color.LIGHTCYAN);
-        signInText.setEffect(bloom);
+        setText(signInText, Color.LIGHTCYAN, 15);
         firstPage.add(signInText, 0, 0, 2, 1);
       
         Label usernameLabel = new Label("Username:");
-        usernameLabel.setFont(Font.font("Cambria", FontWeight.NORMAL, 15));
-        usernameLabel.setTextFill(Color.LIGHTCYAN);
-        usernameLabel.setEffect(bloom);
+        setLabel(usernameLabel, Color.LIGHTCYAN, 10, false);
         firstPage.add(usernameLabel, 0, 1);
+        
         TextField usernameTextfield = new TextField();
         firstPage.add(usernameTextfield, 1, 1);
         
-        Label passwordLabel = new Label("Password: ");
-        passwordLabel.setFont(Font.font("Cambria", FontWeight.NORMAL, 15));
-        passwordLabel.setTextFill(Color.LIGHTCYAN);
-        passwordLabel.setEffect(bloom);
+        Label passwordLabel = new Label("Password:");
+        setLabel(passwordLabel, Color.LIGHTCYAN, 10, false);
         firstPage.add(passwordLabel, 0, 2);
+        
         PasswordField passwordField = new PasswordField();
         firstPage.add(passwordField, 1, 2);
         
         Button loginButton = new Button("LOGIN");
-        loginButton.setTextFill(Color.LIGHTCYAN);
-        loginButton.setEffect(bloom);
-        loginButton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+        setNormalButton(loginButton);
         firstPage.add(loginButton, 1, 4);
         
         Button createNewUserButton = new Button("CREATE NEW USER");
-        createNewUserButton.setTextFill(Color.LIGHTCYAN);
-        createNewUserButton.setEffect(bloom);
-        createNewUserButton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+        setNormalButton(createNewUserButton);
         firstPage.add(createNewUserButton, 1, 5);
         
         // Error text appearing on the front page if username/pw is wrong
@@ -94,40 +134,35 @@ public class BankApplicationUi extends Application {
         
         // Form that appears after pressing button CREATE NEW USER:
         GridPane createNewUserForm = new GridPane();
-        createNewUserForm.setAlignment(Pos.CENTER);
-        createNewUserForm.setHgap(10);
-        createNewUserForm.setVgap(10);
-        createNewUserForm.setMinSize(450, 320);
-        createNewUserForm.setMaxSize(450, 320);
-        createNewUserForm.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        setPane(createNewUserForm, 500);
       
         Label createNewUserTitle = new Label("You wanted to create new user");
-        createNewUserTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 18));
-        createNewUserTitle.setTextFill(Color.LIGHTCYAN);
-        createNewUserTitle.setEffect(bloom);
+        setLabel(createNewUserTitle, Color.LIGHTCYAN, 15, true);
         createNewUserForm.add(createNewUserTitle, 1 , 0);
         
         Label createUsernameLabel = new Label("Username:");
-        createUsernameLabel.setTextFill(Color.LIGHTCYAN);
+        setLabel(createUsernameLabel, Color.LIGHTCYAN, 10, false);
         createNewUserForm.add(createUsernameLabel, 0, 1);
+        
         TextField createUsernameField = new TextField();
         createNewUserForm.add(createUsernameField, 1, 1);
         
         Label createPasswordLabel = new Label("Password:");
-        createPasswordLabel.setTextFill(Color.LIGHTCYAN);
+        setLabel(createPasswordLabel, Color.LIGHTCYAN, 10, false);
         createNewUserForm.add(createPasswordLabel, 0, 2);
+        
         PasswordField createPasswordField = new PasswordField();
         createNewUserForm.add(createPasswordField, 1, 2);
         
         Label repeatPasswordLabel = new Label("Repeat password:");
-        repeatPasswordLabel.setTextFill(Color.LIGHTCYAN);
+        setLabel(repeatPasswordLabel, Color.LIGHTCYAN, 10, false);
         createNewUserForm.add(repeatPasswordLabel, 0, 3);
+        
         PasswordField repeatPasswordField = new PasswordField();
         createNewUserForm.add(repeatPasswordField, 1, 3);
         
         Button finalCreateButton = new Button("CREATE");
-        finalCreateButton.setTextFill(Color.LIGHTCYAN);
-        finalCreateButton.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+        setNormalButton(finalCreateButton);
         createNewUserForm.add(finalCreateButton, 1, 5);
         
         Scene createNewUserScene = new Scene(createNewUserForm);
@@ -142,12 +177,11 @@ public class BankApplicationUi extends Application {
         
         // Label that tells if username is taken or not:
         Label usernameOkOrNot = new Label("");
-        usernameOkOrNot.setTextFill(Color.LIGHTCYAN);
+        setLabel(usernameOkOrNot, Color.LIGHTCYAN, 12, true);
         createNewUserForm.add(usernameOkOrNot, 1, 7);
         
         Button backToFrontP = new Button("←");
-        backToFrontP.setTextFill(Color.LIGHTCYAN);
-        backToFrontP.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        setTransparentButton(backToFrontP, Color.LIGHTCYAN, 20);
         createNewUserForm.add(backToFrontP, 0, 0);
         
         // CREATE button action:
@@ -166,41 +200,30 @@ public class BankApplicationUi extends Application {
         
         // View after successfull LOGIN:
         GridPane bankApplicationView = new GridPane();
-        bankApplicationView.setAlignment(Pos.CENTER);
-        bankApplicationView.setHgap(10);
-        bankApplicationView.setVgap(10);
-        bankApplicationView.setMinSize(300, 300);
-        bankApplicationView.setMaxSize(300, 300);
-        bankApplicationView.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        setPane(bankApplicationView, 450);
         
         Label welcomeLabel = new Label("Welcome!");
-        welcomeLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
-        welcomeLabel.setTextFill(Color.LIGHTCYAN);
+        setLabel(welcomeLabel, Color.LIGHTCYAN, 22, true);
         bankApplicationView.add(welcomeLabel, 0, 0);
         
         Button incomeButton = new Button("Book income");
-        incomeButton.setStyle("-fx-background-color: silver; ");
-        incomeButton.setTextFill(Color.LIGHTCYAN);
+        setTransparentButton(incomeButton, Color.LIGHTCYAN, 15);
         bankApplicationView.add(incomeButton, 0, 2);
         
         Button expenseButton = new Button("Book expense");
-        expenseButton.setStyle("-fx-background-color: silver; ");
-        expenseButton.setTextFill(Color.LIGHTCYAN);
+        setTransparentButton(expenseButton, Color.LIGHTCYAN, 15);
         bankApplicationView.add(expenseButton, 0, 3);
         
         Button reportButton = new Button("Print report");
-        reportButton.setStyle("-fx-background-color: silver; ");
-        reportButton.setTextFill(Color.LIGHTCYAN);
+        setTransparentButton(reportButton, Color.LIGHTCYAN, 15);
         bankApplicationView.add(reportButton, 0, 4);
         
         Button resetButton = new Button("Reset all");
-        resetButton.setStyle("-fx-background-color: silver; ");
-        resetButton.setTextFill(Color.LIGHTCYAN);
+        setNormalButton(resetButton);
         bankApplicationView.add(resetButton, 1, 4);
         
         Button logoutButton = new Button("LOGOUT");
-        logoutButton.setStyle("-fx-background-color: silver; ");
-        logoutButton.setTextFill(Color.LIGHTCYAN);
+        setNormalButton(logoutButton);
         bankApplicationView.add(logoutButton, 1, 0); 
         
         Scene welcomeScene = new Scene(bankApplicationView);
@@ -225,34 +248,29 @@ public class BankApplicationUi extends Application {
 
         // Book income button opens a form
         GridPane bookIncomeForm = new GridPane();
-        bookIncomeForm.setAlignment(Pos.CENTER);
-        bookIncomeForm.setHgap(10);
-        bookIncomeForm.setVgap(10);
-        bookIncomeForm.setMinSize(450, 350);
-        bookIncomeForm.setMaxSize(450, 350);
-        bookIncomeForm.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        setPane(bookIncomeForm, 450);
         
-        Label incomeToBookLabel = new Label("Income to book: ");
-        incomeToBookLabel.setTextFill(Color.LIGHTCYAN);
-        TextField bookIncomeField = new TextField();
+        Button backToFrontButton = new Button("←");
+        setTransparentButton(backToFrontButton, Color.LIGHTCYAN, 20);
+        bookIncomeForm.add(backToFrontButton, 0, 0);
+        
+        Label incomeToBookLabel = new Label("Income to book:");
+        setLabel(incomeToBookLabel, Color.LIGHTCYAN, 12, false);
         bookIncomeForm.add(incomeToBookLabel, 0, 1);
+        
+        TextField bookIncomeField = new TextField();
         bookIncomeForm.add(bookIncomeField, 1, 1);
         
         Button bookItButton = new Button("Book this income");
-        bookItButton.setTextFill(Color.LIGHTCYAN);
+        setNormalButton(bookItButton);
         bookIncomeForm.add(bookItButton, 1, 2);
         
         Scene bookingIncomeScene = new Scene(bookIncomeForm);
         
         //After book income form
         Label incomeBookedOrNot = new Label("");
-        incomeBookedOrNot.setTextFill(Color.LIGHTCYAN);
+        setLabel(incomeBookedOrNot, Color.LIGHTCYAN, 12, true);
         bookIncomeForm.add(incomeBookedOrNot, 1, 3);
-        
-        Button backToFrontButton = new Button("←");
-        backToFrontButton.setTextFill(Color.LIGHTCYAN);
-        backToFrontButton.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        bookIncomeForm.add(backToFrontButton, 0, 0);
         
         backToFrontButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -284,31 +302,41 @@ public class BankApplicationUi extends Application {
         
         //Book expense form
         GridPane bookExpenseForm = new GridPane();
-        bookExpenseForm.setAlignment(Pos.CENTER);
-        bookExpenseForm.setHgap(10);
-        bookExpenseForm.setVgap(10);
-        bookExpenseForm.setPadding(new Insets(25, 25, 25, 25));
+        setPane(bookExpenseForm, 550);
         
+        Button backToWelcomeScene = new Button("←");
+        setTransparentButton(backToWelcomeScene, Color.LIGHTCYAN, 20);
+        bookExpenseForm.add(backToWelcomeScene, 0, 0);
+
         Label purchaseToBook = new Label("Purchase:");
+        setLabel(purchaseToBook, Color.LIGHTCYAN, 12, false);
+        bookExpenseForm.add(purchaseToBook, 0, 1);
+        
         TextField bookingPurchase = new TextField();
+        bookExpenseForm.add(bookingPurchase, 1, 1);
         
         Label purchaseCategoryToBook = new Label("Category:");
+        setLabel(purchaseCategoryToBook, Color.LIGHTCYAN, 12, false);
+        bookExpenseForm.add(purchaseCategoryToBook, 0, 2);
+        
         TextField categoryOfExpense = new TextField();
+        bookExpenseForm.add(categoryOfExpense, 1, 2);
         
         Label costToBook = new Label("Cost:");
-        TextField bookingExpense = new TextField();
+        setLabel(costToBook, Color.LIGHTCYAN, 12, false);
+        bookExpenseForm.add(costToBook, 0, 3);
         
-        bookExpenseForm.add(purchaseToBook, 0, 0);
-        bookExpenseForm.add(bookingPurchase, 1, 0);
-        bookExpenseForm.add(purchaseCategoryToBook, 0, 1);
-        bookExpenseForm.add(categoryOfExpense, 1, 1);
-        bookExpenseForm.add(costToBook, 0, 2);
-        bookExpenseForm.add(bookingExpense, 1, 2);
+        TextField bookingExpense = new TextField();
+        bookExpenseForm.add(bookingExpense, 1, 3);
         
         Button bookPurchaseButton = new Button("Book your purchase");
-        bookExpenseForm.add(bookPurchaseButton, 0, 3);
-        Button backToWelcomeScene = new Button("Back");
-        bookExpenseForm.add(backToWelcomeScene, 0, 4);
+        setNormalButton(bookPurchaseButton);
+        bookExpenseForm.add(bookPurchaseButton, 1, 5);
+        
+        // If expense was < 0
+        Label expenseBookedOrNot = new Label("");
+        setLabel(expenseBookedOrNot, Color.LIGHTCYAN, 12, true);
+        bookExpenseForm.add(expenseBookedOrNot, 1, 6);
         
         Scene expensesToBookScene = new Scene(bookExpenseForm);
         
@@ -327,83 +355,44 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(welcomeScene);
             }
         });
-        
-        // If expense was < 0
-        GridPane expenseNotBookedSuccessfully = new GridPane();
-        expenseNotBookedSuccessfully.setAlignment(Pos.CENTER);
-        expenseNotBookedSuccessfully.setHgap(10);
-        expenseNotBookedSuccessfully.setVgap(10);
-        expenseNotBookedSuccessfully.setPadding(new Insets(25, 25, 25, 25));
-        
-        Label expenseNotBookedLabel = new Label("Expense has not been booked succesfully. Expense can not be negative.");
-        expenseNotBookedSuccessfully.add(expenseNotBookedLabel, 0, 0);
-        
-        Button backToPreviousSite = new Button("Back to previous page");
-        backToPreviousSite.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                primaryStage.setScene(welcomeScene);
-            }
-        });
-        
-        expenseNotBookedSuccessfully.add(backToPreviousSite, 0, 1);
-        
-        Scene expenseNotBookedScene = new Scene(expenseNotBookedSuccessfully);
-        
-        // Scene after booking expense
-        GridPane expenseBooked = new GridPane();
-        expenseBooked.setAlignment(Pos.CENTER);
-        expenseBooked.setHgap(10);
-        expenseBooked.setVgap(10);
-        expenseBooked.setPadding(new Insets(25, 25, 25, 25));
-        
-        Label expenseBookedSuccessfully = new Label("Expense has been booked succesfully.");
-        expenseBooked.add(expenseBookedSuccessfully, 0, 0);
-        
-        Button backToFrontPage = new Button("Back to front page");
-        
-        backToFrontPage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                primaryStage.setScene(welcomeScene);
-            }
-        });
-        
-        expenseBooked.add(backToFrontPage, 0, 1);
-        
-        Scene expenseIsBooked = new Scene(expenseBooked);
-        
+      
         // bookPurchaseButton action
         bookPurchaseButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 if (Integer.parseInt(bookingExpense.getText()) >= 0) {
                     BankApplication.bookExpense(bookingPurchase.getText(), categoryOfExpense.getText(), Integer.parseInt(bookingExpense.getText()));
-                    primaryStage.setScene(expenseIsBooked);
+                    expenseBookedOrNot.setText("Expense has been booked succesfully.");
                 } else {
-                    primaryStage.setScene(expenseNotBookedScene);
+                    expenseBookedOrNot.setText("Expense can not be negative.");
                 }
             }
         }); 
         
         // View after pressing print report button
         GridPane report = new GridPane();
-        report.setAlignment(Pos.CENTER); 
-        report.setHgap(10);
-        report.setVgap(10);
-        report.setPadding(new Insets(25, 25, 25, 25));
+        setPane(report, 450);
+        
+        Button iDontWantToReadReportsAnymore = new Button("←");
+        setTransparentButton(iDontWantToReadReportsAnymore, Color.LIGHTCYAN, 25);
+        report.add(iDontWantToReadReportsAnymore, 0, 0);
         
         Button income = new Button("Income");
+        setNormalButton(income);
+        report.add(income, 1, 1);
+        
         Button expenses = new Button("Expenses");
+        setNormalButton(expenses);
+        report.add(expenses, 1, 2);
+        
         Button percent = new Button("Percents used of income");
+        setNormalButton(percent);
+        report.add(percent, 1, 3);
+        
         Button category = new Button("Percents used of income for each category");
+        setNormalButton(category);
+        report.add(category, 1, 4);
         
-        report.add(income, 0, 0);
-        report.add(expenses, 0, 1);
-        report.add(percent, 0, 2);
-        report.add(category, 0, 3);
-        
-        Button iDontWantToReadReportsAnymore = new Button("Back to front page");
         
         iDontWantToReadReportsAnymore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -411,8 +400,6 @@ public class BankApplicationUi extends Application {
                 primaryStage.setScene(welcomeScene);
             }
         });
-        
-        report.add(iDontWantToReadReportsAnymore, 0, 5);
         
         Scene reportScene = new Scene(report);
         
@@ -425,35 +412,48 @@ public class BankApplicationUi extends Application {
         });
         
         // ResetButton popup and action
+        GridPane resetPane = new GridPane();
+        setPane(resetPane, 200);
+        
+        Button areYouSureButton = new Button("Are you sure you want to reset?");
+        resetPane.add(areYouSureButton, 0, 0);
+        
         Label resetLabel = new Label("");
-        StackPane resetPane = new StackPane();
-        resetPane.getChildren().add(resetLabel);
-        Scene resetScene = new Scene(resetPane, 230, 100);
+        setLabel(resetLabel, Color.LIGHTCYAN, 12, false);
+        resetPane.add(resetLabel, 0, 1);
+        
+        Scene resetScene = new Scene(resetPane, 350, 200);
         Stage resetWindow = new Stage();
         resetWindow.setTitle("Reset");
         resetWindow.setScene(resetScene);
         resetWindow.setX(primaryStage.getX() + 200);
         resetWindow.setY(primaryStage.getY() + 100);
         
+        
         resetButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                resetLabel.setText(BankApplication.resetAll());
                 resetWindow.show();
-                primaryStage.setScene(welcomeScene);
             }
         }); 
         
+        areYouSureButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                resetLabel.setText(BankApplication.resetAll());
+            }
+        });
+        
         // Income popup
         Label incomeLabel = new Label("");
-        StackPane secondaryLayout = new StackPane();
-        secondaryLayout.getChildren().add(incomeLabel);
-        Scene secondScene = new Scene(secondaryLayout, 230, 100);
-        Stage incomeWindow = new Stage();
-        incomeWindow.setTitle("Income");
-        incomeWindow.setScene(secondScene);
-        incomeWindow.setX(primaryStage.getX() + 200);
-        incomeWindow.setY(primaryStage.getY() + 100);
+        setLabel(incomeLabel, Color.LIGHTCYAN, 12, false);
+        GridPane incomePopUp = new GridPane();
+        setPane(incomePopUp, 100);
+        incomePopUp.getChildren().add(incomeLabel);
+        Scene incomeScene = new Scene(incomePopUp, 450, 400);
+        Stage incomeStage = new Stage();
+        incomeStage.setScene(incomeScene);
+        incomeStage.setTitle("Income");
         
         // Income button action
         income.setOnAction(new EventHandler<ActionEvent>() {
@@ -464,46 +464,46 @@ public class BankApplicationUi extends Application {
                 } catch(FileNotFoundException ex) {
                      Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                incomeWindow.show();
+                incomeStage.show();
                 primaryStage.setScene(reportScene);
             }
         }); 
         
-        // Expense popup
-        Label expenseLabel = new Label("");
-        StackPane expenseLayout = new StackPane();
-        expenseLayout.getChildren().add(expenseLabel);
-        Scene expenseScene = new Scene(expenseLayout, 230, 100);
-        Stage expenseWindow = new Stage();
-        expenseWindow.setTitle("Expenses");
-        expenseWindow.setScene(expenseScene);
-        expenseWindow.setX(primaryStage.getX() + 200);
-        expenseWindow.setY(primaryStage.getY() + 100);
+        // Expenses popup
+        Label expensesLabel = new Label("");
+        setLabel(expensesLabel, Color.LIGHTCYAN, 12, false);
+        GridPane expensePopUp = new GridPane();
+        setPane(expensePopUp, 100);
+        expensePopUp.getChildren().add(expensesLabel);
+        Scene expenseScene = new Scene(expensePopUp, 450, 400);
+        Stage expensesStage = new Stage();
+        expensesStage.setScene(expenseScene);
+        expensesStage.setTitle("Expenses");
         
         // Expenses button action
         expenses.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    expenseLabel.setText("You have used " + BankApplication.getExpenses() +  "$ this month");
+                    expensesLabel.setText("You have used " + BankApplication.getExpenses() +  "$ this month");
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                expenseWindow.show();
+                expensesStage.show();
                 primaryStage.setScene(reportScene);
             }
         });
         
-        // Percent used of income popup
-        Label percentLabel = new Label("0%");
-        StackPane percentLayout = new StackPane();
-        percentLayout.getChildren().add(percentLabel);
-        Scene percentScene = new Scene(percentLayout, 230, 100);
-        Stage percentWindow = new Stage();
-        percentWindow.setTitle(("Percent used of income"));
-        percentWindow.setScene(percentScene);
-        percentWindow.setX(primaryStage.getX() + 200);
-        percentWindow.setY(primaryStage.getY() + 100);
+        // Percent popup
+        Label percentLabel = new Label("");
+        setLabel(percentLabel, Color.LIGHTCYAN, 12, false);
+        GridPane percentPopUp = new GridPane();
+        setPane(percentPopUp, 200);
+        percentPopUp.getChildren().add(percentLabel);
+        Scene percentScene = new Scene(percentPopUp, 450, 400);
+        Stage percentStage = new Stage();
+        percentStage.setScene(percentScene);
+        percentStage.setTitle("Percent of income used");
         
         // Percent button action
         percent.setOnAction(new EventHandler<ActionEvent>() {
@@ -514,27 +514,25 @@ public class BankApplicationUi extends Application {
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                percentWindow.show();
+                percentStage.show();
                 primaryStage.setScene(reportScene);
             }
         });
         
         // Form opening after pressing percents used of each category
         GridPane percentUsedForEachCategory = new GridPane();
-        percentUsedForEachCategory.setAlignment(Pos.CENTER);
-        percentUsedForEachCategory.setHgap(10);
-        percentUsedForEachCategory.setVgap(10);
-        percentUsedForEachCategory.setPadding(new Insets(25, 25, 25, 25));
+        setPane(percentUsedForEachCategory, 300);
         
         Label whichCategoryLabel = new Label("Category: ");
-        welcomeLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        setLabel(whichCategoryLabel, Color.LIGHTCYAN, 12, false);
         percentUsedForEachCategory.add(whichCategoryLabel, 0, 1);
         
         TextField categoryField = new TextField();
         percentUsedForEachCategory.add(categoryField, 1, 1);
         
         Button getReportForThisCategory = new Button("Get report");
-        percentUsedForEachCategory.add(getReportForThisCategory, 2, 2);
+        setNormalButton(getReportForThisCategory);
+        percentUsedForEachCategory.add(getReportForThisCategory, 1, 2);
         
         Scene percentUsedForEachCategoryScene = new Scene(percentUsedForEachCategory);
         
@@ -546,27 +544,28 @@ public class BankApplicationUi extends Application {
             }
         });
         
-        // Percent used to this category report POPUP window
-        Label percentForThisCategoryLabel = new Label("");
-        StackPane percentForThisCategoryLayout = new StackPane();
-        percentForThisCategoryLayout.getChildren().add(percentForThisCategoryLabel);
-        Scene percentForThisCategoryScene = new Scene(percentForThisCategoryLayout, 230, 100);
-        Stage percentForThisCategoryWindow = new Stage();
-        percentForThisCategoryWindow.setTitle("Percentage used");
-        percentForThisCategoryWindow.setScene(percentForThisCategoryScene);
-        percentForThisCategoryWindow.setX(primaryStage.getX() + 200);
-        percentForThisCategoryWindow.setY(primaryStage.getY() + 100);
+        // Percent per category popup
+        Label categoryPercentLabel = new Label("");
+        setLabel(categoryPercentLabel, Color.LIGHTCYAN, 12, false);
+        GridPane categoryPercentPopUp = new GridPane();
+        setPane(categoryPercentPopUp, 200);
+        categoryPercentPopUp.getChildren().add(categoryPercentLabel);
+        Scene categoryPercentScene = new Scene(categoryPercentPopUp, 650, 600);
+        Stage categoryPercentStage = new Stage();
+        categoryPercentStage.setScene(categoryPercentScene);
+        categoryPercentStage.setTitle("Percent of income used to each category");
         
         // getReportForThisCategory button action
         getReportForThisCategory.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    percentForThisCategoryLabel.setText(BankApplication.percentsUsedOfIncomeForEachCategory(categoryField.getText()));
+                    primaryStage.setScene(reportScene);
+                    categoryPercentLabel.setText(BankApplication.percentsUsedOfIncomeForEachCategory(categoryField.getText()));
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                percentForThisCategoryWindow.show();
+                categoryPercentStage.show();
                 primaryStage.setScene(reportScene);
             }
         });
@@ -574,6 +573,7 @@ public class BankApplicationUi extends Application {
         // Main scene
         Scene firstPageScene = new Scene(firstPage, 400, 375);
         
+       
         backToFrontP.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
