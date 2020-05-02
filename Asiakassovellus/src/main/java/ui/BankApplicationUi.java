@@ -477,11 +477,17 @@ public class BankApplicationUi extends Application {
         }); 
         
         // Expenses popup
-        Label expensesLabel = new Label("");
-        setLabel(expensesLabel, Color.LIGHTCYAN, 12, false);
         GridPane expensePopUp = new GridPane();
         setPane(expensePopUp, 100);
-        expensePopUp.getChildren().add(expensesLabel);
+        
+        Label expensesLabel = new Label("");
+        setLabel(expensesLabel, Color.LIGHTCYAN, 12, false);
+        expensePopUp.add(expensesLabel, 1, 0);
+        
+        Label howMuchLeftLabel = new Label("");
+        setLabel(howMuchLeftLabel, Color.LIGHTCYAN, 10, false);
+        expensePopUp.add(howMuchLeftLabel, 1, 1);
+        
         Scene expenseScene = new Scene(expensePopUp, 450, 400);
         Stage expensesStage = new Stage();
         expensesStage.setScene(expenseScene);
@@ -492,7 +498,8 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    expensesLabel.setText("You have used " + BankApplication.getExpenses() +  "$ this month");
+                    expensesLabel.setText("You have used " + BankApplication.getExpenses() +  "$ this month.");
+                    howMuchLeftLabel.setText(BankApplication.howMuchIncomeLeft());
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }

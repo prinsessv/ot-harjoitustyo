@@ -138,6 +138,22 @@ public class BankApplication {
         }
     }
     
+    public static String howMuchIncomeLeft() throws FileNotFoundException {
+        int expenses = Integer.parseInt(BankApplication.getExpenses());
+        int income = Integer.parseInt(BankApplication.getIncome());
+        int marginal = 0;
+        
+        if(income > expenses) {
+            marginal = income - expenses;
+            return "You have still " + String.valueOf(marginal) + "$ left to use.";
+        } else if(expenses > income) {
+            return "You have used more money than you have. " +
+                   "\n" + "Please contact the customer service to get your economy balanced.";
+        } else {
+            return "You have 0$ to use.";
+        }
+    }
+    
     /**
      * This method calculates the percent that the customer has used from income
      * @return String value of the percent used
