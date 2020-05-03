@@ -31,7 +31,6 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -54,10 +53,9 @@ public class BankApplicationUi extends Application {
         gridpane.setHgap(10);
         gridpane.setVgap(10);
         gridpane.setAlignment(Pos.CENTER);
-        gridpane.setMinSize(size, size);
-        gridpane.setMaxSize(size, size);
+        gridpane.setMinSize(size, size-50);
+        gridpane.setMaxSize(size, size-50);
         gridpane.setBackground(greyBackground);
-        gridpane.setBorder(border);
     }
     
     public void setTransparentButton(Button button, Color color, int fontSize) {
@@ -84,15 +82,13 @@ public class BankApplicationUi extends Application {
         text.setFill(Color.LIGHTCYAN);
         text.setEffect(bloom);
     }
-
+  
     @Override
-    public void start(Stage primaryStage) {
-        
+    public void start(Stage primaryStage) {  
         // Effect used
         bloom.setThreshold(0.1);
         
         // Sign in view:
-        
         GridPane firstPage = new GridPane();
         setPane(firstPage, 400);
       
@@ -128,7 +124,7 @@ public class BankApplicationUi extends Application {
         
         // Form that appears after pressing button CREATE NEW USER:
         GridPane createNewUserForm = new GridPane();
-        setPane(createNewUserForm, 450);
+        setPane(createNewUserForm, 500);
       
         Label createNewUserTitle = new Label("You wanted to create new user");
         setLabel(createNewUserTitle, Color.LIGHTCYAN, 15, true);
@@ -185,7 +181,11 @@ public class BankApplicationUi extends Application {
                 String username = createUsernameField.getText();
                 String passw = createPasswordField.getText();
                 try {
-                    usernameOkOrNot.setText(Users.createNewUser(username, passw));
+                    if(createPasswordField.getText().equals(repeatPasswordField.getText())) {
+                        usernameOkOrNot.setText(Users.createNewUser(username, passw));
+                    } else {
+                       usernameOkOrNot.setText("Passwords need to be equal.");
+                    }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -194,7 +194,7 @@ public class BankApplicationUi extends Application {
         
         // View after successfull LOGIN:
         GridPane bankApplicationView = new GridPane();
-        setPane(bankApplicationView, 450);
+        setPane(bankApplicationView, 320);
         
         Label welcomeLabel = new Label("Welcome!");
         setLabel(welcomeLabel, Color.LIGHTCYAN, 22, true);
@@ -208,24 +208,27 @@ public class BankApplicationUi extends Application {
         setTransparentButton(expenseButton, Color.LIGHTCYAN, 15);
         bankApplicationView.add(expenseButton, 0, 3);
         
-        Button addMoneyToIncome = new Button("Add money to your income");
-        setTransparentButton(addMoneyToIncome, Color.LIGHTCYAN, 15);
-        bankApplicationView.add(addMoneyToIncome, 0, 4);
-        
         Button reportButton = new Button("Print report");
         setTransparentButton(reportButton, Color.LIGHTCYAN, 15);
         bankApplicationView.add(reportButton, 0, 5);
         
         Button resetButton = new Button("Reset all");
         setNormalButton(resetButton);
-        bankApplicationView.add(resetButton, 1, 5);
         
         Button logoutButton = new Button("LOGOUT");
         setNormalButton(logoutButton);
         
+        // Toolbar
         BorderPane welcomeRoot = new BorderPane();
-        ToolBar tools = new ToolBar(logoutButton);
-        welcomeRoot.setTop(tools);
+        
+        BorderPane toolPane = new BorderPane();
+        toolPane.setBackground(greyBackground);
+        
+        ToolBar tools = new ToolBar(resetButton, logoutButton);
+        tools.setBackground(greyBackground);
+        toolPane.setRight(tools);
+        
+        welcomeRoot.setTop(toolPane);
         welcomeRoot.setCenter(bankApplicationView);
         
         Scene welcomeScene = new Scene(welcomeRoot);
@@ -235,7 +238,7 @@ public class BankApplicationUi extends Application {
             @Override
             public void handle(ActionEvent e) {
                 try {
-                    if(Users.findUser(usernameTextfield.getText(), passwordField.getText()) == null) {
+                    if(Users.findUser(usernameTextfield.getText().trim(), passwordField.getText()) == null) {
                         errorText.setFill(Color.FIREBRICK);
                         errorText.setText("Wrong username or password");
                         return;
@@ -308,7 +311,7 @@ public class BankApplicationUi extends Application {
         
         //Book expense form
         GridPane bookExpenseForm = new GridPane();
-        setPane(bookExpenseForm, 550);
+        setPane(bookExpenseForm, 500);
         
         Button backToWelcomeScene = new Button("←");
         setTransparentButton(backToWelcomeScene, Color.LIGHTCYAN, 20);
@@ -368,7 +371,17 @@ public class BankApplicationUi extends Application {
             public void handle(ActionEvent e) {
                 if (Integer.parseInt(bookingExpense.getText()) >= 0) {
                     BankApplication.bookExpense(bookingPurchase.getText(), categoryOfExpense.getText(), Integer.parseInt(bookingExpense.getText()));
-                    expenseBookedOrNot.setText("Expense has been booked succesfully.");
+                    try {
+                        if(Integer.parseInt(BankApplication.getExpenses()) > Integer.parseInt(BankApplication.getIncome())) {
+                            expenseBookedOrNot.setText("Expense has been booked successfully, but you have used"
+                                    + "\n" + " more money than you have got this month. "
+                                    + "\n" + "Please contact the customer service if needed.");
+                        } else {
+                            expenseBookedOrNot.setText("Expense has been booked succesfully.");
+                        }
+                    } catch(FileNotFoundException ex) {
+                        Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     expenseBookedOrNot.setText("Expense can not be negative.");
                 }
@@ -442,6 +455,7 @@ public class BankApplicationUi extends Application {
         resetButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                primaryStage.setScene(welcomeScene);
                 resetWindow.show();
             }
         }); 
@@ -487,7 +501,7 @@ public class BankApplicationUi extends Application {
         
         // Expenses popup
         GridPane expensePopUp = new GridPane();
-        setPane(expensePopUp, 100);
+        setPane(expensePopUp, 400);
         
         Label expensesLabel = new Label("");
         setLabel(expensesLabel, Color.LIGHTCYAN, 12, false);
@@ -497,7 +511,7 @@ public class BankApplicationUi extends Application {
         setLabel(howMuchLeftLabel, Color.LIGHTCYAN, 10, false);
         expensePopUp.add(howMuchLeftLabel, 1, 1);
         
-        Scene expenseScene = new Scene(expensePopUp, 450, 200);
+        Scene expenseScene = new Scene(expensePopUp, 570, 300);
         Stage expensesStage = new Stage();
         expensesStage.setScene(expenseScene);
         expensesStage.setTitle("Expenses");
@@ -565,11 +579,15 @@ public class BankApplicationUi extends Application {
                 try {
                     categoryLabel.setText("You have bought something from all of these categories: ");
                     ArrayList<String> list = BankApplication.getAllCategories();
-                    String text = "";
-                    for (int i = 0; i < list.size(); i++) {
-                        text += list.get(i) + "\n";
+                    if(list.size() == 0) {
+                        categoriesList.setText("No categories found because you do not have any expenses.");
+                    } else {
+                        String text = "";
+                        for (int i = 0; i < list.size(); i++) {
+                            text += list.get(i) + "\n";
+                        }
+                        categoriesList.setText(text);
                     }
-                    categoriesList.setText(text);
                 } catch(Exception ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -615,7 +633,7 @@ public class BankApplicationUi extends Application {
         setLabel(categoryPercentLabel, Color.LIGHTCYAN, 12, false);
         categoryPercentPopUp.add(categoryPercentLabel, 1, 2);
         
-        Scene categoryPercentScene = new Scene(categoryPercentPopUp, 500, 200);
+        Scene categoryPercentScene = new Scene(categoryPercentPopUp, 600, 200);
         Stage categoryPercentStage = new Stage();
         
         categoryPercentStage.setScene(categoryPercentScene);
@@ -637,13 +655,12 @@ public class BankApplicationUi extends Application {
         });
         
         // Main scene
-        
         BorderPane root = new BorderPane();
-        root.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        root.setBackground(new Background(new BackgroundFill(Color.DIMGREY, CornerRadii.EMPTY, Insets.EMPTY)));
         
         root.setCenter(firstPage);
         
-        Scene firstPageScene = new Scene(root, 420, 420);
+        Scene firstPageScene = new Scene(root, 420, 370);
        
         backToFrontP.setOnAction(new EventHandler<ActionEvent>() {
             @Override

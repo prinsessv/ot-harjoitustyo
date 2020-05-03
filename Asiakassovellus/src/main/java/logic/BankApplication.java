@@ -150,8 +150,8 @@ public class BankApplication {
             marginal = income - expenses;
             return "You have still " + String.valueOf(marginal) + "$ left to use.";
         } else if(expenses > income) {
-            return "You have used more money than you have. " +
-                   "\n" + "Please contact the customer service to get your economy balanced.";
+            return "Please notice that you have used more money than you got this month. " +
+                   "\n" + "Contact the customer service to get your economy balanced if needed.";
         } else {
             return "You have 0$ to use.";
         }
@@ -167,7 +167,9 @@ public class BankApplication {
                     continue;
                 }
                 String[] splitRow = row.split(";");
-                categories.add(splitRow[1]);
+                if(!(categories.contains(splitRow[1]))) {
+                    categories.add(splitRow[1]);
+                }
             }
         } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
@@ -185,13 +187,15 @@ public class BankApplication {
         
         if (income > 0) {
             double percent = (double) (expenses * 100) / income;
-            return "You have used " + String.valueOf(percent) + "% of your income this month.";
+            return "You have used " + String.valueOf(Math.round(percent)) + "% of your income this month.";
         } else { 
             return "You have used 0% of your income this month.";
         }
     }
     
     public static String moneyUsedToCertainCategory(String category) {
+        int sum = 0;
+        
         try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
             while (reader.hasNextLine()) {
                 String row = reader.nextLine();
@@ -200,11 +204,14 @@ public class BankApplication {
                 }
                 String[] splitRow = row.split(";");
                 if(splitRow[1].equals(category)) {
-                    return "You have spent " + String.valueOf(splitRow[2]) + "$ to category " + category + " which equals ";
+                    sum += Integer.valueOf(splitRow[2]);
                 }
             }
         } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
+        }
+        if(sum > 0) {
+            return "You have spent " + String.valueOf(sum) + "$ to category " + category + " which equals ";
         }
         return "You have spent 0$ to category " + category + " which equals ";
     }
@@ -233,7 +240,7 @@ public class BankApplication {
             }
             percent = (double) (totalOfUsedMoney * 100) / Integer.parseInt(BankApplication.getIncome());
         } 
-        return String.valueOf(percent) + "% of your income."; 
+        return String.valueOf(Math.round(percent)) + "% of your income."; 
     }
     
     /**
