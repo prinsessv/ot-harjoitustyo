@@ -1,2 +1,0 @@
-purchase;purchaseCategory;200
-purchase;category;560
