@@ -1,25 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.FileNotFoundException;
 import logic.BankApplication;
 import logic.Users;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * This class tests the whole application
  * @author anni
  */
 public class BankApplicationTest {
-    
-    public BankApplicationTest() {
-    }
     
     @BeforeClass
     public static void setUpClass() throws FileNotFoundException {
@@ -30,20 +20,11 @@ public class BankApplicationTest {
         BankApplication.bookExpense("purchase", "category", 560);
     }
     
-    //@AfterClass
-    //public static void tearDownClass() {
-    //}
+    @Test
+    public void usernameIsFound() throws FileNotFoundException {
+        assertEquals(true, Users.findUsername("user"));
+    }
     
-    //@Before
-    //public void setUp() throws FileNotFoundException{
-    //}
-    
-    //@After
-    //public void tearDown() {
-    //}
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
     @Test
     public void isAddedUserFound() throws FileNotFoundException {
         assertEquals("user", Users.findUser("user", "password").toString());
