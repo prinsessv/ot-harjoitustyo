@@ -18,14 +18,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.effect.Bloom;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -36,7 +32,6 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -54,7 +49,6 @@ public class BankApplicationUi extends Application {
     Background transparentBackground = new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY));
     Border border = new Border(new BorderStroke(Color.DEEPSKYBLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     Bloom bloom = new Bloom();
-    
     
     public void setPane(GridPane gridpane, int size) {
         gridpane.setHgap(10);
@@ -98,7 +92,6 @@ public class BankApplicationUi extends Application {
         bloom.setThreshold(0.1);
         
         // Sign in view:
-        primaryStage.setTitle("Accounting");
         
         GridPane firstPage = new GridPane();
         setPane(firstPage, 400);
@@ -135,7 +128,7 @@ public class BankApplicationUi extends Application {
         
         // Form that appears after pressing button CREATE NEW USER:
         GridPane createNewUserForm = new GridPane();
-        setPane(createNewUserForm, 500);
+        setPane(createNewUserForm, 450);
       
         Label createNewUserTitle = new Label("You wanted to create new user");
         setLabel(createNewUserTitle, Color.LIGHTCYAN, 15, true);
@@ -229,9 +222,13 @@ public class BankApplicationUi extends Application {
         
         Button logoutButton = new Button("LOGOUT");
         setNormalButton(logoutButton);
-        bankApplicationView.add(logoutButton, 1, 0); 
         
-        Scene welcomeScene = new Scene(bankApplicationView);
+        BorderPane welcomeRoot = new BorderPane();
+        ToolBar tools = new ToolBar(logoutButton);
+        welcomeRoot.setTop(tools);
+        welcomeRoot.setCenter(bankApplicationView);
+        
+        Scene welcomeScene = new Scene(welcomeRoot);
         
         // LOGIN button action:
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -640,8 +637,13 @@ public class BankApplicationUi extends Application {
         });
         
         // Main scene
-        Scene firstPageScene = new Scene(firstPage, 400, 375);
         
+        BorderPane root = new BorderPane();
+        root.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        root.setCenter(firstPage);
+        
+        Scene firstPageScene = new Scene(root, 420, 420);
        
         backToFrontP.setOnAction(new EventHandler<ActionEvent>() {
             @Override

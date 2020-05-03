@@ -51,11 +51,11 @@ public class BankApplication {
                 writer.flush();
                 writer.close();
             } catch (Exception e) {
-                return "Booking income failed";
+                return "Booking income failed.";
             }
-            return "Income is booked succesfully";
+            return "Income is booked succesfully.";
         } else {
-            return "Income can not be negative or zero";
+            return "Income can not be negative or zero.";
         }
     }
     
@@ -75,11 +75,11 @@ public class BankApplication {
                 writer.flush();
                 writer.close();
             } catch (Exception e) {
-                return "Booking expense failed";
+                return "Booking expense failed.";
             }
-            return "Expense is booked succesfully";
+            return "Expense is booked succesfully.";
         } else {
-            return "Cost can not be negative";
+            return "Cost can not be negative.";
         }
     }
     
@@ -132,10 +132,10 @@ public class BankApplication {
         
         if (income < average) {
             marginal = average - income;
-            return "It is " + String.valueOf(marginal) + " $ less than the average monthly income in US.";
+            return "It is " + String.valueOf(marginal) + "$ less than the average monthly income in US.";
         } else if (income > average) {
             marginal = income - average;
-            return "It is " + String.valueOf(marginal) + " $ more than the average monthly income in US.";
+            return "It is " + String.valueOf(marginal) + "$ more than the average monthly income in US.";
         } else {
             return "Your income is the average monthly income in US.";
         }
@@ -185,9 +185,9 @@ public class BankApplication {
         
         if (income > 0) {
             double percent = (double) (expenses * 100) / income;
-            return "You have used " + String.valueOf(percent) + "% of your income this month";
+            return "You have used " + String.valueOf(percent) + "% of your income this month.";
         } else { 
-            return "You have used 0% of your income this month";
+            return "You have used 0% of your income this month.";
         }
     }
     
@@ -206,7 +206,7 @@ public class BankApplication {
         } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
         }
-        return "0";
+        return "You have spent 0$ to category " + category + " which equals ";
     }
     
     /**
