@@ -146,10 +146,10 @@ public class BankApplication {
         double income = Double.parseDouble(BankApplication.getIncome());
         double marginal = 0;
         
-        if(income > expenses) {
+        if (income > expenses) {
             marginal = income - expenses;
             return "You have still " + String.valueOf(marginal) + "$ left to use.";
-        } else if(expenses > income) {
+        } else if (expenses > income) {
             return "Please notice that you have used more money than you got this month. " +
                    "\n" + "Contact the customer service to get your economy balanced if needed.";
         } else {
@@ -167,12 +167,12 @@ public class BankApplication {
                     continue;
                 }
                 String[] splitRow = row.split(";");
-                if(!(categories.contains(splitRow[1]))) {
+                if (!(categories.contains(splitRow[1]))) {
                     categories.add(splitRow[1]);
                 }
             }
         } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
         return categories;
     }
@@ -203,14 +203,14 @@ public class BankApplication {
                     continue;
                 }
                 String[] splitRow = row.split(";");
-                if(splitRow[1].equals(category)) {
+                if (splitRow[1].equals(category)) {
                     sum += Double.valueOf(splitRow[2]);
                 }
             }
         } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
-        if(sum > 0) {
+        if (sum > 0) {
             return "You have spent " + String.valueOf(sum) + "$ to category " + category + " which equals ";
         }
         return "You have spent 0$ to category " + category + " which equals ";
