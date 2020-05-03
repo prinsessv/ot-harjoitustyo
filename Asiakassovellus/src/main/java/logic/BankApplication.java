@@ -40,8 +40,8 @@ public class BankApplication {
      * @param income Integer value of income that the customer wanted to book
      * @return String which tells if the income was booked successfully
      */
-    public static String bookIncome(int income) throws FileNotFoundException {
-        int incomeToBook = Integer.valueOf(BankApplication.getIncome()) + income;
+    public static String bookIncome(double income) throws FileNotFoundException {
+        double incomeToBook = Double.valueOf(BankApplication.getIncome()) + income;
         
         if (income > 0) {
             try {
@@ -66,7 +66,7 @@ public class BankApplication {
      * @param cost Integer value of cost of the purchase
      * @return String which tells if the expense was booked successfully
      */
-    public static String bookExpense(String purchase, String purchaseCategory, int cost) {
+    public static String bookExpense(String purchase, String purchaseCategory, double cost) {
         if (cost >= 0) {
             try {
                 FileWriter writer = new FileWriter(expenseFilePath, true);
@@ -107,7 +107,7 @@ public class BankApplication {
      * @return Integer value of the expenses in total if found or zero if the file was empty
      */
     public static String getExpenses() {
-        int expenseSum = 0;
+        double expenseSum = 0;
        
         try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
             while (reader.hasNextLine()) {
@@ -116,7 +116,7 @@ public class BankApplication {
                     continue;
                 }
                 String[] expenses = row.split(";");
-                int cost = Integer.valueOf(expenses[2]);
+                double cost = Double.valueOf(expenses[2]);
                 expenseSum += cost;
             }
         } catch (Exception e) {
@@ -126,9 +126,9 @@ public class BankApplication {
     }
     
     public static String compareIncomeToAverage() throws FileNotFoundException {
-        int income = Integer.parseInt(BankApplication.getIncome());
+        double income = Double.parseDouble(BankApplication.getIncome());
         int average = 3714;
-        int marginal = 0;
+        double marginal = 0;
         
         if (income < average) {
             marginal = average - income;
@@ -142,9 +142,9 @@ public class BankApplication {
     }
     
     public static String howMuchIncomeLeft() throws FileNotFoundException {
-        int expenses = Integer.parseInt(BankApplication.getExpenses());
-        int income = Integer.parseInt(BankApplication.getIncome());
-        int marginal = 0;
+        double expenses = Double.parseDouble(BankApplication.getExpenses());
+        double income = Double.parseDouble(BankApplication.getIncome());
+        double marginal = 0;
         
         if(income > expenses) {
             marginal = income - expenses;
@@ -182,8 +182,8 @@ public class BankApplication {
      * @return String value of the percent used
      */
     public static String percentUsedOfIncome() throws FileNotFoundException {
-        int income = Integer.parseInt(BankApplication.getIncome());
-        int expenses = Integer.parseInt(BankApplication.getExpenses());
+        double income = Double.parseDouble(BankApplication.getIncome());
+        double expenses = Double.parseDouble(BankApplication.getExpenses());
         
         if (income > 0) {
             double percent = (double) (expenses * 100) / income;
@@ -194,7 +194,7 @@ public class BankApplication {
     }
     
     public static String moneyUsedToCertainCategory(String category) {
-        int sum = 0;
+        double sum = 0;
         
         try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
             while (reader.hasNextLine()) {
@@ -204,7 +204,7 @@ public class BankApplication {
                 }
                 String[] splitRow = row.split(";");
                 if(splitRow[1].equals(category)) {
-                    sum += Integer.valueOf(splitRow[2]);
+                    sum += Double.valueOf(splitRow[2]);
                 }
             }
         } catch (Exception e) {
@@ -221,9 +221,9 @@ public class BankApplication {
      * @return String value of the percent used to a certain category or zero if used money is zero
      */
     public static String percentsUsedOfIncomeForEachCategory(String category) throws FileNotFoundException {
-        int totalOfUsedMoney = 0;
+        double totalOfUsedMoney = 0;
         
-        if (Integer.parseInt(BankApplication.getIncome()) > 0) {
+        if (Double.parseDouble(BankApplication.getIncome()) > 0) {
             try (Scanner reader = new Scanner(new File(Users.getCurrentUser().getExpenseFilePath()))) {
                 while (reader.hasNextLine()) {
                     String row = reader.nextLine();
@@ -232,13 +232,13 @@ public class BankApplication {
                     }
                     String[] splitRow = row.split(";");
                     if (splitRow[1].equalsIgnoreCase(category)) {
-                        totalOfUsedMoney += Integer.valueOf(splitRow[2]);
+                        totalOfUsedMoney += Double.valueOf(splitRow[2]);
                     } 
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
-            percent = (double) (totalOfUsedMoney * 100) / Integer.parseInt(BankApplication.getIncome());
+            percent = (double) (totalOfUsedMoney * 100) / Double.parseDouble(BankApplication.getIncome());
         } 
         return String.valueOf(Math.round(percent)) + "% of your income."; 
     }

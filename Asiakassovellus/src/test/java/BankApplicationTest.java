@@ -15,9 +15,9 @@ public class BankApplicationTest {
     public static void setUpClass() throws FileNotFoundException {
         Users.createNewUser("user", "password");
         BankApplication app = new BankApplication(Users.getCurrentUser());
-        BankApplication.bookIncome(2000);
-        BankApplication.bookExpense("purchase", "purchaseCategory", 200);
-        BankApplication.bookExpense("purchase", "category", 560);
+        BankApplication.bookIncome(2000.0);
+        BankApplication.bookExpense("purchase", "purchaseCategory", 200.0);
+        BankApplication.bookExpense("purchase", "category", 560.0);
     }
     
     @Test
@@ -32,12 +32,12 @@ public class BankApplicationTest {
     
     @Test
     public void incomeIsBooked() throws FileNotFoundException {
-        assertEquals("2000", BankApplication.getIncome());
+        assertEquals("2000.0", BankApplication.getIncome());
     }
     
     @Test 
     public void expenseIsBooked() throws FileNotFoundException {
-        assertEquals("760", BankApplication.getExpenses());
+        assertEquals("760.0", BankApplication.getExpenses());
     }
     
     @Test
@@ -48,14 +48,14 @@ public class BankApplicationTest {
     @Test
     public void expenseIsNotBookedIfUnderZero() {
         BankApplication.bookExpense("purchase", "purchaseCategory", -200);
-        assertEquals("760", BankApplication.getExpenses());
+        assertEquals("760.0", BankApplication.getExpenses());
     }
     
     @Test
     public void incomeIsNotBookedIfUnderOrEqualToZero() throws FileNotFoundException {
         BankApplication.bookIncome(-200);
         BankApplication.bookIncome(0);
-        assertEquals("2000", BankApplication.getIncome());
+        assertEquals("2000.0", BankApplication.getIncome());
     }
     
     @Test 
@@ -65,12 +65,12 @@ public class BankApplicationTest {
     
     @Test
     public void comparingIncomeWorks() throws FileNotFoundException {
-        assertEquals("It is 1714$ less than the average monthly income in US.", BankApplication.compareIncomeToAverage());
+        assertEquals("It is 1714.0$ less than the average monthly income in US.", BankApplication.compareIncomeToAverage());
     }
     
     @Test
     public void howMuchIncomeLeftReturnsRightValue() throws FileNotFoundException {
-        assertEquals("You have still 1240$ left to use.", BankApplication.howMuchIncomeLeft());
+        assertEquals("You have still 1240.0$ left to use.", BankApplication.howMuchIncomeLeft());
     }
     
     @Test
@@ -80,7 +80,7 @@ public class BankApplicationTest {
     
     @Test
     public void moneyUsedToCertainCategoryIsRight() {
-        assertEquals("You have spent 200$ to category purchaseCategory which equals ", BankApplication.moneyUsedToCertainCategory("purchaseCategory"));
+        assertEquals("You have spent 200.0$ to category purchaseCategory which equals ", BankApplication.moneyUsedToCertainCategory("purchaseCategory"));
         assertEquals("You have spent 0$ to category purchaseC which equals ", BankApplication.moneyUsedToCertainCategory("purchaseC"));
     }
 }

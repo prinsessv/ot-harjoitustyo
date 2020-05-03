@@ -296,15 +296,15 @@ public class BankApplicationUi extends Application {
         bookItButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if (Integer.parseInt(bookIncomeField.getText()) > 0) {
+                if (bookIncomeField.getText().matches("[0-9]*.[0-9]*") && Double.parseDouble(bookIncomeField.getText()) > 0) {
                     try {
-                        BankApplication.bookIncome(Integer.parseInt(bookIncomeField.getText()));
+                        BankApplication.bookIncome(Double.parseDouble(bookIncomeField.getText()));
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     incomeBookedOrNot.setText("Income has been booked successfully.");
                 } else {
-                    incomeBookedOrNot.setText("Income can not be negative or zero.");
+                    incomeBookedOrNot.setText("Income needs to be more than zero.");
                 }
             }
         });
@@ -369,10 +369,10 @@ public class BankApplicationUi extends Application {
         bookPurchaseButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if (Integer.parseInt(bookingExpense.getText()) >= 0) {
-                    BankApplication.bookExpense(bookingPurchase.getText(), categoryOfExpense.getText(), Integer.parseInt(bookingExpense.getText()));
+                if (bookingExpense.getText().matches("[0-9]*.[0-9]*") && Double.parseDouble(bookingExpense.getText()) >= 0) {
+                    BankApplication.bookExpense(bookingPurchase.getText(), categoryOfExpense.getText(), Double.parseDouble(bookingExpense.getText()));
                     try {
-                        if(Integer.parseInt(BankApplication.getExpenses()) > Integer.parseInt(BankApplication.getIncome())) {
+                        if(Double.parseDouble(BankApplication.getExpenses()) > Double.parseDouble(BankApplication.getIncome())) {
                             expenseBookedOrNot.setText("Expense has been booked successfully, but you have used"
                                     + "\n" + " more money than you have got this month. "
                                     + "\n" + "Please contact the customer service if needed.");
@@ -383,7 +383,7 @@ public class BankApplicationUi extends Application {
                         Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
-                    expenseBookedOrNot.setText("Expense can not be negative.");
+                    expenseBookedOrNot.setText("Expenses cost needs to be more or equal to zero.");
                 }
             }
         }); 
