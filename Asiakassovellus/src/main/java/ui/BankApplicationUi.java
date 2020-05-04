@@ -321,9 +321,9 @@ public class BankApplicationUi extends Application {
         bookItButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if (bookIncomeField.getText().matches("[0-9]*.[0-9]*") && Double.parseDouble(bookIncomeField.getText()) > 0) {
+                if (bookIncomeField.getText().matches("[0-9]*.[0-9]*") && Double.parseDouble(bookIncomeField.getText().replaceAll(",", ".")) > 0) {
                     try {
-                        BankApplication.bookIncome(Double.parseDouble(bookIncomeField.getText()));
+                        BankApplication.bookIncome(Double.parseDouble(bookIncomeField.getText().replaceAll(",", ".")));
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                     }
