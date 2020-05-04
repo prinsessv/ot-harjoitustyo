@@ -49,7 +49,7 @@ Sovelluksen toimintonäppäimiä ovat:
 
 - Käyttäjä voi kirjata menoja ja tulostaa siitä raportin, menot eivät voi olla negatiivisia
   - Kirjattava tulo voi sisältää senttejä, jotka voidaan erottaa joko desimaalipilkulla tai pisteellä
-  - Jos menot ylittävät tulot, sovellus varoittaa tästä uusia menoja kirjattaessa, sekä menot kertovassa raportissa: sovellus siis tarkastaa riittääkö tulot kirjattaviin menoihin
+  - Jos menot ylittävät tulot, sovellus varoittaa tästä uusia menoja kirjattaessa sekä menot kertovassa raportissa: sovellus siis tarkastaa riittääkö tulot kirjattaviin menoihin
   - Raportti kertoo myös paljonko rahaa on jäljellä käytettäväksi
 
 - Käyttäjä voi tulostaa raportin siitä, kuinka monta prosenttia hän on käyttänyt palkastaan tähän mennessä
