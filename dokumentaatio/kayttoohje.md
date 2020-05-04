@@ -28,6 +28,12 @@ Ohjelma kertoo, jos käyttäjätunnus on varattu, vääränlainen, tai jos sen l
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttajanimiVarattu.png" width="300">               <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttajanimiErikoismerkit.png" width="305">
 
+## Sovellusnäkymä
+
+Kun kirjautuminen on onnistunut, näkymä vaihtuu sovellusnäkymään:
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/sovellus.png" width="300">
+
 
 ## Menojen ja tulojen kirjaaminen
 
