@@ -76,7 +76,7 @@ Kategorian määrittelyn jälkeen raportti aukeaa uuteen ikkunaan, kuten muutkin
 
 Sovellusnäkymän yläkulmassa on nappi Reset all, jota painamalla voi milloin tahansa nollata kirjatut tulot ja menot. Nollaus on tarkoitus kuitenkin tehdä joka kuukauden alussa, jotta käyttöön saadaan uudet päivitetyt raportit. Reset all nappi avaa ponnahdusikkunan, jossa varmistetaan, että resetointi halutaan varmasti tehdä.
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/resetPopup.png" width="300">               <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/resetSuccess.png" width="300">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/resetPopup.png" width="300">               <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/resetSuccess.png" width="295">
 
 
 ## Logout
