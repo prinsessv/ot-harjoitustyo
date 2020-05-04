@@ -1,4 +1,4 @@
-# Käyttöohje
+# Käyttöohje :books:
 
 Lataa sovelluksen uusin versio linkin kautta: [Sovelluksen uusin versio](https://github.com/prinsessv/ot-harjoitustyo/releases/tag/viikko6)
 
@@ -66,13 +66,20 @@ Seuraavat prosenttimääriä kertovat raportit pyöristävät prosentin lähimp�
 
 Napin "Percents used of income for each category" painalluksen jälkeen täytyy määritellä minkä kategorian raportin haluaa nähdä:
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/whichCategory.png" width="370">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/whichCategory.png" width="350">
 
 Kategorian määrittelyn jälkeen raportti aukeaa uuteen ikkunaan, kuten muutkin raportit.
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/categoryPercentRaportti.png" width="370">
 
+## Reset
+
+Sovellusnäkymän yläkulmassa on nappi Reset all, jota painamalla voi milloin tahansa nollata kirjatut tulot ja menot. Nollaus on tarkoitus kuitenkin tehdä joka kuukauden alussa, jotta käyttöön saadaan uudet päivitetyt raportit. Reset all nappi avaa ponnahdusikkunan, jossa varmistetaan, että resetointi halutaan varmasti tehdä.
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/resetPopup.png" width="300">               <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/resetSuccess.png" width="300">
+
+
 ## Logout
 
-Etusivulla on nappi LOGOUT, joka kirjaa käyttäjän ulos. Nappia painamalla näkymä vaihtuu takaisin kirjautumisnäkymään, josta voi kirjautua uudelleen sisään tai luoda uuden käyttäjän.
+Sovellusnäkymän yläkulmassa on nappi LOGOUT, joka kirjaa käyttäjän ulos. Nappia painamalla näkymä vaihtuu takaisin kirjautumisnäkymään, josta voi kirjautua uudelleen sisään tai luoda uuden käyttäjän.
 
