@@ -42,7 +42,7 @@ public class BankApplicationTest {
     
     @Test
     public void percentIsRight() throws FileNotFoundException {
-        assertEquals("You have used 38% of your income this month.", BankApplication.percentUsedOfIncome());
+        assertEquals("You have used approximately 38% of your income this month.", BankApplication.percentUsedOfIncome());
     }
     
     @Test
@@ -80,7 +80,7 @@ public class BankApplicationTest {
     
     @Test
     public void moneyUsedToCertainCategoryIsRight() {
-        assertEquals("You have spent 200.0$ to category purchaseCategory which equals ", BankApplication.moneyUsedToCertainCategory("purchaseCategory"));
-        assertEquals("You have spent 0$ to category purchaseC which equals ", BankApplication.moneyUsedToCertainCategory("purchaseC"));
+        assertEquals("You have spent 200.0$ to category purchaseCategory which equals approximately ", BankApplication.moneyUsedToCertainCategory("purchaseCategory"));
+        assertEquals("You have spent 0$ to category purchaseC which equals approximately ", BankApplication.moneyUsedToCertainCategory("purchaseC"));
     }
 }

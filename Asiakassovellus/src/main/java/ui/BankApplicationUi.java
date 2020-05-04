@@ -44,7 +44,7 @@ import logic.Users;
  * @author anni
  */
 public class BankApplicationUi extends Application {
-    Background greyBackground = new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY));
+    Background greyBackground = new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY));
     Background transparentBackground = new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY));
     Border border = new Border(new BorderStroke(Color.DEEPSKYBLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     Bloom bloom = new Bloom();
@@ -64,6 +64,7 @@ public class BankApplicationUi extends Application {
         button.setEffect(bloom);
         button.setBackground(transparentBackground);
     }
+    
     public void setNormalButton(Button button) {
         button.setBorder(border);
     }
@@ -91,7 +92,10 @@ public class BankApplicationUi extends Application {
         // Sign in view:
         GridPane firstPage = new GridPane();
         setPane(firstPage, 400);
-      
+ 
+        // Sign in (first page) scene
+        Scene firstPageScene = new Scene(firstPage, 420, 370);
+        
         Text signInText = new Text("Sign In");
         setText(signInText, Color.LIGHTCYAN, 15);
         firstPage.add(signInText, 0, 0, 2, 1);
@@ -174,18 +178,31 @@ public class BankApplicationUi extends Application {
         setTransparentButton(backToFrontP, Color.LIGHTCYAN, 20);
         createNewUserForm.add(backToFrontP, 0, 0);
         
-        // CREATE button action:
+        backToFrontP.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(firstPageScene);
+            }
+        });
+        
+        // CREATE button action (checks that username does not contain special characters and that
+       //  passwords are equal) :
         finalCreateButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 String username = createUsernameField.getText();
                 String passw = createPasswordField.getText();
                 try {
-                    if(createPasswordField.getText().equals(repeatPasswordField.getText())) {
-                        usernameOkOrNot.setText(Users.createNewUser(username, passw));
+                    if(username.matches("[a-ö]*[0-9]*[a-ö]*")) {
+                        if(createPasswordField.getText().equals(repeatPasswordField.getText())) {
+                            usernameOkOrNot.setText(Users.createNewUser(username, passw));
+                        } else {
+                            usernameOkOrNot.setText("Passwords need to be equal.");
+                        }
                     } else {
-                       usernameOkOrNot.setText("Passwords need to be equal.");
+                        usernameOkOrNot.setText("Username can not contain special characters.");
                     }
+                    
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(BankApplicationUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -218,7 +235,15 @@ public class BankApplicationUi extends Application {
         Button logoutButton = new Button("LOGOUT");
         setNormalButton(logoutButton);
         
-        // Toolbar
+        // Logout button action
+        logoutButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(firstPageScene);
+            }
+        });
+        
+        // Toolbar for the application
         BorderPane welcomeRoot = new BorderPane();
         
         BorderPane toolPane = new BorderPane();
@@ -272,7 +297,7 @@ public class BankApplicationUi extends Application {
         
         Scene bookingIncomeScene = new Scene(bookIncomeForm);
         
-        //After book income form
+        // After book income form
         Label incomeBookedOrNot = new Label("");
         setLabel(incomeBookedOrNot, Color.LIGHTCYAN, 12, true);
         bookIncomeForm.add(incomeBookedOrNot, 1, 3);
@@ -309,7 +334,7 @@ public class BankApplicationUi extends Application {
             }
         });
         
-        //Book expense form
+        // Book expense form
         GridPane bookExpenseForm = new GridPane();
         setPane(bookExpenseForm, 500);
         
@@ -369,8 +394,8 @@ public class BankApplicationUi extends Application {
         bookPurchaseButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if (bookingExpense.getText().matches("[0-9]*.[0-9]*") && Double.parseDouble(bookingExpense.getText()) >= 0) {
-                    BankApplication.bookExpense(bookingPurchase.getText(), categoryOfExpense.getText(), Double.parseDouble(bookingExpense.getText()));
+                if (bookingExpense.getText().matches("[0-9]*.[0-9]*") && Double.parseDouble(bookingExpense.getText().replaceAll(",", ".")) >= 0) {
+                    BankApplication.bookExpense(bookingPurchase.getText(), categoryOfExpense.getText(), Double.parseDouble(bookingExpense.getText().replaceAll(",", ".")));
                     try {
                         if(Double.parseDouble(BankApplication.getExpenses()) > Double.parseDouble(BankApplication.getIncome())) {
                             expenseBookedOrNot.setText("Expense has been booked successfully, but you have used"
@@ -433,7 +458,7 @@ public class BankApplicationUi extends Application {
             }
         });
         
-        // ResetButton popup and action
+        // Reset popup
         GridPane resetPane = new GridPane();
         setPane(resetPane, 200);
         
@@ -451,7 +476,7 @@ public class BankApplicationUi extends Application {
         resetWindow.setX(primaryStage.getX() + 200);
         resetWindow.setY(primaryStage.getY() + 100);
         
-        
+        // Reset all button action
         resetButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -460,6 +485,7 @@ public class BankApplicationUi extends Application {
             }
         }); 
         
+        // Checks if the customer is sure that he/she wants to reset
         areYouSureButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -537,7 +563,7 @@ public class BankApplicationUi extends Application {
         GridPane percentPopUp = new GridPane();
         setPane(percentPopUp, 200);
         percentPopUp.getChildren().add(percentLabel);
-        Scene percentScene = new Scene(percentPopUp, 450, 200);
+        Scene percentScene = new Scene(percentPopUp, 550, 200);
         Stage percentStage = new Stage();
         percentStage.setScene(percentScene);
         percentStage.setTitle("Percent of income used");
@@ -556,7 +582,7 @@ public class BankApplicationUi extends Application {
             }
         });
         
-        // All categories PopUp
+        // All categories popup
         GridPane categoryPane = new GridPane();
         setPane(categoryPane, 200);
         
@@ -568,7 +594,7 @@ public class BankApplicationUi extends Application {
         setLabel(categoriesList, Color.LIGHTCYAN, 12, false);
         categoryPane.add(categoriesList, 0, 2);
         
-        Scene categoryScene = new Scene(categoryPane, 450, 300);
+        Scene categoryScene = new Scene(categoryPane, 550, 300);
         Stage categoryStage = new Stage();
         categoryStage.setTitle("Categories");
         categoryStage.setScene(categoryScene);
@@ -579,7 +605,7 @@ public class BankApplicationUi extends Application {
                 try {
                     categoryLabel.setText("You have bought something from all of these categories: ");
                     ArrayList<String> list = BankApplication.getAllCategories();
-                    if(list.size() == 0) {
+                    if(list.isEmpty()) {
                         categoriesList.setText("No categories found because you do not have any expenses.");
                     } else {
                         String text = "";
@@ -596,7 +622,7 @@ public class BankApplicationUi extends Application {
             }
         });
         
-        // Form opening after pressing percents used of each category
+        // Form opening after pressing percents used for each category
         GridPane percentUsedForEachCategory = new GridPane();
         setPane(percentUsedForEachCategory, 300);
         
@@ -621,7 +647,7 @@ public class BankApplicationUi extends Application {
             }
         });
         
-        // Percent per category popup
+        // Percent used for each category popup
         GridPane categoryPercentPopUp = new GridPane();
         setPane(categoryPercentPopUp, 200);
         
@@ -653,35 +679,13 @@ public class BankApplicationUi extends Application {
                 categoryPercentStage.show();
             }
         });
-        
-        // Main scene
-        BorderPane root = new BorderPane();
-        root.setBackground(new Background(new BackgroundFill(Color.DIMGREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        
-        root.setCenter(firstPage);
-        
-        Scene firstPageScene = new Scene(root, 420, 370);
        
-        backToFrontP.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                primaryStage.setScene(firstPageScene);
-            }
-        });
-        
-        // Logout button action
-        logoutButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                primaryStage.setScene(firstPageScene);
-            }
-        });
-        //
-        
+        // Sign in view (first page) opens when the program is started
         primaryStage.setScene(firstPageScene);
         primaryStage.show();
-        //
+        
     }
+    
     /**
      * @param args the command line arguments
      */

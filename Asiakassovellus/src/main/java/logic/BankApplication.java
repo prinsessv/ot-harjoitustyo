@@ -187,7 +187,11 @@ public class BankApplication {
         
         if (income > 0) {
             double percent = (double) (expenses * 100) / income;
-            return "You have used " + String.valueOf(Math.round(percent)) + "% of your income this month.";
+            if (Math.round(percent) == 0) {
+                return "You have used under 1% of your income this month.";
+            } else {
+                return "You have used approximately " + String.valueOf(Math.round(percent)) + "% of your income this month.";
+            }
         } else { 
             return "You have used 0% of your income this month.";
         }
@@ -211,9 +215,9 @@ public class BankApplication {
             System.out.println("Error: " + e.getMessage());
         }
         if (sum > 0) {
-            return "You have spent " + String.valueOf(sum) + "$ to category " + category + " which equals ";
+            return "You have spent " + String.valueOf(sum) + "$ to category " + category + " which equals approximately ";
         }
-        return "You have spent 0$ to category " + category + " which equals ";
+        return "You have spent 0$ to category " + category + " which equals approximately ";
     }
     
     /**
