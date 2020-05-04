@@ -10,7 +10,7 @@ Testit testaavat ohjelman sovelluslogiikkaa eli paketissa logic olevia luokkia B
 
 Jacoco-raportista nähdään, että sovelluksen testauksen rivikattavuus on 78% ja haarautumakattavuus hieman pienempi 67%.
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/jacocoReport.png" width="600">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/jacocoReport.png" width="800">
 
 # Järjestelmätestaus
 
