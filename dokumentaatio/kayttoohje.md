@@ -37,12 +37,12 @@ Kun kirjautuminen onnistuu, näkymä vaihtuu sovellusnäkymään:
 
 ## Menojen ja tulojen kirjaaminen
 
-Tulojen kirjaaminen tapahtuu painamalla sovellusnäkymän nappia Book income. Tämän napin painamisen jälkeen avautuu uusi näkymä. Syötekenttään kirjataan haluttu muistiin kirjattava tulo. Kun BOOK nappia on painettu, etusivulle voi siirtyä nuolinäppäimen avulla. Syötekenttään voidaan kirjoittaa myös senttejä. Senttien erottelu onnistuu sekä desimaalipilkulla, että pisteellä. Tulo ei kuitenkaan saa olla nolla eikä negatiivinen. Huomaathan, että voit lisätä aiempaan merkkaamaasi tuloon uuden summan tätä kautta. Jos olet esimerkiksi merkannut tuloiksesi 1500, voit lisätä siihen 500 kirjaamalla sen tätä kautta. 
+Tulojen kirjaaminen tapahtuu painamalla sovellusnäkymän nappia Book income. Tämän napin painamisen jälkeen avautuu uusi näkymä. Syötekenttään kirjataan haluttu muistiin kirjattava tulo. Kun BOOK nappia on painettu, etusivulle voi siirtyä nuolinäppäimen avulla. Syötekenttään voidaan kirjoittaa myös senttejä. Senttien erottelu onnistuu sekä desimaalipilkulla, että pisteellä. Tulo ei kuitenkaan saa olla nolla eikä negatiivinen. Huomaathan, että voit lisätä aiempaan merkkaamaasi tuloon uuden summan tätä kautta. Jos olet esimerkiksi merkannut tuloiksesi 1500, voit lisätä siihen 500 painamalla Book income näppäintä ja kirjaamalla 500 aukeavaan lomakkeeseen.
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/incomeBooked.png" width="300">               <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/incomeMiinus.png" width="300">
 
 Menojen kirjaaminen tapahtuu painamalla nappia Book expense. Tämän napin painamisen jälkeen avautuu uusi näkymä. Syötekenttiin kirjataan ensin ostos, sitten ostoksen kategoria ja lopuksi ostoksen hinta.
-Kun haluttu meno on kirjattu ja Book your purchase nappia on painettu, etusivulle pääsee takaisin nuolinäppäimen avulla. Ostoksen hinnan sentit voi jälleen erotella sekä desimaalipilkulla, että pisteellä. Ostoksen hinta ei saa olla negatiivinen, mutta ilmaiset saadut asiat on myös mahdollista kirjata sovellukseen.
+Kun haluttu meno on kirjattu ja Book your purchase nappia on painettu, etusivulle pääsee takaisin nuolinäppäimen avulla. Ostoksen hinnan sentit voi jälleen erotella sekä desimaalipilkulla, että pisteellä. Ostoksen hinta ei saa olla negatiivinen, mutta ilmaiset saadut asiat on myös mahdollista kirjata sovellukseen. Jos menot ylittävät tulot, sovellus varoittaa siitä. 
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/expenseBooked.png" width="300">               <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/expenseMiinus.png" width="300">
 
@@ -57,6 +57,8 @@ Haluttua raporttinappia klikkaamalla aukeaa ponnahdusikkuna, joka kertoo halutun
 Alla ovat raporttivaihtoehtojen ponnahdusikkunat samassa järjestyksessä kuin napit ovat ylläolevassa raporttinäkymässä:
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/incomeRaportti.png" width="370">
+
+Jos menot ovat ylittäneet tulot, myös alla oleva raportti kertoo sen. 
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/expenseRaportti.png" width="370">
 
