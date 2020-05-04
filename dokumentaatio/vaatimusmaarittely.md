@@ -6,69 +6,77 @@ Pankki tarjoaa asiakkailleen sovelluksen, jossa asiakas voi pitää kirjaa tuloi
 ## Käyttäjät
 Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä.
 
-## Käyttöliittymäluonnos
+## Käyttöliittymäluonnos :heavy_check_mark:
 
-:heavy_check_mark: Sovelluksessa on kolme eri näkymää: kirjautumiselle, uuden käyttäjän luomiselle ja itse sovellukselle.
+Sovelluksessa on kolme eri näkymää: kirjautumiselle, uuden käyttäjän luomiselle ja itse sovellukselle.
 
-:heavy_check_mark: Kirjautumisnäkymässä käyttäjä voi joko kirjautua sisään kirjoittamalla tunnuksensa ja salasanansa sopiviin kohtiin ja painamalla sen jälkeen nappia LOGIN tai luoda käyttäjätunnuksen painamalla nappia CREATE NEW USER.
+Kirjautumisnäkymässä käyttäjä voi joko kirjautua sisään kirjoittamalla tunnuksensa ja salasanansa sopiviin kohtiin ja painamalla sen jälkeen nappia LOGIN tai luoda käyttäjätunnuksen painamalla nappia CREATE NEW USER.
 
-:heavy_check_mark: Kun käyttäjä päättää luoda käyttäjätunnuksen, aukeaa lomakenäkymä. Tässä näkymässä käyttäjä määrittelee nimensä sekä haluamansa käyttäjätunnuksen ja salasanan sopiviin kohtiin. Lopuksi käyttäjä voi painaa nappia CREATE.
+Kun käyttäjä päättää luoda käyttäjätunnuksen aukeaa lomakenäkymä. Tässä näkymässä käyttäjä määrittelee nimensä sekä haluamansa käyttäjätunnuksen ja salasanan sopiviin kohtiin. Lopuksi käyttäjä voi painaa nappia CREATE.
 
-:heavy_check_mark: Jos käyttäjätunnus ja salasana ovat oikein, näkymä vaihtuu itse sovellukseen.  
+Jos käyttäjätunnus ja salasana ovat oikein, näkymä vaihtuu itse sovellukseen.  
 
-:heavy_check_mark: Sovelluksen toimintonäppäimiä ovat: 
+Sovelluksen toimintonäppäimiä ovat: 
 
-:heavy_check_mark: 1. kirjaa meno
+1. kirjaa meno
 
-:heavy_check_mark: 2. kirjaa tulo 
+2. kirjaa tulo 
 	           
-:heavy_check_mark: 3. tulosta raportti 
+3. tulosta raportti 
 
-:heavy_check_mark: 4. nollaa kuukauden tallennetut tiedot, ja
+4. nollaa kuukauden tallennetut tiedot, ja
 
-:heavy_check_mark: 5. kirjaudu ulos.
+5. kirjaudu ulos.
 
-## Perusversion tarjoama toiminnallisuus
+## Perusversion tarjoama toiminnallisuus :heavy_check_mark:
 
 ### Ennen kirjautumista
 
-:heavy_check_mark: käyttäjä voi luoda tunnuksen, jos hänellä ei vielä ole
+- käyttäjä voi luoda tunnuksen, jos hänellä ei vielä ole
+  - käyttäjätunnuksen on kuitenkin oltava uniikki ja se ei saa sisältää erikoismerkkejä
+  - käyttäjätunnusta luotaessa salasana on myös varmistettava
+  - jos käyttäjätunnus ei ole uniikki tai kirjoitetut salasanat eivät ole samat, sovellus ilmoittaa siitä
 
-:heavy_check_mark: käyttäjätunnuksen on kuitenkin oltava uniikki
-
-:heavy_check_mark: käyttäjä voi kirjautua järjestelmään, jos tunnukset ovat oikeat
+- käyttäjä voi kirjautua järjestelmään, jos tunnukset ovat oikeat
+  - jos tunnukset eivät ole oikeat, sovellus ilmoittaa siitä
 
 ### Kirjautumisen jälkeen
 
-:heavy_check_mark: Käyttäjä voi kirjata menoja ja tulostaa siitä raportin, menot eivät voi olla negatiivisia
+- Käyttäjä voi kirjata tuloja ja tulostaa siitä raportin, tulot eivät voi olla negatiivisia eikä 0
+  - Jo merkittyihin tuloihin voi lisätä milloin tahansa halutun summan
+  - Kirjattava tulo voi sisältää senttejä, jotka voidaan erottaa joko desimaalipilkulla tai pisteellä
+  - Raportissa kerrotaan myös kuinka paljon enemmän tai vähemmän käyttäjä on tienannut kuukaudessa kuin keskiverto amerikkalainen
 
-:heavy_check_mark: Käyttäjä voi kirjata tuloja ja tulostaa siitä raportin, tulot eivät voi olla negatiivisia eikä 0
+- Käyttäjä voi kirjata menoja ja tulostaa siitä raportin, menot eivät voi olla negatiivisia
+  - Kirjattava tulo voi sisältää senttejä, jotka voidaan erottaa joko desimaalipilkulla tai pisteellä
+  - Jos menot ylittävät tulot, sovellus varoittaa tästä uusia menoja kirjattaessa, sekä menot kertovassa raportissa: sovellus siis tarkastaa riittääkö tulot kirjattaviin menoihin
+  - Raportti kertoo myös paljonko rahaa on jäljellä käytettäväksi
 
-:heavy_check_mark: Käyttäjä voi tulostaa raportin siitä, kuinka monta prosenttia hän on käyttänyt palkastaan tähän mennessä
+- Käyttäjä voi tulostaa raportin siitä, kuinka monta prosenttia hän on käyttänyt palkastaan tähän mennessä
+  - Prosentti on pyöristetty lähimpään kokonaislukuun
 
-:heavy_check_mark: Käyttäjä voi tulostaa raportin siitä, kuinka monta prosenttia hän on käyttänyt palkastaan tähän mennessä johonkin tiettyyn kategoriaan
+- Käyttäjä voi tulostaa raportin siitä, kuinka monta prosenttia hän on käyttänyt palkastaan tähän mennessä johonkin tiettyyn kategoriaan
+  - Prosentti on pyöristetty lähimpään kokonaislukuun
+  - Raportti kertoo paljonko kulutettu prosenttimäärä on dollareina kuukauden tuloista
 
-:heavy_check_mark: Käyttäjä voi kuukauden lopussa tai alussa nollata edellisen kuukauden tiedot
+- Käyttäjä voi tarkastaa mihin kaikkiin kategorioihin hän on käyttänyt rahaa
 
-:heavy_check_mark: Käyttäjä voi kirjautua ulos
+- Käyttäjä voi kuukauden lopussa tai alussa nollata edellisen kuukauden tiedot
+
+- Käyttäjä voi kirjautua ulos sovelluksesta
 
 ## Jatkokehitysideoita
 
-- Käyttäjä voi määrittää säästötavoitteen kuukaudelle 
+Sovellusta voitaisiin täydentää seuraavilla toiminnoilla
+
+- Tietojen tallennus tapahtuu tietokantaan
+
+- Käyttäjä pystyy määrittelemään säästötavoitteen kuukaudelle 
   - Käyttäjä voi laittaa rahaa säästöön haluamansa määrän
   - Raportti voi ilmoittaa montako prosenttia säästötavoitteesta uupuu
 
 - Käyttäjä voi poistaa merkitsemiään menoja
 
-- Käyttäjä voi lisätä tuloihinsa jonkin summan
-
-- Käyttäjä voi tarkistaa millaisia kategorioita hän on määritellyt
-
-- Ohjelma voisi tarkastaa riittääkö tulot menoihin, joita asiakas haluaa kirjata
-
-- Käyttäjä voi lisätä tuloihin jonkin summan
-
-- Yksi raportti voisi kertoa paljonko rahaa on vielä käytettäväksi
-
-- Käyttäjä voisi tallentaa kuukauden tiedot ylös ja tarkastella niitä
+- Käyttäjä voi tallentaa kuukauden tiedot ylös
+  - Kuukausien tiedoista uusia erilaisia raportteja, kuten kuinka paljon rahaa kuluu keskimäärin kuukaudessa
 
