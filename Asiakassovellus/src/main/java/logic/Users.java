@@ -20,7 +20,6 @@ import java.util.Scanner;
 public class Users {
     public static String filepath = "users.txt";
     public static User currentUser = null;
-    public static User user = null;
     public static boolean userFounded;
     
     public static User getCurrentUser() {
