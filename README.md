@@ -8,11 +8,13 @@ Se tarjoaa asiakkaalle erilaisia raportteja hänen toiminnastaan.
 
 [Käyttöohje](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
-[Työaikakirjanpito](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
-
 [Vaatimusmäärittely](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
+[Ohjelman testaus](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
 [Arkkitehtuurikuvaus](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
+[Työaikakirjanpito](https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ### Java-versio
 Asiakassovelluksen luomiseen on käytetty Javan versiota 11.
