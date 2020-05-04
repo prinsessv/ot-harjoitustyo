@@ -42,7 +42,7 @@ Tulojen kirjaaminen tapahtuu painamalla sovellusnäkymän nappia Book income. T�
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/incomeBooked.png" width="300">               <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/incomeMiinus.png" width="300">
 
 Menojen kirjaaminen tapahtuu painamalla nappia Book expense. Tämän napin painamisen jälkeen avautuu uusi näkymä. Syötekenttiin kirjataan ensin ostos, sitten ostoksen kategoria ja lopuksi ostoksen hinta.
-Kun haluttu meno on kirjattu ja BOOK nappia on painettu, etusivulle pääsee takaisin nuolinäppäimen avulla. Ostoksen hinnan sentit voi jälleen erotella sekä desimaalipilkulla, että pisteellä. Ostoksen hinta ei saa olla negatiivinen, mutta ilmaiset saadut asiat on myös mahdollista kirjata sovellukseen.
+Kun haluttu meno on kirjattu ja Book your purchase nappia on painettu, etusivulle pääsee takaisin nuolinäppäimen avulla. Ostoksen hinnan sentit voi jälleen erotella sekä desimaalipilkulla, että pisteellä. Ostoksen hinta ei saa olla negatiivinen, mutta ilmaiset saadut asiat on myös mahdollista kirjata sovellukseen.
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/expenseBooked.png" width="300">               <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/expenseMiinus.png" width="300">
 
