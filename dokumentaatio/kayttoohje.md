@@ -54,11 +54,13 @@ Raportteja pääsee tulostamaan painamalla nappia Print report. Tällöin aukeaa
 
 Haluttua raporttinappia klikkaamalla aukeaa ponnahdusikkuna, joka kertoo halutun raportin. Etusivulle pääsee painamalla nuolinäppäintä.
 
-Eri raporttivaihtoehtojen ponnahdusikkunat samassa järjestyksessä kuin napit ovat ylläolevassa raporttinäkymässä:
+Alla ovat raporttivaihtoehtojen ponnahdusikkunat samassa järjestyksessä kuin napit ovat ylläolevassa raporttinäkymässä:
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/incomeRaportti.png" width="370">
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/expenseRaportti.png" width="370">
+
+Seuraavat prosenttimääriä kertovat raportit pyöristävät prosentin lähimpään kokonaislukuun. 
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/percentRaportti.png" width="370">
 
