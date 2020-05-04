@@ -48,7 +48,11 @@ Kun haluttu meno on kirjattu ja Book your purchase nappia on painettu, etusivull
 
 ## Raportit
 
-Raportteja pääsee tulostamaan painamalla nappia REPORTS. Tällöin aukeaa uusi sivu, jossa on eri raportti vaihtoehtoja. Haluttua raporttinappia klikkaamalla aukeaa ponnahdusikkuna, joka kertoo halutun raportin. Etusivulle pääsee painamalla nuolinäppäintä.
+Raportteja pääsee tulostamaan painamalla nappia Print report. Tällöin aukeaa uusi näkymä, jossa on eri raportti vaihtoehtoja. 
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/raportit.png" width="370">
+
+Haluttua raporttinappia klikkaamalla aukeaa ponnahdusikkuna, joka kertoo halutun raportin. Etusivulle pääsee painamalla nuolinäppäintä.
 
 ## Logout
 
