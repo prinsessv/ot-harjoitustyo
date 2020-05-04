@@ -30,8 +30,8 @@ Tällöin aukeaa allaoleva näkymä, johon syötetään halutut käyttäjätunnu
 Käyttäjätunnus ei saa sisältää erikoismerkkejä.
 Ohjelma kertoo, jos käyttäjätunnus on varattu, vääränlainen, tai jos sen luonti onnistui. Takaisin kirjautumisnäkymään pääsee nuolinäppäimellä.
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttajanimiVarattu.png" width="300">
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttajanimiErikoismerkit.png" width="300">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttajanimiVarattu.png" width="300"><img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttajanimiErikoismerkit.png" width="300">
+
 
 ## Menojen ja tulojen kirjaaminen
 
