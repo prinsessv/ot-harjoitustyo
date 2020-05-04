@@ -336,7 +336,7 @@ public class BankApplicationUi extends Application {
         
         // Book expense form
         GridPane bookExpenseForm = new GridPane();
-        setPane(bookExpenseForm, 500);
+        setPane(bookExpenseForm, 550);
         
         Button backToWelcomeScene = new Button("←");
         setTransparentButton(backToWelcomeScene, Color.LIGHTCYAN, 20);
