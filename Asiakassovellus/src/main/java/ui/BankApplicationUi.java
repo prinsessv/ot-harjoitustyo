@@ -193,7 +193,7 @@ public class BankApplicationUi extends Application {
                 String username = createUsernameField.getText();
                 String passw = createPasswordField.getText();
                 try {
-                    if(username.matches("[a-ö]*[0-9]*[a-ö]*")) {
+                    if(username.matches("[a-ö]*[0-9]*[a-ö]*") && !(username.isEmpty()) && !(passw.isEmpty())) {
                         if(createPasswordField.getText().equals(repeatPasswordField.getText())) {
                             usernameOkOrNot.setText(Users.createNewUser(username, passw));
                         } else {
@@ -321,7 +321,7 @@ public class BankApplicationUi extends Application {
         bookItButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if (bookIncomeField.getText().matches("[0-9]*.[0-9]*") && Double.parseDouble(bookIncomeField.getText().replaceAll(",", ".")) > 0) {
+                if (bookIncomeField.getText().matches("[0-9]*.[0-9]*") && !(bookIncomeField.getText().trim().isEmpty()) && Double.parseDouble(bookIncomeField.getText().replaceAll(",", ".")) > 0) {
                     try {
                         BankApplication.bookIncome(Double.parseDouble(bookIncomeField.getText().replaceAll(",", ".")));
                     } catch (FileNotFoundException ex) {
@@ -394,7 +394,7 @@ public class BankApplicationUi extends Application {
         bookPurchaseButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if (bookingExpense.getText().matches("[0-9]*.[0-9]*") && Double.parseDouble(bookingExpense.getText().replaceAll(",", ".")) >= 0) {
+                if (bookingExpense.getText().matches("[0-9]*.[0-9]*") && !(bookingExpense.getText().trim().isEmpty()) && Double.parseDouble(bookingExpense.getText().replaceAll(",", ".")) >= 0) {
                     BankApplication.bookExpense(bookingPurchase.getText(), categoryOfExpense.getText(), Double.parseDouble(bookingExpense.getText().replaceAll(",", ".")));
                     try {
                         if(Double.parseDouble(BankApplication.getExpenses()) > Double.parseDouble(BankApplication.getIncome())) {

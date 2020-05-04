@@ -17,6 +17,7 @@ import static logic.BankApplication.user;
 public class User {
     static String username;
     static String password;
+    public static User user = null;
     public static String filepathIncome;
     public static String filepathExpense;
     File incomeFile;
