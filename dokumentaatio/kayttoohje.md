@@ -14,18 +14,24 @@ java -jar Asiakassovellus-1.0-SNAPSHOT.jar
 
 Sovelluksesta aukeaa ensimmäisenä kirjautumisnäkymä:
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Kirjautuminen.png" width="400">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kirjautumisNakyma.png" width="400">
 
 Kirjautuminen onnistuu syöttämällä luotu käyttäjätunnus ja sen salasana syöttökenttiin ja painamalla nappia LOGIN. 
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kirjauduSisaan.png" width="400">
 
 ## Uuden käyttäjän luominen
 
 Kirjautumisnäkymässä on mahdollista luoda myös uusi käyttäjä painamalla CREATE NEW USER nappia. 
 Tällöin aukeaa allaoleva näkymä, johon syötetään halutut käyttäjätunnus ja salasana.
 
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/createNewUser.png" width="400">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/uudenKayttajanLuonti.png" width="400">
 
-Ohjelma kertoo, jos käyttäjätunnus oli väärin tai jos sen luonti onnistui. Takaisin kirjautumisnäkymään pääsee nuolinäppäimellä.
+Käyttäjätunnus ei saa sisältää erikoismerkkejä.
+Ohjelma kertoo, jos käyttäjätunnus on varattu, vääränlainen, tai jos sen luonti onnistui. Takaisin kirjautumisnäkymään pääsee nuolinäppäimellä.
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttajanimiVarattu.png" width="300">
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttajanimiErikoismerkit.png" width="300">
 
 ## Menojen ja tulojen kirjaaminen
 
