@@ -54,7 +54,23 @@ Raportteja pääsee tulostamaan painamalla nappia Print report. Tällöin aukeaa
 
 Haluttua raporttinappia klikkaamalla aukeaa ponnahdusikkuna, joka kertoo halutun raportin. Etusivulle pääsee painamalla nuolinäppäintä.
 
+Eri raporttivaihtoehtojen ponnahdusikkunat samassa järjestyksessä kuin napit ovat ylläolevassa raporttinäkymässä:
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/incomeRaportti.png" width="370">
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/expenseRaportti.png" width="370">
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/percentRaportti.png" width="370">
+
+Napin "Percents used of income for each category" painalluksen jälkeen täytyy määritellä minkä kategorian raportin haluaa nähdä:
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/whichCategory.png" width="370">
+
+Kategorian määrittelyn jälkeen raportti aukeaa uuteen ikkunaan, kuten muutkin raportit.
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/categoryPercentRaportti.png" width="370">
+
 ## Logout
 
-Etusivulla on nappi LOGOUT, joka kirjaa käyttäjän ulos. Nappia painamalla näkymä vaihtuu kirjautumisnäkymään.
+Etusivulla on nappi LOGOUT, joka kirjaa käyttäjän ulos. Nappia painamalla näkymä vaihtuu takaisin kirjautumisnäkymään, josta voi kirjautua uudelleen sisään tai luoda uuden käyttäjän.
 
