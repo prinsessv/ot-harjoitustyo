@@ -73,10 +73,10 @@ Sovellusta voitaisiin täydentää seuraavilla toiminnoilla
 
 - Käyttäjä pystyy määrittelemään säästötavoitteen kuukaudelle 
   - Käyttäjä voi laittaa rahaa säästöön haluamansa määrän
-  - Raportti voi ilmoittaa montako prosenttia säästötavoitteesta uupuu
+  - Säästöistä kertova raportti ilmoittaa montako prosenttia säästötavoitteesta uupuu
 
 - Käyttäjä voi poistaa merkitsemiään menoja
 
 - Käyttäjä voi tallentaa kuukauden tiedot ylös
-  - Kuukausien tiedoista uusia erilaisia raportteja, kuten kuinka paljon rahaa kuluu keskimäärin kuukaudessa
+  - Kuukausien talletetuista tiedoista saadaan erilaisia raportteja, kuten kuinka paljon rahaa kuluu keskimäärin kuukaudessa
 
