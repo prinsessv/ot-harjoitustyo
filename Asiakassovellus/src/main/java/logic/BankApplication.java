@@ -243,8 +243,13 @@ public class BankApplication {
                 System.out.println("Error: " + e.getMessage());
             }
             percent = (double) (totalOfUsedMoney * 100) / Double.parseDouble(BankApplication.getIncome());
-        } 
-        return String.valueOf(Math.round(percent)) + "% of your income."; 
+        }
+        
+        if (percent != 0 && Math.round(percent) == 0) {
+            return "under 1% of your income this month.";
+        } else {
+            return String.valueOf(Math.round(percent)) + "% of your income."; 
+        }
     }
     
     /**
