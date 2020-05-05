@@ -1,6 +1,6 @@
 # Käyttöohje :books:
 
-Lataa sovelluksen uusin versio linkin kautta: [Sovelluksen uusin versio](https://github.com/prinsessv/ot-harjoitustyo/releases/tag/viikko6)
+Lataa sovelluksen uusin versio linkin kautta: [Sovellus](https://github.com/prinsessv/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ## Ohjelman käynnistäminen
 
