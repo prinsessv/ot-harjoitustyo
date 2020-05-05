@@ -22,21 +22,11 @@ Käyttöliittymässä on useita eri näkymiä:
 
 5. Raportteja
 
-Näkymät ovat yksi kerrallaan näkyvillä. Käyttöliittymä kutsuu joitakin sovelluslogiikan metodeja. 
-
-### Sovelluslogiikka
-
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/userBankApplication.png" width="600">
-
-Seuraavat kaaviot sisältävät selvyyden vuoksi Javan oman FileWriter luokan kutsut:
-
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioTulot.png" width="600">
-
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioMenot.png" width="600">
+Näkymät ovat yksi kerrallaan näkyvillä. Kaikki eri näkymät on toteutettu Scene-olioina, jotka ovat yksi kerrallaan sijoitettu Stageen. Käyttöliittymä on eristetty lähes kokonaan sovelluslogiikasta, se kutsuu sovelluslogiikan metodeja toimintoja tarvitsevissa kohdissa. 
 
 ### Tietojen tallennus
 
-Tiedot asiakkaista ja heidän kirjanpidoista tallennetaan tiedostoon. 
+Tiedot asiakkaista ja heidän kirjanpidoista tallennetaan tiedostoon. Talletustapa on mahdollista vaihtaa tarvittaessa toiseen. 
 
 Käyttäjätiedot tallennetaan muodossa
 
@@ -78,11 +68,19 @@ Kentät ovat siis sekä käyttäjätiedoissa että menoissa eroteltu puolipistei
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kirjautumisSekvenssikaavio.png" width="500">
 
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/userBankApplication.png" width="600">
+
+Seuraavat kaaviot sisältävät selvyyden vuoksi Javan oman FileWriter luokan kutsut:
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioTulot.png" width="600">
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/SekvenssikaavioMenot.png" width="600">
+
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
 ### Käyttöliittymä
 
-Käyttöliittymässä ei ole muita metodeja kuin start metodi, joten se sisältää paljon koodia.
+Käyttöliittymässä ei ole paljoa muita metodeja kuin start metodi, joten se sisältää paljon koodia.
 
 ### Sovelluslogiikka
 
