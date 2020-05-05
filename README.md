@@ -25,6 +25,8 @@ Asiakassovelluksen luomiseen on käytetty Javan versiota 11.
 
 [Viikon 6 release](https://github.com/prinsessv/ot-harjoitustyo/releases/tag/viikko6)
 
+[Loppupalautus](https://github.com/prinsessv/ot-harjoitustyo/releases/tag/loppupalautus)
+
 ### Komentorivitoiminnot
 
 Komentorivitoiminnot täytyy suorittaa Asiakassovellus hakemiston sisällä.
