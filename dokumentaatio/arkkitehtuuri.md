@@ -8,6 +8,10 @@ Koodin pakkausrakenne on seuraava:
 
 Pakkaus ui sisältää JavaFX:llä luodun käyttöliittymän ja pakkaus logic sisältää sovelluslogiikan ja tietojen tallennuksesta vastaavan koodin.
 
+### Sovelluslogiikka
+
+<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/userBankApplication.png" width="600">
+
 ### Käyttöliittymä
 
 Käyttöliittymässä on useita eri näkymiä:
@@ -67,8 +71,6 @@ Kentät ovat siis sekä käyttäjätiedoissa että menoissa eroteltu puolipistei
 ### Käyttäjän kirjautuminen asiakassovellukseen
 
 <img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kirjautumisSekvenssikaavio.png" width="500">
-
-<img src="https://github.com/prinsessv/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/userBankApplication.png" width="600">
 
 Seuraavat kaaviot sisältävät selvyyden vuoksi Javan oman FileWriter luokan kutsut:
 
