@@ -125,6 +125,11 @@ public class BankApplication {
         return String.valueOf(expenseSum);
     }
     
+    /** 
+     * This method compares the customers income to average US monthly income
+     * It is used in the report which tells the customers income
+     * @return String which tells how much more or less the compared income is
+     */
     public static String compareIncomeToAverage() throws FileNotFoundException {
         double income = Double.parseDouble(BankApplication.getIncome());
         int average = 3714;
@@ -141,6 +146,11 @@ public class BankApplication {
         }
     }
     
+    /** 
+     * This method tells how much income is left after all the expenses
+     * It is used in the report which tells the expenses
+     * @return String which tells how much money there is still to use
+     */
     public static String howMuchIncomeLeft() throws FileNotFoundException {
         double expenses = Double.parseDouble(BankApplication.getExpenses());
         double income = Double.parseDouble(BankApplication.getIncome());
@@ -157,6 +167,11 @@ public class BankApplication {
         }
     }
     
+    /** 
+     * This method seeks all the categories where money has been used
+     * If customer forgets the categories where money has been used, it can be checked
+     * @return List which includess all the categories where money has been used
+     */
     public static ArrayList<String> getAllCategories() {
         ArrayList<String> categories = new ArrayList<>();
         
@@ -197,6 +212,12 @@ public class BankApplication {
         }
     }
     
+    /**
+     * This method tells how much money has been used to a certain category
+     * It is used in the method which tells the percent used to a certain category
+     *
+     * @return String which tells how much more or less the compared income is
+     */
     public static String moneyUsedToCertainCategory(String category) {
         double sum = 0;
         
