@@ -26,7 +26,7 @@ Käyttöliittymässä on useita eri näkymiä:
 
 5. Raportteja
 
-Näkymät ovat yksi kerrallaan näkyvillä. Kaikki eri näkymät on toteutettu Scene-olioina, jotka ovat yksi kerrallaan sijoitettu Stageen. Käyttöliittymä on eristetty lähes kokonaan sovelluslogiikasta, se kutsuu sovelluslogiikan metodeja toimintoja tarvitsevissa kohdissa. 
+Näkymät ovat yksi kerrallaan näkyvillä. Kaikki eri näkymät on toteutettu [Scene](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html)-olioina, jotka ovat yksi kerrallaan sijoitettu [Stageen](https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html). Käyttöliittymä on eristetty lähes kokonaan sovelluslogiikasta, se kutsuu sovelluslogiikan metodeja toimintoja tarvitsevissa kohdissa. 
 
 ### Tietojen tallennus
 
